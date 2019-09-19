@@ -4,12 +4,13 @@ import './App.css';
 
 import Login from './component/login/login.js';
 import Footer from './component/layout/footer.js';
+import Home from './component/home/home.js';
 
 function App() {
   return (
     <div className="App">
-      <Login />
-      <Footer/>
+      <Home />
+      <Footer />
     </div>
   );
 }
