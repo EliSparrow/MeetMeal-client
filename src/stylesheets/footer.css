@@ -1,0 +1,17 @@
+.footer{
+  background-color: Lavender;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.company-name{
+  text-align: left;
+  padding-left: 10px;
+}
+
+#company-introduction{
+  text-align: left;
+  padding-left: 10px;
+}
