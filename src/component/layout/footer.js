@@ -6,21 +6,21 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 const Footer = () => {
   return (
-    <div class="container">
-      <div class="footer row">
-        <div class="col-12 col-sm-4" id="company-introduction">
-          <h1 class="company-name">Meet Meal </h1><br></br>
+    <div className="container">
+      <div className="footer row">
+        <div className="col-12 col-sm-4" id="company-introduction">
+          <h1 className="company-name">Meet Meal </h1><br></br>
           <p>MeetMeal : la plateforme de rencontre autour d'un repas !
           Venez rencontrer les membres de notre communauté autour d'un repas fait maison et dans une ambiance conviviale !
           Qui sait, l'amour et l'amitié seront surement au rendez-vous ?
           Bon appétit ! </p>
         </div>
-        <div class="col-12 col-sm-4" id="company-introduction">
+        <div className="col-12 col-sm-4" id="company-introduction">
           <h2> A propos : </h2>
           <a href="#" id='company-links'>L'équipe</a><br></br>
           <a href="#" id='company-links'>Nous contacter</a><br></br>
         </div>
-        <div class="col-12 col-sm-4" id="company-introduction">
+        <div className="col-12 col-sm-4" id="company-introduction">
           <a href="#" id='company-links'>F.A.Q.</a><br></br>
           <a href="#" id='company-links'>Proposer un repas</a><br></br>
           <a href="#" id='company-links'>Trouver un repas</a><br></br>
