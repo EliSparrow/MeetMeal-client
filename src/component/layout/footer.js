@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 const Footer = () => {
   return (
-    <div class='container'>
+    <div class="container">
       <div class="footer row">
         <div class="col-12 col-sm-4" id="company-introduction">
           <h1 class="company-name">Meet Meal </h1><br></br>
