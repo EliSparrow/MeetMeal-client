@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 
 const useLoginForm = (callback) => {
   const [inputs, setInputs] = useState({});
@@ -18,10 +18,12 @@ const useLoginForm = (callback) => {
   }
 
   const checkInputs = (event) => {
-    if (!inputs.email)
-      alert('Email field missing')
+    if (!inputs.email && !inputs.password)
+      alert('Les champs "email" et "mot de passe" sont manquants')
+    else if (!inputs.email)
+      alert('Le champ "email" est manquant')
     else if (!inputs.password)
-      alert('Password field missing')
+      alert('La champ "mot de passe" est manquant')
     else
       return false
 
