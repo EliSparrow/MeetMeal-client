@@ -43,12 +43,7 @@ const Home = () => {
                           </select>
                         </div>
                         <div class='col-lg-2 col-md-2 col-sm-4 p-0 search-slt'>
-                          <nav class="nav">
-                            <a class="nav-link active" href="#" id='cheap'>€</a>
-                            <a class="nav-link active" href="#" id='medium'>€</a>
-                            <a class="nav-link active" href="#" id='expensive'>€</a>
-                            <a class="nav-link active" href="#" id='veryExpensive'>€</a>
-                          </nav>
+                          <input type="range" class="custom-range" id="customRange1"></input>
                         </div>
                         <div class="col-lg-2 col-md-2 col-sm-4 p-0">
                             <button type="button" class="btn btn-danger wrn-btn">Rechercher</button>
