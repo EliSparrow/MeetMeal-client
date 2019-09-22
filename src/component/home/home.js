@@ -7,23 +7,23 @@ import '../../stylesheets/home.css';
 const Home = () => {
 
     return (
-    <div class='container'>
-      <section class="search-sec">
-        <div class="container">
+    <div className='container'>
+      <section className="search-sec">
+        <div className="container">
           <form action="#" method="post" novalidate="novalidate">
-              <div class="row">
-                  <div class="col-lg-12">
-                      <div class="row">
-                          <div class="col-lg-2 col-md-2 col-sm-4 p-0">
-                              <input type="text" class="form-control search-slt" placeholder="Adresse : " id='address'></input>
+              <div className="row">
+                  <div className="col-lg-12">
+                      <div className="row">
+                          <div className="col-lg-2 col-md-2 col-sm-4 p-0">
+                              <input type="text" className="form-control search-slt" placeholder="Adresse : " id='address'></input>
                           </div>
-                          <div class="col-lg-2 col-md-2 col-sm-4 p-0">
+                          <div className="col-lg-2 col-md-2 col-sm-4 p-0">
                           <input type="date" id="start" name="trip-start"
                                  value="date"
                                  min="2019-01-01" max="2200-12-31"></input>
                           </div>
-                          <div class="col-lg-2 col-md-2 col-sm-4 p-0">
-                            <select class="form-control search-slt" id="exampleFormControlSelect1">
+                          <div className="col-lg-2 col-md-2 col-sm-4 p-0">
+                            <select className="form-control search-slt" id="exampleFormControlSelect1">
                                 <option id='typeOfMeal'>Type de repas</option>
                                 <option id='breakfast'>Petit déjeuner</option>
                                 <option id='brunch'>Brunch</option>
@@ -32,8 +32,8 @@ const Home = () => {
                                 <option id='dinner'>Dîner</option>
                             </select>
                         </div>
-                        <div class="col-lg-2 col-md-2 col-sm-4 p-0">
-                          <select class="form-control search-slt" id="exampleFormControlSelect1">
+                        <div className="col-lg-2 col-md-2 col-sm-4 p-0">
+                          <select className="form-control search-slt" id="exampleFormControlSelect1">
                               <option>Type de cuisine</option>
                               <option>Américaine</option>
                               <option>Argentine</option>
@@ -42,11 +42,11 @@ const Home = () => {
                               <option>Espagnole</option>
                           </select>
                         </div>
-                        <div class='col-lg-2 col-md-2 col-sm-4 p-0 search-slt'>
-                          <input type="range" class="custom-range" id="customRange1"></input>
+                        <div className='col-lg-2 col-md-2 col-sm-4 p-0 search-slt'>
+                          <input type="range" className="custom-range" id="customRange1"></input>
                         </div>
-                        <div class="col-lg-2 col-md-2 col-sm-4 p-0">
-                            <button type="button" class="btn btn-danger wrn-btn">Rechercher</button>
+                        <div className="col-lg-2 col-md-2 col-sm-4 p-0">
+                            <button type="button" className="btn btn-danger wrn-btn">Rechercher</button>
                         </div>
                     </div>
                 </div>
@@ -54,8 +54,8 @@ const Home = () => {
         </form>
       </div>
     </section>
-    <div class="col-lg-4 col-md-4 col-sm-12 p-0 button">
-      <button class="btn btn-primary btn-danger wrn-btn ">Organiser un repas</button>
+    <div className="col-lg-4 col-md-4 col-sm-12 p-0 button">
+      <button className="btn btn-primary btn-danger wrn-btn ">Organiser un repas</button>
     </div>
   </div>
   )
