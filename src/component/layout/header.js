@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import '../../stylesheets/header.css';
 import image from './MeatMeal.png';
 
