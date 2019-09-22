@@ -1,17 +1,23 @@
 import React from 'react';
+import {BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+
 import './App.css';
 
 import Header from './component/layout/header.js'
 import Footer from './component/layout/footer.js';
+import Home from './component/home/home.js';
 import LoginForm from './component/login/loginForm.js';
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <LoginForm />
-      <Footer />
-    </div>
+    <Router>
+      <div className="App">
+        <Route component={Header}></Route>
+        <Route exact path = "/" component={Home}></Route>
+        <Route exact path = "/login" component={LoginForm}></Route>
+        <Route component={Footer}></Route>
+      </div>
+    </Router>
   );
 }
 
