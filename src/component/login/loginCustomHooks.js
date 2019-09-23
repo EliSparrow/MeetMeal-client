@@ -15,6 +15,7 @@ const useLoginForm = (callback) => {
       },
     ).then(res => {
       sessionStorage.setItem('token', res.data.token);
+      this.props.history.push('/');
     }).catch(err => {
       if (err.response.data.msg) {
         if (err.response.data.msg === 'Mot de passe invalide')
