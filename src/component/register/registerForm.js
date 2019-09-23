@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { Form, Button, Container } from 'react-bootstrap';
@@ -37,18 +36,17 @@ const Register = props => {
     <Form onSubmit={handleSubmit}>
     <h1>Register now ! :)</h1>
         <Form.Group controlId="formUser" className="formUser">
-            <Form.Label>Nom</Form.Label>
+            <Form.Label> Nom </Form.Label>
             <Form.Control type="name" placeholder="Nom" value={values.firstname} onChange={handleChange} />
-            <Form.Label>Prenom</Form.Label>
+            <Form.Label> Prenom </Form.Label>
             <Form.Control type="name" placeholder="Prénom" value={values.lastname} onChange={handleChange} />
-            <Form.Label>Age</Form.Label>
+            <Form.Label> Age </Form.Label>
             <Form.Control type="number" placeholder="Age" max="99" value={values.age} onChange={handleChange}/>
         </Form.Group>
         <Form.Group controlId="formBasicEmail">
             <Form.Label>Adresse E-mail</Form.Label>
             <Form.Control type="email" placeholder="Entrez votre adresse e-mail"value={values.email} onChange={handleChange} />
         </Form.Group>
-
         <Form.Group controlId="formBasicPassword">
             <Form.Label>Mot de passe</Form.Label>
             <Form.Control type="password" placeholder="Entrez votre mot de passe" value={values.password} onChange={handleChange} />
