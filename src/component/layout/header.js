@@ -12,10 +12,13 @@ const Header = () => {
     <Navbar.Collapse id="responsive-navbar-nav">
       <Nav className="mr-auto">
       <Nav.Item as="li">
-        <Nav.Link eventKey="link-1">Page d'accueil</Nav.Link>
+        <Nav.Link eventKey="link-1" href="/">Page d'accueil</Nav.Link>
       </Nav.Item>
         <Nav.Item as="li">
-        <Nav.Link eventKey="link-2">Se connecter</Nav.Link>
+        <Nav.Link eventKey="link-2" href="/login">Se connecter</Nav.Link>
+      </Nav.Item>
+      <Nav.Item as="li">
+        <Nav.Link eventKey="link-3" href="/register">S'enregistrer</Nav.Link>
       </Nav.Item>
       </Nav>
       <Nav>
