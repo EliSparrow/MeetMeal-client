@@ -40,13 +40,24 @@ const UserProfile = () => {
           <div className='col-lg-1 user-info-intro'>
             <img className='image' src={profiles.avatar}></img>
           </div>
-          <div className='col-lg-8 user-info-intro'>
-            <h1 className='user-name'> {profiles.firstname} {profiles.lastname}</h1>
+          <div className='row'>
+            <div className='col-lg-8 user-info-intro'>
+              <h1 className='user-name'> {profiles.firstname} {profiles.lastname}</h1>
+            </div>
+            <div className='col-lg-3 info-profile' id='info-profile'>
+              <div className='user-name'><p> Situation amoureuse :  {profiles.loveStatus}</p></div>
+            </div>
           </div>
-          <div className='col-lg-3 info-profile' id='info-profile'>
-            <div className='user-name'><p> Situation amoureuse :  {profiles.loveStatus}</p></div>
+          <div className='row'>
+            <div className='col-lg-8 user-info-intro'>
+              <p className='user-info'> {profiles.city} {profiles.zipCode}</p>
+            </div>
           </div>
-
+      </div>
+      <div className='row'>
+        <div className='col-lg-12 user-info-bio'>
+          <p className='user-bio'> {profiles.bio}</p>
+        </div>
       </div>
     </div>
   );
