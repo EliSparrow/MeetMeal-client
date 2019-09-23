@@ -56,7 +56,7 @@ const Register = props => {
         <Button variant="primary" type="submit">
             Je m'enregistre !
         </Button>
-        <Form.Text>J'ai déjà un compte ?</Form.Text>
+        <Form.Text>J'ai déjà un compte ?<Link to="/login" className="formField_link mr-20"> Je me connecte</Link></Form.Text>
     </Form>
     </Container>
     );
