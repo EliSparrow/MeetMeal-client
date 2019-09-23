@@ -24,10 +24,6 @@ function App() {
         <Route component={Footer}></Route>
       </div>
     </Router>
-    <div className="App">
-      <Header />
-      <Footer />
-    </div>
   );
 }
 
