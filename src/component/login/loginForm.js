@@ -33,21 +33,22 @@ class Login extends Component {
       if (res.status === 200) {
         console.log(res.data.token)
         sessionStorage.setItem("token", res.data.token);
-        this.props.history.push('/home');
+        this.props.history.push('/');
       }
-    }).catch( err => {
+    }).catch(err => {
+      console.log(err.response);
       if (err.response.data.msg) {
-        if (err.response.data.msg === 'Email necessaire')
-          alert('Le champ "email" est manquant')
+        if (err.response.data.msg === 'Mot de passe invalide')
+           alert('Mot de passe invalide')
+        else if (err.response.data.msg === 'Utilisateur inconnu')
+          alert('Utilisateur inconnu')
         else if (err.response.data.msg === 'Mot de passe necessaire')
           alert('Le champ "mot de passe" est manquant')
-        else if (err.response.data.msg === 'Utilisateur inconnu')
-          alert('Email invalide')
-        else if (err.response.data.msg === 'Mot de passe invalide')
-          alert('Mot de passe invalide')
+        else if (err.response.data.msg === 'Email necessaire')
+          alert('Le champ "email" est manquant')
+        else if (err.response.status === 500)
+          alert('Nous sommes désolés, nous faisons face à un problème de serveur')
       }
-      else
-        alert('Nous rencontrons actuellement un problème de serveur, merci de patienter pour vous connecter')
     });
   };
 
