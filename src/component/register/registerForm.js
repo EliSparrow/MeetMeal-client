@@ -13,7 +13,13 @@ const Register = props => {
     const submitRegister = (e) => {
 
         const { firstname, lastname, age, email, password } = values
-        axios.post('http://localhost:1509/user/register', { firstname, lastname, age, email, password  })
+        axios.post('http://localhost:1509/users/register', {
+             firstname,
+             lastname,
+             age,
+             email,
+             password  
+            })
             .then(res => {
                 console.log(res)
                 notifySuccess(res.data.msg)
@@ -37,21 +43,21 @@ const Register = props => {
     <h1>Register now ! :)</h1>
         <Form.Group controlId="formUser" className="formUser">
             <Form.Label> Nom </Form.Label>
-            <Form.Control type="name" placeholder="Nom" value={values.firstname} onChange={handleChange} />
+            <Form.Control type="name" placeholder="Nom" name="firstname" value={values.firstname} onChange={handleChange} />
             <Form.Label> Prenom </Form.Label>
-            <Form.Control type="name" placeholder="Prénom" value={values.lastname} onChange={handleChange} />
+            <Form.Control type="name" placeholder="Prénom" name="lastname" value={values.lastname} onChange={handleChange} />
             <Form.Label> Age </Form.Label>
-            <Form.Control type="number" placeholder="Age" max="99" value={values.age} onChange={handleChange}/>
+            <Form.Control type="number" placeholder="Age" max="99" name="age" value={values.age} onChange={handleChange}/>
         </Form.Group>
         <Form.Group controlId="formBasicEmail">
             <Form.Label>Adresse E-mail</Form.Label>
-            <Form.Control type="email" placeholder="Entrez votre adresse e-mail"value={values.email} onChange={handleChange} />
+            <Form.Control type="email" placeholder="Entrez votre adresse e-mail" name="email" value={values.email} onChange={handleChange} />
         </Form.Group>
         <Form.Group controlId="formBasicPassword">
             <Form.Label>Mot de passe</Form.Label>
-            <Form.Control type="password" placeholder="Entrez votre mot de passe" value={values.password} onChange={handleChange} />
+            <Form.Control type="password" placeholder="Entrez votre mot de passe" name="password" value={values.password} onChange={handleChange} />
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" name="submit">
             Je m'enregistre !
         </Button>
         <Form.Text>J'ai déjà un compte ?<Link to="/login" className="formField_link mr-20"> Je me connecte</Link></Form.Text>
