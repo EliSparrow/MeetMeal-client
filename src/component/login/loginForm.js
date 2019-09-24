@@ -21,7 +21,7 @@ class Login extends Component {
   handleSubmit = async (event) => {
     event.preventDefault();
     if (!this.state.email && !this.state.password) {
-      alert('Les champs "email" et "mot de passe" sont manquants');
+      alert('Les champs "email" et "mot de passe" sont manquants')
       return
     }
     axios.post('http://localhost:1509/users/login',
@@ -54,7 +54,6 @@ class Login extends Component {
 
   render(){
     return (
-
       <div className="register-div">
         <h1>Login here : </h1>
         <form className="form-register" onSubmit={this.handleSubmit}>
@@ -72,8 +71,8 @@ class Login extends Component {
         <div className="logs">
         </div>
       </div>
-
     )
   }
 }
+
 export default Login;
