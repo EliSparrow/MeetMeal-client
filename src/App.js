@@ -9,8 +9,7 @@ import Home from './component/home/home.js';
 
 import UserProfile from './component/profile/userProfile.js';
 import Register from './component/register/registerForm';
-import LoginForm from './component/login/loginForm.js';
-
+import Login from './component/login/loginForm2.js';
 
 function App() {
   return (
@@ -19,8 +18,9 @@ function App() {
         <Route component={Header}></Route>
         <Route exact path = "/" component={Home}></Route>
         <Route exact path = "/register" component={Register}></Route>
-        <Route exact path = "/login" component={LoginForm}></Route>
+        <Route exact path = "/login" component={Login}></Route>
         <Route exact path="/profile" component={UserProfile}></Route>
+
         <Route component={Footer}></Route>
       </div>
     </Router>

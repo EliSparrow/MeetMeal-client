@@ -1,34 +1,41 @@
-import React from 'react';
-//import {BrowserRouter as Route} from 'react-router-dom';
-import { Route, Link, Redirect } from 'react-router-dom';
-import { Button} from 'react-bootstrap';
-import {useState} from 'react';
+import React, { Component } from 'react';
+import { Link, Redirect } from 'react-router-dom';
+import ReactDOM from 'react-dom';
 import axios from 'axios';
 
-const useLoginForm = (event) => {
+class Login extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      email: "",
+      password: "",
+    };
+  }
 
-  const handleSubmit =  ( email, password) => {
-    console.log(email, password);
-    if (!email && !password) {
+  handleChange = (event) => {
+    this.setState({
+      [event.target.id]: event.target.value
+    });
+  }
+
+  handleSubmit = async (event) => {
+    event.preventDefault();
+    if (!this.state.email && !this.state.password) {
       alert('Les champs "email" et "mot de passe" sont manquants');
       return
     }
-    console.log('ON VERIFIE LES CHAMPS ENTRÉS ', password, email);
-    axios.post('http://localhost:1509/users/login',{
-      email: email,
-      password: password
-      },
-      console.log(password, email),
-      console.log('axios sent')
-    ).then(res => {
-      sessionStorage.setItem('token', res.data.token);
-      console.log(res);
-      console.log('axios response');
-      props.history.push('/')
-      console.log('nouvelle url',url);
-      return url
-    })
-    .catch(err => {
+    axios.post('http://localhost:1509/users/login',
+      {
+        email: this.state.email,
+        password: this.state.password
+      })
+    .then(res => {
+      if (res.status === 200) {
+        console.log(res.data.token)
+        sessionStorage.setItem("token", res.data.token);
+        this.props.history.push('/');
+      }
+    }).catch(err => {
       console.log(err.response);
       if (err.response.data.msg) {
         if (err.response.data.msg === 'Mot de passe invalide')
@@ -43,41 +50,30 @@ const useLoginForm = (event) => {
           alert('Nous sommes désolés, nous faisons face à un problème de serveur')
       }
     });
-  }
-console.log(url);
-  return {
-    handleSubmit,
-    url
   };
+
+  render(){
+    return (
+
+      <div className="register-div">
+        <h1>Login here : </h1>
+        <form className="form-register" onSubmit={this.handleSubmit}>
+
+          <div class="group">
+            <input type="text" placeholder="Your email" class="input-edit" id="email" onChange={this.handleChange} /><br></br>
+          </div>
+          <div class="group">
+            <input type="password" placeholder="Your password" class="input-edit" id="password" onChange={this.handleChange}/><br></br>
+          </div>
+          <button className="submit">Log In !</button>
+          <p> You're not a member yet ? <Link to='/register'>Register !</Link>
+          </p>
+        </form>
+        <div className="logs">
+        </div>
+      </div>
+
+    )
+  }
 }
-
-const LoginForm = props => {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const {handleSubmit} = useLoginForm();
-  console.log(email, password);
-
-  return (
-    <div className= 'container' >
-      <form className= 'login' onSubmit={handleSubmit}>
-        <h1>Log in : </h1>
-        <div className='input'>
-        <label className='email'>Your email : </label>
-        <input placeholder='email' id='email' name='email' onChange={(event) => { setEmail(event.target.value) }} ></input>
-        </div>
-
-        <div className='input'>
-        <label className='password'>Your password : </label>
-        <input type='password' placeholder='password' name='password' id='password' onChange={(event) => { setPassword(event.target.value) }}></input>
-        </div>
-
-        <div className='button'>
-
-          <Button type='submit' id='submit' > Log iiin </Button>
-        </div>
-      </form>
-    </div>
-  );
-}
-
-export default LoginForm;
+export default Login;
