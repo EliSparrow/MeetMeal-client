@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import '../../stylesheets/header.css';
 import image from './MeatMeal.png';
 
@@ -12,13 +13,13 @@ const Header = () => {
     <Navbar.Collapse id="responsive-navbar-nav">
       <Nav className="mr-auto">
       <Nav.Item as="li">
-        <Nav.Link eventKey="link-1" href="/">Page d'accueil</Nav.Link>
+        <Nav.Link eventKey="link-1" ><Link to="/">Page d'accueil</Link></Nav.Link>
       </Nav.Item>
         <Nav.Item as="li">
-        <Nav.Link eventKey="link-2" href="/login">Se connecter</Nav.Link>
+        <Nav.Link eventKey="link-2" ><Link to="/login">Se connecter</Link></Nav.Link>
       </Nav.Item>
       <Nav.Item as="li">
-        <Nav.Link eventKey="link-3" href="/register">S'enregistrer</Nav.Link>
+        <Nav.Link eventKey="link-3"><Link to="/register">S'enregistrer</Link></Nav.Link>
       </Nav.Item>
       </Nav>
       <Nav>
@@ -27,14 +28,14 @@ const Header = () => {
         title={<i className="fa fa-user fa-fw"></i>}
         id="dropdown-menu-align-right"
         >
-          <Dropdown.Item eventKey="1" href="/">Page d'accueil</Dropdown.Item>
-          <Dropdown.Item eventKey="2" href="/login">Se connecter</Dropdown.Item>
-          <Dropdown.Item eventKey="3" href="/register">S'enregistrer</Dropdown.Item>
-          <Dropdown.Item eventKey="4" href="/">Profil</Dropdown.Item>
-          <Dropdown.Item eventKey="5" href="/">Mon historique</Dropdown.Item>
-          <Dropdown.Item eventKey="6" href="/">Rechercher un évènement</Dropdown.Item>
-          <Dropdown.Item eventKey="7" href="/">Créer un repas</Dropdown.Item>
-          <Dropdown.Item eventKey="8" href="/">Voir tous les membres</Dropdown.Item>
+          <Dropdown.Item eventKey="1" ><Link to="/">Page d'accueil</Link></Dropdown.Item>
+          <Dropdown.Item eventKey="2" ><Link to="/login">Se connecter</Link></Dropdown.Item>
+          <Dropdown.Item eventKey="3" ><Link to="/register">S'enregistrer</Link></Dropdown.Item>
+          <Dropdown.Item eventKey="4" ><Link to="/profile">Profil</Link></Dropdown.Item>
+          <Dropdown.Item eventKey="5" ><Link to="/">Mon historique</Link></Dropdown.Item>
+          <Dropdown.Item eventKey="6" ><Link to="/">Rechercher un évènement</Link></Dropdown.Item>
+          <Dropdown.Item eventKey="7" ><Link to="/">Créer un repas</Link></Dropdown.Item>
+          <Dropdown.Item eventKey="8" ><Link to="/">Voir tous les membres</Link></Dropdown.Item>
           <Dropdown.Divider />
           <Dropdown.Item eventKey="4"><i className="fa fa-sign-in"></i> Se déconnecter</Dropdown.Item>
         </DropdownButton>
