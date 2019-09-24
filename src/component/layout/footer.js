@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import '../../stylesheets/footer.css'
 import 'bootstrap/dist/css/bootstrap.css';
@@ -43,10 +44,10 @@ const Footer = () => {
     
             <ul className="list-unstyled">
               <li>
-                <a href="/team">L'équipe</a>
+              <Link to="/team">L'équipe</Link>
               </li>
               <li>
-                <a href="/contact">Nous contacter</a>
+                <Link to="/contact">Nous contacter</Link>
               </li>
             </ul>
           </div>
@@ -54,14 +55,14 @@ const Footer = () => {
             <h5 className="text-uppercase">F.A.Q</h5>
             <ul className="list-unstyled">
               <li>
-                <a href="#!">Proposer un repas</a>
+                <Link to="#!">Proposer un repas</Link>
               </li>
               <li>
-                <a href="#!">Trouver un repas</a>
+                <Link to="#!">Trouver un repas</Link>
               </li>
               <li>
-                <a href="https://www.google.fr/maps/place/Epitech+Paris/@48.815664,2.3606193,17z/data=!3m1!4b1!4m5!3m4!1s0x47e6717ff972ae09:0x692326b123aa4d9b!8m2!3d48.815664!4d2.362808">
-                  Nous trouver ! </a>
+                <Link to="https://www.google.fr/maps/place/Epitech+Paris/@48.815664,2.3606193,17z/data=!3m1!4b1!4m5!3m4!1s0x47e6717ff972ae09:0x692326b123aa4d9b!8m2!3d48.815664!4d2.362808">
+                  Nous trouver ! </Link>
               </li>
             </ul>
           </div>
