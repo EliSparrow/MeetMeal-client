@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router, Route } from 'react-router-dom';
+import {BrowserRouter as Router, Route,} from 'react-router-dom';
 
 import './App.css';
 
@@ -13,6 +13,7 @@ import Home from './component/home/home.js';
 import UserProfile from './component/profile/userProfile.js';
 import Register from './component/register/registerForm';
 import Login from './component/login/loginForm.js';
+import CreateEvent from './component/event/createEvent.js';
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
         <PublicRoute restricted={true} exact path="/register" component={Register}/>
         <PrivateRoute exact path="/profile" component={UserProfile}></PrivateRoute>
         <PrivateRoute exact path="/ListUsers" component={ListUsers}></PrivateRoute>
-
+        <PrivateRoute exact path='/create-event' component={CreateEvent}></PrivateRoute>
       <Route component={Footer}></Route>
       </div>
     </Router>
