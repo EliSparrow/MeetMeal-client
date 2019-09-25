@@ -40,8 +40,13 @@ class CreateEvent extends Component {
     event.preventDefault();
     this.state.hour = this.state.time.substr(0,2);
     this.state.minutes = this.state.time.substr(3,2);
-    this.state.menu = 'entrée : ' + this.state.starter + ' , plat : ' + this.state.dish + ' , dessert : '
-    + this.state.dessert + ' , boissons : ' + this.state.drinks + ' , autres : ' + this.state.other;
+    if(this.state.starter) this.state.starter = 'entrée : ' + this.state.starter
+    if(this.state.dish) this.state.dish = ' plat : ' + this.state.dish
+    if(this.state.dessert) this.state.dessert = ' dessert : ' + this.state.dessert
+    if(this.state.other) this.state.other = ' autres : ' + this.state.other
+    if(this.state.drinks) this.state.drinks = ' boissons : ' + this.state.drinks
+
+    this.state.menu = this.state.starter + this.state.dish + this.state.dessert + this.state.drinks + this.state.other;
 
     const headers = {
       'x-auth-token': sessionStorage.getItem('token')
@@ -62,8 +67,7 @@ class CreateEvent extends Component {
       numberMaxOfGuests: parseInt(this.state.numberMaxOfGuests),
       cost: parseInt(this.state.cost)
     }
-
-    console.log(body);
+  //  console.log(body);
 
     axios.post('http://localhost:1509/events/create',
       body,
@@ -76,7 +80,6 @@ class CreateEvent extends Component {
       this.props.history.push('/');
     })
   };
-
 
   render () {
     return (
@@ -155,8 +158,6 @@ class CreateEvent extends Component {
             <div className='col-lg-4'>
               <input type="text" placeholder="Nombre de toques :" class="event-input" id="cost" onChange={this.changeInputsValues} required></input>
             </div>
-
-
             <button className="submit">C'est parti</button>
           </form>
         </div>
@@ -164,6 +165,5 @@ class CreateEvent extends Component {
     )
   }
 }
-
 
 export default CreateEvent;
