@@ -35,7 +35,7 @@ const Header = () => {
           <Dropdown.Item eventKey="5" ><Link to="/">Mon historique</Link></Dropdown.Item>
           <Dropdown.Item eventKey="6" ><Link to="/">Rechercher un évènement</Link></Dropdown.Item>
           <Dropdown.Item eventKey="7" ><Link to="/">Créer un repas</Link></Dropdown.Item>
-          <Dropdown.Item eventKey="8" ><Link to="/">Voir tous les membres</Link></Dropdown.Item>
+          <Dropdown.Item eventKey="8" ><Link to="/ListUsers">Voir tous les membres</Link></Dropdown.Item>
           <Dropdown.Divider />
           <Dropdown.Item eventKey="4"><i className="fa fa-sign-in"></i> Se déconnecter</Dropdown.Item>
         </DropdownButton>

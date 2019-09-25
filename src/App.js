@@ -1,11 +1,12 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
+import {BrowserRouter as Router, Route } from 'react-router-dom';
 
 import './App.css';
 
 import PrivateRoute from './component/rooter/privateRoute.js';
 import PublicRoute from './component/rooter/publicRoute.js';
 
+import ListUsers from './component/profile/ListUsers.js'
 import Header from './component/layout/header.js'
 import Footer from './component/layout/footer.js';
 import Home from './component/home/home.js';
@@ -22,6 +23,8 @@ function App() {
         <PublicRoute restricted={true} component={Login} path="/login" exact />
         <PublicRoute restricted={true} exact path="/register" component={Register}/>
         <PrivateRoute exact path="/profile" component={UserProfile}></PrivateRoute>
+        <PrivateRoute exact path="/ListUsers" component={ListUsers}></PrivateRoute>
+
       <Route component={Footer}></Route>
       </div>
     </Router>
