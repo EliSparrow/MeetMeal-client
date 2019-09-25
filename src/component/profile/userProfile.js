@@ -1,11 +1,10 @@
 import React from 'react';
-import {BrowserRouter as Route, Redirect} from 'react-router-dom';
 import {useState} from 'react';
 import axios from 'axios';
 
 import '../../stylesheets/userProfile.css';
 
-const getUserProfile = (( setProfiles, history, props) => {
+const getUserProfile = (( setProfiles, props) => {
   const header = {
     'x-auth-token': sessionStorage.getItem('token')
   }
