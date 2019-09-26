@@ -4,7 +4,7 @@ import { CardUser } from "./CardUser";
 import axios from 'axios';
 
 const header = {
-    'x-auth-token': sessionStorage.getItem('token')
+    'x-auth-token': localStorage.getItem('token')
   }
 
 export class ListUsers extends Component {
@@ -28,6 +28,7 @@ export class ListUsers extends Component {
     }
 
     componentDidMount() {
+        console.log(header);
         axios.get('http://localhost:1509/users', { headers: header })
             .then(response => {
                 console.log(response.data);
@@ -81,8 +82,8 @@ export class ListUsers extends Component {
         return (
             <div className="container">
                 <form className="form-search" onSubmit={this.handleSubmit}>
-                    <div class="searchInput">
-                        <input type="text" placeholder="Entrez un utilisateur" class="input-search" id="search" onChange={this.handleChange} />
+                    <div className="searchInput">
+                        <input type="text" placeholder="Entrez un utilisateur" className="input-search" id="search" onChange={this.handleChange} />
                         <button className="submit">Search</button><br/><br/>
                     </div>
                 </form>
