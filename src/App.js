@@ -25,7 +25,7 @@ function App() {
         <PrivateRoute exact path="/profile" component={UserProfile}></PrivateRoute>
         <PrivateRoute exact path="/ListUsers" component={ListUsers}></PrivateRoute>
 
-      <Route component={Footer}></Route>
+      {/* <Route component={Footer}></Route> */}
       </div>
     </Router>
   );
