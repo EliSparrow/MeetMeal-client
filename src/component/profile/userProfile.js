@@ -1,14 +1,14 @@
 import React from 'react';
-import {BrowserRouter as Route} from 'react-router-dom';
 import {useState} from 'react';
 import axios from 'axios';
 
 import '../../stylesheets/userProfile.css';
 
-const getUserProfile = (setProfiles => {
+const getUserProfile = (( setProfiles, props) => {
   const header = {
-    'x-auth-token': sessionStorage.getItem('token')
+    'x-auth-token': localStorage.getItem('token')
   }
+  console.log(header);
   axios.get('http://localhost:1509/users/my-profile',
     { headers: header},
     console.log('je commence axios')
@@ -17,19 +17,17 @@ const getUserProfile = (setProfiles => {
     setProfiles(res.data)
     console.log(res.data);
   }).catch(err => {
-    alert('Nous sommes désolés, nous faisons face à un problème de serveur')
-    return (
-      <Route exact path='/'></Route>
-    )
+    //alert('Nous sommes désolés, nous faisons face à un problème de serveur')
+    props.history.push('/')
   })
 });
 
-const UserProfile = () => {
+const UserProfile = (props, history) => {
   let [profiles, setProfiles] = useState([])
   console.log('let profile : ');
   console.log(profiles);
     if (profiles.length === 0){
-      getUserProfile(setProfiles)
+      getUserProfile(setProfiles, history, props)
       console.log('let profile après if : ');
       console.log(profiles);
     }
