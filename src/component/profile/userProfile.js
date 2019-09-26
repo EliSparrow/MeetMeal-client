@@ -6,8 +6,9 @@ import '../../stylesheets/userProfile.css';
 
 const getUserProfile = (( setProfiles, props) => {
   const header = {
-    'x-auth-token': sessionStorage.getItem('token')
+    'x-auth-token': localStorage.getItem('token')
   }
+  console.log(header);
   axios.get('http://localhost:1509/users/my-profile',
     { headers: header},
     console.log('je commence axios')
