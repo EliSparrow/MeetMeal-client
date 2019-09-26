@@ -4,7 +4,6 @@ import { CardUser } from "./CardUser";
 import axios from 'axios';
 
 
-
 export class ListUsers extends Component {
     constructor(props){
         super(props);
