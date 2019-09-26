@@ -38,7 +38,7 @@ class CreateEvent extends Component {
 
   submitInputs = (event) => {
     event.preventDefault();
-    this.state.hour = this.state.time.substr(0,2);
+    this.state.hour.setState(this.state.time.substr(0,2));
     this.state.minutes = this.state.time.substr(3,2);
     if(this.state.starter) this.state.starter = 'entrée : ' + this.state.starter
     if(this.state.dish) this.state.dish = ' plat : ' + this.state.dish
