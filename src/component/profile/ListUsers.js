@@ -3,9 +3,7 @@ import { Row } from "react-bootstrap";
 import { CardUser } from "./CardUser";
 import axios from 'axios';
 
-const header = {
-    'x-auth-token': localStorage.getItem('token')
-  }
+
 
 export class ListUsers extends Component {
     constructor(props){
@@ -28,7 +26,9 @@ export class ListUsers extends Component {
     }
 
     componentDidMount() {
-        console.log(header);
+        const header = {
+            'x-auth-token': localStorage.getItem('token')
+          }
         axios.get('http://localhost:1509/users', { headers: header })
             .then(response => {
                 console.log(response.data);
@@ -46,6 +46,9 @@ export class ListUsers extends Component {
       }
 
     handleSubmit = async(event) => {
+        const header = {
+            'x-auth-token': localStorage.getItem('token')
+          }
         event.preventDefault();
         console.log(this.state.search);
         axios.post('http://localhost:1509/search/users',{ search: this.state.search },{ headers: header })
