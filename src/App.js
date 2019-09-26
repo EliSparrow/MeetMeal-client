@@ -18,11 +18,14 @@ import CreateEvent from './component/event/createEvent.js';
 import ListEvents from './component/event/listEvent.js';
 import ShowEvent from './component/event/showEvent.js';
 
+import SearchBarHome from './component/home/searchBarHome.js';
+
 function App() {
   return (
     <Router>
       <Route component={Header}></Route>
       <div id="content">
+        <PublicRoute restricted={false} component={SearchBarHome} path="/" exact />
         <PublicRoute exact path="/toggle" component={Toggle}/>
         <PublicRoute restricted={false} component={Home} path="/" exact />
         <PublicRoute restricted={true} component={Login} path="/login" exact />
