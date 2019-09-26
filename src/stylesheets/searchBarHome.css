@@ -1,4 +1,3 @@
-
 .s002 {
   min-height: 100vh;
   display: -ms-flexbox;
@@ -224,4 +223,58 @@
 
 .s002 form .inner-form .input-field.fifth-wrap .btn-search:hover {
   background: #00bfb2;
+}
+
+
+/* IMPORT 2 */
+
+
+.s002 form .inner-form {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
+}
+.s002 form .inner-form .input-field {
+  margin-bottom: 10px;
+}
+.s002 form .inner-form .input-field.first-wrap {
+  width: 100%;
+}
+.s002 form .inner-form .input-field.second-wrap {
+  width: calc(50% - 7.5px);
+  max-width: none;
+}
+.s002 form .inner-form .input-field.third-wrap {
+  width: calc(50% - 7.5px);
+  max-width: none;
+  /*margin-bottom: 0;*/
+}
+.s002 form .inner-form .input-field.fouth-wrap {
+  width: calc(50% - 7.5px);
+  max-width: none;
+  margin-bottom: 0;
+}
+.s002 form .inner-form .input-field.fifth-wrap {
+  width: calc(50% - 7.5px);
+  max-width: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+
+
+/* IMPORT 3 */
+
+
+.s002 form legend {
+  font-size: 40px;
+  margin-bottom: 40px;
+}
+.s002 form .inner-form .input-field.second-wrap, .s002 form .inner-form .input-field.third-wrap, .s002 form .inner-form .input-field.fouth-wrap, .s002 form .inner-form .input-field.fifth-wrap {
+  width: 100%;
+  margin-bottom: 15px;
+}
+.s002 form .inner-form .input-field.fifth-wrap {
+  margin-bottom: 0;
 }
