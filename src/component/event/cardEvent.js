@@ -6,6 +6,7 @@ class CardEvent extends Component {
   constructor(props){
     super(props);
     this.state = {
+      _id: "",
       firstname: "",
       lastname: "",
       avatar: "",
@@ -19,6 +20,7 @@ class CardEvent extends Component {
 
   componentDidMount() {
     this.setState({
+      _id: this.props._id,
       firstname: this.props.firstname,
       lastname: this.props.lastname,
       avatar: this.props.avatar,
@@ -30,9 +32,17 @@ class CardEvent extends Component {
     })
   }
 
+  handleSubmit = async (event) => {
+   event.preventDefault();
+    console.log(this.state._id);
+    const url = '/:' + this.state._id.toString() ;
+    console.log(url);
+    this.props.history.push(url)
+  }
 
   render(){
     const {
+      _id,
       firstname,
       lastname,
       avatar,
@@ -59,7 +69,8 @@ class CardEvent extends Component {
 
           <div class="col-md-6">
             <div class='info'>
-              <h1>{title}</h1>
+              
+              <a href={"/"+_id}><h3>{title}</h3></a>
             </div>
             <div class='info'>
               <p>{description}</p>
