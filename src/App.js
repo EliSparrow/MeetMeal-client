@@ -20,8 +20,8 @@ import ShowEvent from './component/event/showEvent.js';
 function App() {
   return (
     <Router>
-      <div className="App">
       <Route component={Header}></Route>
+      <div id="content">
         <PublicRoute restricted={false} component={Home} path="/" exact />
         <PublicRoute restricted={true} component={Login} path="/login" exact />
         <PublicRoute restricted={true} exact path="/register" component={Register}/>
@@ -29,11 +29,9 @@ function App() {
         <PrivateRoute exact path="/ListUsers" component={ListUsers}></PrivateRoute>
         <PrivateRoute exact path='/create-event' component={CreateEvent}></PrivateRoute>
         <PrivateRoute exact path='/list-events' component={ListEvents}></PrivateRoute>
-        <PrivateRoute exact path='/:eventId' component={ShowEvent}></PrivateRoute>
-
-
-      {/* <Route component={Footer}></Route> */}
+        <PrivateRoute exact path='/event/:eventId' component={ShowEvent}></PrivateRoute>
       </div>
+      <Route component={Footer}></Route>
     </Router>
   );
 }
