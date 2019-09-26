@@ -28,7 +28,6 @@ export class ListUsers extends Component {
     }
 
     componentDidMount() {
-        console.log(header);
         axios.get('http://localhost:1509/users', { headers: header })
             .then(response => {
                 console.log(response.data);
