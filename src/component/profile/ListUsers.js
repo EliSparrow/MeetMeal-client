@@ -3,6 +3,7 @@ import { Row } from "react-bootstrap";
 import { CardUser } from "./CardUser";
 import axios from 'axios';
 
+
 export class ListUsers extends Component {
     constructor(props){
         super(props);
@@ -18,18 +19,41 @@ export class ListUsers extends Component {
         zipcode: 0,
         address: "",
         city: "",
-        toquesAvailable: ""
+        toquesAvailable: "",
+        search: ""
         }
     }
 
     componentDidMount() {
         const header = {
-            'x-auth-token': sessionStorage.getItem('token')
+            'x-auth-token': localStorage.getItem('token')
           }
         axios.get('http://localhost:1509/users', { headers: header })
             .then(response => {
+                console.log(response.data);
                 this.setState({ users: response.data });
-                console.log(this.users);
+            })
+            .catch(err => {
+                console.error(err);
+            })
+    }
+
+    handleChange = (event) => {
+        this.setState({
+          [event.target.id]: event.target.value
+        });
+      }
+
+    handleSubmit = async(event) => {
+        const header = {
+            'x-auth-token': localStorage.getItem('token')
+          }
+        event.preventDefault();
+        console.log(this.state.search);
+        axios.post('http://localhost:1509/search/users',{ search: this.state.search },{ headers: header })
+            .then(response => {
+                console.log(response.data.result);
+                this.setState({ users: response.data.result })
             })
             .catch(err => {
                 console.error(err);
@@ -43,18 +67,28 @@ export class ListUsers extends Component {
             if(users.length === 0) {
                 return <div>{ users }</div>
             } else {
-                console.log(users);
+                console.log("users: ", users);
                 return users.map((user, index) => (
+                    <div>
+                        {console.log(user)}
                     <CardUser
                         {...user}
-                        key={index}
-                    />
+                        key={user._id}
+                        index={index}
+                        />
+                    </div>
                 ));
             }
         };
 
         return (
             <div className="container">
+                <form className="form-search" onSubmit={this.handleSubmit}>
+                    <div className="searchInput">
+                        <input type="text" placeholder="Entrez un utilisateur" className="input-search" id="search" onChange={this.handleChange} />
+                        <button className="submit">Search</button><br/><br/>
+                    </div>
+                </form>
                 <Row>
                     {renderUsers()}
                 </Row>
