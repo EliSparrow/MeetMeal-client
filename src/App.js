@@ -32,7 +32,7 @@ function App() {
         <PrivateRoute exact path='/:eventId' component={ShowEvent}></PrivateRoute>
 
 
-      <Route component={Footer}></Route>
+      {/* <Route component={Footer}></Route> */}
       </div>
     </Router>
   );
