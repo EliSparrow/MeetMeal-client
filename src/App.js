@@ -10,6 +10,7 @@ import ListUsers from './component/profile/ListUsers.js'
 import Header from './component/layout/header.js'
 import Footer from './component/layout/footer.js';
 import Home from './component/home/home.js';
+import Toggle from './component/toggleLogReg/toggle.js';
 import UserProfile from './component/profile/userProfile.js';
 import Register from './component/register/registerForm';
 import Login from './component/login/loginForm.js';
@@ -22,6 +23,7 @@ function App() {
     <Router>
       <Route component={Header}></Route>
       <div id="content">
+        <PublicRoute exact path="/toggle" component={Toggle}/>
         <PublicRoute restricted={false} component={Home} path="/" exact />
         <PublicRoute restricted={true} component={Login} path="/login" exact />
         <PublicRoute restricted={true} exact path="/register" component={Register}/>
