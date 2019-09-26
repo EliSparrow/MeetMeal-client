@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
+
 import axios from 'axios';
 
 class Login extends Component {
@@ -9,11 +10,16 @@ class Login extends Component {
       email: "",
       password: "",
     };
+    this.routeChange = this.routeChange.bind(this)
+  }
+
+  routeChange() {
+    this.props.history.push("/register");
   }
 
   handleChange = (event) => {
     this.setState({
-      [event.target.id]: event.target.value
+      [event.target.name]: event.target.value
     });
   }
 
@@ -31,7 +37,7 @@ class Login extends Component {
     .then(res => {
       if (res.status === 200) {
         console.log(res.data.token)
-        sessionStorage.setItem("token", res.data.token);
+        localStorage.setItem("token", res.data.token);
         this.props.history.push('/');
       }
     }).catch(err => {
@@ -53,25 +59,36 @@ class Login extends Component {
 
   render(){
     return (
-      <div className="register-div">
-        <h1>Login here : </h1>
-        <form className="form-register" onSubmit={this.handleSubmit}>
-
-          <div class="group">
-            <input type="text" placeholder="Your email" class="input-edit" id="email" onChange={this.handleChange} /><br></br>
+      <div className="container" id="container">
+      
+      <div className="form-container sign-in-container">
+        <form onSubmit={this.handleSubmit}>
+          <h1>Votre compte</h1>
+          <div className="social-container">
+            <Link to="#" className="fa fa-facebook"></Link>
+            <Link to="#" className="fa fa-google"></Link>
           </div>
-          <div class="group">
-            <input type="password" placeholder="Your password" class="input-edit" id="password" onChange={this.handleChange}/><br></br>
-          </div>
-          <button className="submit">Log In !</button>
-          <p> You're not a member yet ? <Link to='/register'>Register !</Link>
-          </p>
+          <span>ou utilisez vos identifiants</span>
+          <input type="email" placeholder="Email" name="email" onChange={this.handleChange}/>
+          <input type="password" placeholder="Mot de passe" name="password" onChange={this.handleChange} />
+          {/* <a href="#">Mot de passe oublié ?</a> A voir si service mail activé */}
+          <button className="submit">Connexion</button>
         </form>
-        <div className="logs">
+      </div>
+      
+      <div className="overlay-container">
+        <div className="overlay">
+           <div className="overlay-panel overlay-right">
+            <h1>Pas de compte ?</h1>
+            <p>Inscrivez-vous pour faire partie de l'aventure</p>
+            <button className="ghost" name="signUp" onClick={this.routeChange}>Inscription</button>
+          </div>
         </div>
       </div>
+      
+    </div>
     )
   }
 }
 
-export default Login;
+export default withRouter(Login);
