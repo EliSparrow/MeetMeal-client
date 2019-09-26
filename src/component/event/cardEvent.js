@@ -35,7 +35,7 @@ class CardEvent extends Component {
   handleSubmit = async (event) => {
    event.preventDefault();
     console.log(this.state._id);
-    const url = '/:' + this.state._id.toString() ;
+    const url = '/event/:' + this.state._id.toString() ;
     console.log(url);
     this.props.history.push(url)
   }
@@ -69,7 +69,7 @@ class CardEvent extends Component {
 
           <div class="col-md-6">
             <div class='info'>
-              
+
               <a href={"/"+_id}><h3>{title}</h3></a>
             </div>
             <div class='info'>
