@@ -31,7 +31,6 @@ function App() {
         <PrivateRoute exact path='/list-events' component={ListEvents}></PrivateRoute>
         <PrivateRoute exact path='/event/:eventId' component={ShowEvent}></PrivateRoute>
       </div>
-
       <Route component={Footer}></Route>
     </Router>
   );
