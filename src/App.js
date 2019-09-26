@@ -14,6 +14,8 @@ import UserProfile from './component/profile/userProfile.js';
 import Register from './component/register/registerForm';
 import Login from './component/login/loginForm.js';
 import CreateEvent from './component/event/createEvent.js';
+import ListEvents from './component/event/listEvent.js';
+import ShowEvent from './component/event/showEvent.js';
 
 function App() {
   return (
@@ -26,6 +28,10 @@ function App() {
         <PrivateRoute exact path="/profile" component={UserProfile}></PrivateRoute>
         <PrivateRoute exact path="/ListUsers" component={ListUsers}></PrivateRoute>
         <PrivateRoute exact path='/create-event' component={CreateEvent}></PrivateRoute>
+        <PrivateRoute exact path='/list-events' component={ListEvents}></PrivateRoute>
+        <PrivateRoute exact path='/:eventId' component={ShowEvent}></PrivateRoute>
+
+
       <Route component={Footer}></Route>
       </div>
     </Router>
