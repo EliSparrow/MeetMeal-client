@@ -1,5 +1,5 @@
 .search-sec{
-    background: #1A4668;padding: 2rem;
+    /* background: #1A4668;padding: 2rem; */
 }
 .search-slt{
     display: block;
@@ -11,7 +11,7 @@
     background-image: none;
     border: 1px solid #ccc;
     height: calc(3rem + 2px) !important;
-    border-radius:0;
+    border-radius: 0px !important;
 }
 .wrn-btn{
     width: 100%;
@@ -22,8 +22,37 @@
      border-radius:0;
 }
 
+form.search-bar-home{
+  padding: 0px;
+}
+
 .button{
   text-align: center;
   margin:auto;
   padding-top: 15px;
+}
+
+.container-search-bar-home{
+  width: 100% !important;
+  min-height: 40vh;
+  background: url("../images/Searchs_002.jpg");
+  position: center;
+}
+
+.row-search-bar-home{
+  margin-top: 150px;
+  content: center;
+
+}
+
+.input-search-bar-home{
+  width: 250px;
+}
+
+.input-row {
+  flex-direction: row;
+}
+
+.button-search-bar-home{
+  margin-bottom: 150px;
 }

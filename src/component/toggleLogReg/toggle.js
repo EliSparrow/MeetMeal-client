@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import Register from '../register/registerForm';
 import Login from '../login/loginForm';
 
-import './toggle.css';
+import '../../stylesheets/toggle.css';
 
 class Toggle extends Component {
     constructor(props) {
@@ -24,7 +24,7 @@ class Toggle extends Component {
         return (
             <div className="container " id="container">
                 {this.state.isToggleOn ? <Login /> : <Register /> }
-            </div>            
+            </div>
         );
     }
 }

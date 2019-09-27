@@ -5,14 +5,14 @@
 }
 
 body {
-	background: #eff0ef;
+	/* background: #eff0ef; */
 	/* display: flex; */
-	justify-content: center;
+	/* justify-content: center;
 	align-items: initial;
     flex-direction: column;
 	font-family: 'Asap', sans-serif;
 	height: 100vh;
-	margin: -20px 0 50px;
+	margin: -20px 0 50px; */
 }
 
 h1 {
@@ -25,13 +25,13 @@ h2 {
 	text-align: center;
 }
 
-p {
+/* p {
 	font-size: 14px;
 	font-weight: 100;
 	line-height: 20px;
 	letter-spacing: 0.5px;
 	margin: 20px 0 30px;
-}
+} */
 
 span {
 	font-size: 12px;
@@ -42,11 +42,10 @@ a {
 	color:  #eb4750;
 	font-size: 14px;
 	text-decoration: none;
-	margin: 15px 0;
 }
 
 button {
-	border-radius: 5px;
+	/* border-radius: 5px; */
 	border: 2px solid #00bfb2;
 	background-color: #00bfb2;
 	color: #f7f7f7;
@@ -72,7 +71,7 @@ button.ghost {
 }
 
 form {
-	background-color: #f7f7f7;
+	/* background-color: #f7f7f7; */
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -87,22 +86,23 @@ form {
 input {
 	background-color: #f7f7f7;
 	border: 2px solid #ced0ce;
-    border-radius: 5px;
+    /* border-radius: 5px; */
     color:  #565a5c;
 	padding: 12px 15px;
-	margin: 4px 0;
+	/* margin: 4px 0; */
+	margin: 0 0;
 	width: 100%;
 }
 
 .container {
-	background-color: #00bfb2;
+	/* background-color: #00bfb2; */
 	border-radius: 5px;
-  	box-shadow: 
-      0 14px 28px rgba(0,0,0,0.25), 
+  	box-shadow:
+      0 14px 28px rgba(0,0,0,0.25),
 	  0 10px 10px rgba(0,0,0,0.22);
 	position: relative;
 	overflow: hidden;
-	width: 768px;
+	/* width: 768px; */
 	max-width: 100%;
 	min-height: 480px;
 }
@@ -145,7 +145,7 @@ input {
 		opacity: 0;
 		z-index: 1;
 	}
-	
+
 	50%, 100% {
 		opacity: 1;
 		z-index: 5;
