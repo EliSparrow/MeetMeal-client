@@ -1,6 +1,7 @@
 import React from 'react';
 import {useState} from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 import '../../stylesheets/userProfile.css';
 
@@ -29,17 +30,17 @@ const UserProfile = (props, history) => {
     if (profiles.length === 0){
       getUserProfile(setProfiles, history, props)
       console.log('let profile après if : ');
-      console.log(profiles);
+      console.log(profiles.avatar);
     }
 
   return (
     <div className='container user-profile'>
       <div className='row'>
-          <div className='col-lg-1 user-info-intro'>
-            <img className='image' src={profiles.avatar}></img>
+          <div className='col-lg-3 user-info-intro'>
+            <img className='img-fluid' src={profiles.avatar}></img>
           </div>
           <div className='row'>
-            <div className='col-lg-8 user-info-intro'>
+            <div className='col-lg-6 user-info-intro'>
               <h1 className='user-name'> {profiles.firstname} {profiles.lastname}</h1>
             </div>
             <div className='col-lg-3 info-profile' id='info-profile'>
@@ -57,6 +58,9 @@ const UserProfile = (props, history) => {
           <p className='user-bio'> {profiles.bio}</p>
         </div>
       </div>
+      <Link to ='/edituser' className='btn btn-warning'>
+        Modifier Votre Profile
+      </Link>
     </div>
   );
 }
