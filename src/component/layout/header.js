@@ -36,6 +36,7 @@ const Header = (props) => {
           <Dropdown.Item eventKey="2" ><Link to="/login">Se connecter</Link></Dropdown.Item>
           <Dropdown.Item eventKey="3" ><Link to="/register">S'enregistrer</Link></Dropdown.Item>
           <Dropdown.Item eventKey="4" ><Link to="/profile">Profil</Link></Dropdown.Item>
+          <Dropdown.Item eventKey="9" ><Link to="/edituser">Modifier votre profil</Link></Dropdown.Item>
           <Dropdown.Item eventKey="5" ><Link to="/">Mon historique</Link></Dropdown.Item>
           <Dropdown.Item eventKey="6" ><Link to="/">Rechercher un évènement</Link></Dropdown.Item>
           <Dropdown.Item eventKey="7" ><Link to="/">Créer un repas</Link></Dropdown.Item>
