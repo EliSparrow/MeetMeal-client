@@ -17,6 +17,8 @@ import Login from './component/login/loginForm.js';
 import CreateEvent from './component/event/createEvent.js';
 import ListEvents from './component/event/listEvent.js';
 import ShowEvent from './component/event/showEvent.js';
+// import TestFacebook from './component/TestFacebook';
+import { EditProfile } from './component/profile/EditProfile.js';
 
 
 
@@ -25,6 +27,9 @@ function App() {
     <Router>
       <Route component={Header}></Route>
       <div id="content">
+        <PrivateRoute restricted={false} component={EditProfile} exact path="/edituser"  ></PrivateRoute>
+      {/* <PublicRoute restricted={false} component={TestFacebook} path="/testfacebook" exact /> */}
+        <PublicRoute restricted={false} component={SearchBarHome} path="/" exact />
         <PublicRoute exact path="/toggle" component={Toggle}/>
         <PublicRoute restricted={false} component={Home} path="/" exact />
         <PublicRoute restricted={true} component={Login} path="/login" exact />
