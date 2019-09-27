@@ -1,10 +1,17 @@
-import React from 'react'
+import React, { Component } from 'react'
 
 import 'bootstrap/dist/css/bootstrap.css';
 import '../../stylesheets/home.css';
 
-const Home = () => {
+class Home extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
 
+    }
+  }
+
+  render(){
     return (
     <div className='container-search-bar-home'>
       <section className="search-sec">
@@ -51,10 +58,11 @@ const Home = () => {
       </div>
     </section>
     <div className="col-lg-4 col-md-4 col-sm-12 p-0 button">
-      <button className="btn btn-primary btn-danger wrn-btn button-search-bar-home">Organiser un repas</button>
+      <button className="btn btn-primary btn-danger wrn-btn button-search-bar-home" >Organiser un repas</button>
     </div>
   </div>
   )
+}
 
 }
 
