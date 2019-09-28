@@ -18,7 +18,7 @@ import CreateEvent from './component/event/createEvent.js';
 import ListEvents from './component/event/listEvent.js';
 import ShowEvent from './component/event/showEvent.js';
 import { EditProfile } from './component/profile/EditProfile.js';
-
+import { DeleteUser } from './component/profile/DeleteUser.js';
 
 
 function App() {
@@ -27,7 +27,9 @@ function App() {
       <Route component={Header}></Route>
       <div id="content">
         <PrivateRoute restricted={false} component={EditProfile} exact path="/edituser"  ></PrivateRoute>
-        <PublicRoute restricted={false} component={SearchBarHome} path="/" exact />
+        <PrivateRoute restricted={false} component={DeleteUser} exact path="/deleteuser"  ></PrivateRoute>
+
+        {/* <PublicRoute restricted={false} component={SearchBarHome} path="/" exact /> */}
         <PublicRoute exact path="/toggle" component={Toggle}/>
         <PublicRoute restricted={false} component={Home} path="/" exact />
         <PublicRoute restricted={true} component={Login} path="/login" exact />

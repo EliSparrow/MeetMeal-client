@@ -58,7 +58,6 @@ export class EditProfile extends Component {
             { headers: header},
         ).then(res => {
               this.setState({ user: res.data });
-              console.log(this.state.user);
           })
           .catch(err => {
               console.error(err);
@@ -69,7 +68,6 @@ export class EditProfile extends Component {
         this.setState({
           [event.target.name]: event.target.value
         });
-        console.log(event.target.value);
     }
 
 
@@ -113,27 +111,7 @@ export class EditProfile extends Component {
 
     render() {
         var {
-            user,
-            // firstname,
-            // newFirstname,
-            // lastname,
-            // newLastname,
-            // age,
-            // newAge,
-            // email,
-            // newEmail,
-            // avatar,
-            // newAvatar,
-            // bio,
-            // newBio,
-            // loveStatus,
-            // newLoveStatus,
-            // zipCode,
-            // newZipCode,
-            // address,
-            // newAddress,
-            // city,
-            // newCity
+            user
         } = this.state
 
         
