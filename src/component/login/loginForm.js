@@ -41,7 +41,7 @@ class Login extends Component {
         this.props.history.push('/');
       }
     }).catch(err => {
-      console.log(err.response);
+      console.log(err);
       if (err.response.data.msg) {
         if (err.response.data.msg === 'Mot de passe invalide')
            alert('Mot de passe invalide')
