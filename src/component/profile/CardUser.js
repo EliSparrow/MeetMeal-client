@@ -47,32 +47,14 @@ export class CardUser extends Component {
             toquesAvailable
         } = this.state;
         return (
-            <Col md={12}>
-                <Card>
-                <Card.Header as="h3">{lastname}</Card.Header>
-                    <Card.Body>
-                        <Card.Title>
-                            {firstname}
-                        </Card.Title>
-                        <Card.Text>
-                            { age } { avatar } { bio } { lovestatus } { zipcode }
-                            <br/>
-                            <p>
-                            address: { address }
-                            </p>
-                            <br/>
-                            <p>
-                            city: { city }
-                            </p>
-                            <br/>
-                            
-                        </Card.Text>
-                    </Card.Body>
-                    <Card.Footer>
-                        { toquesAvailable }
-                    </Card.Footer>
-                </Card>
-            </Col>
+            <div class="card mb-4" style={{width: 18 + 'em'}}>
+                <img class="card-img img-fluid"  src= { avatar } alt="Card image cap" />
+                <div class="card-body">
+                    <h5 class="card-title">{firstname} {lastname}</h5>
+                    <p class="card-text">Age:  { age } , Description: { bio }, Situation Amoureuse: { lovestatus }, Adresse: { address } { zipcode } { city }</p>
+                    <p class="card-text"><small class="text-muted">Toques Disponible: { toquesAvailable }</small></p>
+                </div>
+            </div>
         )
     }
 }
