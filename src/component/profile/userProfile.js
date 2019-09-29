@@ -39,7 +39,7 @@ const UserProfile = (props, history) => {
       {profiles ? (
         <div className='row'>
           <div className='col-lg-3 user-info-intro'>
-            <img className='img-fluid' src={profiles.avatar}></img>
+            <img className='img-fluid' src={profiles.avatar} alt={'avatar-'+  profiles.firstname }></img>
           </div>
           {/* <div className='row'> */}
             <div className='col-lg-9 user-info-intro'>
