@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState, setState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { Form, Button, Container } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 
 import useForm from './useForm.js';
+import toggle from '../toggleLogReg/toggle.js';
 
 
 const Register = props => {
@@ -30,6 +30,19 @@ const Register = props => {
             })
     }
 
+    // const HideShow = props => {
+    //   const [isPassword, setPassword] = useState(true);
+    //   if (isPassword) {
+    //     return isPassword ? 'password' : 'text';
+    // }
+
+
+    const [ passwordVisibility, setPasswordVisibility ] = useState(false)
+
+    const togglePasswordVisibility = () => {
+      console.log("Toggling")
+      setPasswordVisibility(!passwordVisibility)
+    }
 
     const routeChange = () => {
       props.history.push("/login");
@@ -61,7 +74,7 @@ const Register = props => {
     //     </Form.Group>
     //     <Button variant="primary" type="submit" name="submit">
     //         Je m'enregistre !
-    //     </Button>
+    //     </!Button>
     //     <Form.Text>J'ai déjà un compte ?<Link to="/login" className="formField_link mr-20"> Je me connecte</Link></Form.Text>
     // </Form>
     // </Container>
@@ -80,7 +93,8 @@ const Register = props => {
       <input type="text" placeholder="Nom" name="lastname" value={values.lastname} onChange={handleChange}  />
       <input type="number" placeholder="Age" min="18" max="99" name="age" value={values.age} onChange={handleChange} />
       <input type="email" placeholder="Email" name="email" value={values.email} onChange={handleChange} />
-      <input type="password" placeholder="Mot de passe" name="password" value={values.password} onChange={handleChange} />
+      <input type={passwordVisibility ? "text" : "password"} placeholder="Mot de passe" name="password" value={values.password} onChange={handleChange}/>
+      <a onClick={togglePasswordVisibility}>Voir/Cacher mot de passe</a>
       <button>Inscription</button>
     </form>
   </div>
@@ -101,4 +115,4 @@ const Register = props => {
 }
 
 
-export default Register;
+export default Register
