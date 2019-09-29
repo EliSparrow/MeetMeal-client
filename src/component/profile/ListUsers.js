@@ -88,7 +88,11 @@ export class ListUsers extends Component {
                         <button className="submit">Search</button><br/><br/>
                     </div>
                 </form>
+                <div className='row'>
+                    <div className="card-deck">
                     {renderUsers()}
+                    </div>
+                </div>
             </div>
         )
     }
