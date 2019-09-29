@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { browserHistory } from 'history'
 import image from '../../images/MeatMeal.png'
 import '../../stylesheets/navbar.css';
 
