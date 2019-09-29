@@ -11,6 +11,7 @@ const Header = (props) => {
       props.history.push('/login')
   }
   return (
+    
     <Navbar collapseOnSelect expand="lg" variant="light">
     <Navbar.Brand href="/"><Image className="image-test" src={image}/></Navbar.Brand>
     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
