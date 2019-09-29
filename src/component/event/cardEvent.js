@@ -70,7 +70,7 @@ class CardEvent extends Component {
           <div class="col-md-6">
             <div class='info'>
 
-              <a href={"/"+_id}><h3>{title}</h3></a>
+              <a href={"/event/"+_id}><h3>{title}</h3></a>
             </div>
             <div class='info'>
               <p>{description}</p>
