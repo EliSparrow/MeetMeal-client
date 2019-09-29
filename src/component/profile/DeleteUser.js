@@ -15,6 +15,7 @@ export class DeleteUser extends Component {
     }
 
     componentDidMount() {
+
         const header = {
             'x-auth-token': localStorage.getItem('token')
         }
@@ -27,26 +28,27 @@ export class DeleteUser extends Component {
             })
     }
 
+
     handleDeleteUser = () => {
         const header = {
             'x-auth-token': localStorage.getItem('token')
         }
-        this.setState({ isDesactivated: true });
-        console.log(this.state.isDesactivated);
-        
-        var deleteUser = {
-            isDesactivated : this.state.isDesactivated
-        }
-        axios.put(`http://localhost:1509/users/`+ this.state.user._id, deleteUser, { headers: header })
-        .then(res => {
-            // alert('Votre profil a été modifié');
-            this.setState({ user: res.data });
-            // this.props.history.push('/');
-        })
-        .catch(err => {
-            console.error(err.response);
-        })
-
+        this.setState({ isDesactivated : true }, function () {
+            console.log(this.state.isDesactivated);
+            var deleteUser = {
+                isDesactivated: this.state.isDesactivated
+            }
+            axios.put(`http://localhost:1509/users/`+ this.state.user._id, deleteUser, { headers: header })
+            .then(res => {
+                alert('Votre profil a été modifié');
+                this.setState({ user: res.data });
+                localStorage.clear();
+                this.props.history.push('/');
+            })
+            .catch(err => {
+                console.error(err.response);
+            })
+        });
     }
 
     render() {
