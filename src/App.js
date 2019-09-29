@@ -27,7 +27,6 @@ function App() {
       <Route component={Header}></Route>
       <div id="content">
         <PrivateRoute restricted={false} component={EditProfile} exact path="/edituser"  ></PrivateRoute>
-        <PublicRoute restricted={false} component={SearchBarHome} path="/" exact />
         <PublicRoute exact path="/toggle" component={Toggle}/>
         <PublicRoute restricted={false} component={Home} path="/" exact />
         <PublicRoute restricted={true} component={Login} path="/login" exact />
