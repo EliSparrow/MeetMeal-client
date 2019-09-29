@@ -7,7 +7,7 @@ import PrivateRoute from './component/rooter/privateRoute.js';
 import PublicRoute from './component/rooter/publicRoute.js';
 
 import ListUsers from './component/profile/ListUsers.js'
-import Header from './component/layout/header.js'
+import Navbar from './component/layout/navbar.js';
 import Footer from './component/layout/footer.js';
 import Home from './component/home/home.js';
 import Toggle from './component/toggleLogReg/toggle.js';
@@ -24,7 +24,7 @@ import { EditProfile } from './component/profile/EditProfile.js';
 function App() {
   return (
     <Router>
-      <Route component={Header}></Route>
+      <Route component={Navbar}></Route>
       <div id="content">
         <PrivateRoute restricted={false} component={EditProfile} exact path="/edituser"  ></PrivateRoute>
         <PublicRoute exact path="/toggle" component={Toggle}/>
