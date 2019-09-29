@@ -31,7 +31,7 @@ class ShowEvent extends Component {
   }
 
   componentDidMount(){
-    const eventId = this.props.match.params
+//    const eventId = this.props.match.params
     const header = {
       'x-auth-token': sessionStorage.getItem('token')
     }

@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import {BrowserRouter as Route, Redirect} from 'react-router-dom';
-import {useState} from 'react';
 import axios from 'axios';
 
 class CreateEvent extends Component {
@@ -39,14 +37,14 @@ class CreateEvent extends Component {
   submitInputs = (event) => {
     event.preventDefault();
     this.state.hour.setState(this.state.time.substr(0,2));
-    this.state.minutes = this.state.time.substr(3,2);
-    if(this.state.starter) this.state.starter = 'entrée : ' + this.state.starter
-    if(this.state.dish) this.state.dish = ' plat : ' + this.state.dish
-    if(this.state.dessert) this.state.dessert = ' dessert : ' + this.state.dessert
-    if(this.state.other) this.state.other = ' autres : ' + this.state.other
-    if(this.state.drinks) this.state.drinks = ' boissons : ' + this.state.drinks
+    this.state.minutes.setState(this.state.time.substr(3,2));
+    if(this.state.starter) this.state.starter.setState('entrée : ' + this.state.starter);
+    if(this.state.dish) this.state.dish.setState(' plat : ' + this.state.dish);
+    if(this.state.dessert) this.state.dessert.setState(' dessert : ' + this.state.dessert);
+    if(this.state.other) this.state.other.setState(' autres : ' + this.state.other);
+    if(this.state.drinks) this.state.drinks.setState(' boissons : ' + this.state.drinks);
 
-    this.state.menu = this.state.starter + this.state.dish + this.state.dessert + this.state.drinks + this.state.other;
+    this.state.menu.setState(this.state.starter + this.state.dish + this.state.dessert + this.state.drinks + this.state.other);
 
     const headers = {
       'x-auth-token': sessionStorage.getItem('token')

@@ -59,7 +59,7 @@ class CardEvent extends Component {
 
           <div class="col-md-4">
             <div class='image'>
-              <img src={avatar}></img>
+              <img src={avatar} alt='user profile avatar'></img>
             </div>
             <div class='info'>
               <h1>{firstname} {lastname}</h1>

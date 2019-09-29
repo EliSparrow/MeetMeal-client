@@ -37,7 +37,7 @@ const UserProfile = (props, history) => {
     <div className='container user-profile'>
       <div className='row'>
           <div className='col-lg-3 user-info-intro'>
-            <img className='img-fluid' src={profiles.avatar}></img>
+            <img className='img-fluid' src={profiles.avatar} alt='user profile avatar'></img>
           </div>
           <div className='row'>
             <div className='col-lg-6 user-info-intro'>
