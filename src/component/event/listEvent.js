@@ -13,7 +13,7 @@ class ListEvents extends Component {
 
   componentDidMount() {
     const header = {
-        'x-auth-token': sessionStorage.getItem('token')
+        'x-auth-token': localStorage.getItem('token')
       }
 
     axios.get('http://localhost:1509/events/', {
