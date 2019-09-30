@@ -4,6 +4,13 @@ nav{
     background-color: $persian-green !important;
 }
 
+.navbar {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+.navbar-brand {
+    padding-top: 0px !important;
+}
 .navLogo {
     height: 70px
     // border-radius: 30%;
@@ -12,11 +19,16 @@ nav{
 .nav-link:hover {
     color: $persian-green !important;
 }
-
-.dropdown-menu {
-    background-color: $wild-sand;
+.nav-link:focus {
+    color: $persian-green !important;
 }
 
+.dropdown-menu {
+    background-color: $wild-sand !important;
+}
+.dropdown-divider {
+    border-color: $persian-green !important;
+}
 .dropdown-item:hover {
     color: $persian-green !important;
 }
