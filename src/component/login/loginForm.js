@@ -10,7 +10,13 @@ class Login extends Component {
       email: "",
       password: "",
     };
+    this.state = {hidden: true};
     this.routeChange = this.routeChange.bind(this)
+    this.toggleShow = this.toggleShow.bind(this)
+  }
+
+  toggleShow() {
+    this.setState({ hidden: !this.state.hidden });
   }
 
   routeChange() {
@@ -70,7 +76,8 @@ class Login extends Component {
           </div>
           <span>ou utilisez vos identifiants</span>
           <input type="email" placeholder="Email" name="email" onChange={this.handleChange}/>
-          <input type="password" placeholder="Mot de passe" name="password" onChange={this.handleChange} />
+          <input placeholder="Mot de passe" name="password" onChange={this.handleChange} type={this.state.hidden ? "password" : "text"} />
+          <a onClick={this.toggleShow}>Voir/Cacher mot de passe</a>
           {/* <a href="#">Mot de passe oublié ?</a> A voir si service mail activé */}
           <button className="submit">Connexion</button>
         </form>
