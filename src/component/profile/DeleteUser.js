@@ -15,7 +15,6 @@ export class DeleteUser extends Component {
     }
 
     componentDidMount() {
-
         const header = {
             'x-auth-token': localStorage.getItem('token')
         }
@@ -27,7 +26,6 @@ export class DeleteUser extends Component {
                 console.error(err)
             })
     }
-
 
     handleDeleteUser = () => {
         const header = {
