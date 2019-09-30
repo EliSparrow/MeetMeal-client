@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Card, Col } from "react-bootstrap";
 
 export class CardUser extends Component {
     constructor(props) {
