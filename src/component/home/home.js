@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import axios from 'axios';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import '../../stylesheets/home.css';
@@ -8,6 +9,8 @@ class Home extends Component {
     super(props);
     this.state = {
       location: "",
+      zipCode: "",
+      city: "",
       date: "",
       typeOfMeal: "",
       typeOfCuisine: ""
@@ -24,6 +27,28 @@ class Home extends Component {
   sendSearch = async (event) => {
     event.preventDefault();
     console.log('sendSearch : ', this.state);
+
+    if(Number.isInteger(this.state.location))
+      this.setState({zipCode: this.state.location});
+    else
+      this.setState({city: this.state.location});
+
+    if(this.state.typeOfMeal === "Type de repas")
+      this.setState({typeOfMeal: ""})
+    if(this.state.typeOfCuisine === "Type de cuisine")
+      this.setState({typeOfCuisine: ""})
+
+    axios.post('http://localhost:1509/search/event', {
+      zipCode: this.state.zipCode,
+      city: this.state.city,
+      date: this.state.date,
+      typeOfMeal: this.state.typeOfMeal,
+      typeOfCuisine: this.state.typeOfCuisine
+    }).then( res => {
+    console.log(res.data);
+  }).catch( err => {
+    console.log(err.response);
+  })
   }
 
   render(){
@@ -52,7 +77,7 @@ class Home extends Component {
                           </div>
                           <div className="input-search-bar-home">
                             <select className="form-control search-slt" id="exampleFormControlSelect1" name='typeOfMeal' onChange={this.handleChange}>
-                                <option id='typeOfMeal'>Type de repas</option>
+                                <option value=''>Type de repas</option>
                                 <option id='breakfast'>Petit déjeuner</option>
                                 <option id='brunch'>Brunch</option>
                                 <option id='lunch'>Déjeuner</option>
@@ -62,7 +87,7 @@ class Home extends Component {
                         </div>
                         <div className="input-search-bar-home">
                           <select className="form-control search-slt" id="exampleFormControlSelect1" name='typeOfCuisine' onChange={this.handleChange}>
-                              <option>Type de cuisine</option>
+                              <option value=''>Type de cuisine</option>
                               <option>Américaine</option>
                               <option>Argentine</option>
                               <option>Chinoise</option>
