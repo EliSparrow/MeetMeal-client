@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import axios from 'axios';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import '../../stylesheets/home.css';
@@ -7,11 +8,57 @@ class Home extends Component {
   constructor(props){
     super(props);
     this.state = {
-
+      location: "",
+      zipCode: "",
+      city: "",
+      date: "",
+      typeOfMeal: "",
+      typeOfCuisine: ""
     }
   }
 
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+    console.log('handleChange : ', this.state);
+  }
+
+  sendSearch = async (event) => {
+    event.preventDefault();
+    console.log('sendSearch : ', this.state);
+
+    if(Number.isInteger(this.state.location))
+      this.setState({zipCode: this.state.location});
+    else
+      this.setState({city: this.state.location});
+
+    if(this.state.typeOfMeal === "Type de repas")
+      this.setState({typeOfMeal: ""})
+    if(this.state.typeOfCuisine === "Type de cuisine")
+      this.setState({typeOfCuisine: ""})
+
+    axios.post('http://localhost:1509/search/event', {
+      zipCode: this.state.zipCode,
+      city: this.state.city,
+      date: this.state.date,
+      typeOfMeal: this.state.typeOfMeal,
+      typeOfCuisine: this.state.typeOfCuisine
+    }).then( res => {
+    console.log(res.data);
+  }).catch( err => {
+    console.log(err.response);
+  })
+  }
+
   render(){
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+
+    today = yyyy + '-' + mm + '-' + dd;
+
     return (
     <div className='container-search-bar-home'>
       <section className="search-sec">
@@ -21,16 +68,16 @@ class Home extends Component {
                   <div className="col-lg-12 search-bar-home">
                       <div className="row">
                           <div className="input-search-bar-home">
-                              <input type="text" className="form-control search-slt" placeholder="Adresse : " id='address'></input>
+                              <input type="text" className="form-control search-slt" placeholder="Adresse : " id='address' name='location' onChange={this.handleChange}></input>
                           </div>
                           <div className="input-search-bar-home">
-                          <input type="date" id="start" name="trip-start"
+                          <input type="date" id="date" name="date"
 
-                                 min="2019-01-01" max="2200-12-31"></input>
+                                 min={today} max="2200-12-31" onChange={this.handleChange}></input>
                           </div>
                           <div className="input-search-bar-home">
-                            <select className="form-control search-slt" id="exampleFormControlSelect1">
-                                <option id='typeOfMeal'>Type de repas</option>
+                            <select className="form-control search-slt" id="exampleFormControlSelect1" name='typeOfMeal' onChange={this.handleChange}>
+                                <option value=''>Type de repas</option>
                                 <option id='breakfast'>Petit déjeuner</option>
                                 <option id='brunch'>Brunch</option>
                                 <option id='lunch'>Déjeuner</option>
@@ -39,8 +86,8 @@ class Home extends Component {
                             </select>
                         </div>
                         <div className="input-search-bar-home">
-                          <select className="form-control search-slt" id="exampleFormControlSelect1">
-                              <option>Type de cuisine</option>
+                          <select className="form-control search-slt" id="exampleFormControlSelect1" name='typeOfCuisine' onChange={this.handleChange}>
+                              <option value=''>Type de cuisine</option>
                               <option>Américaine</option>
                               <option>Argentine</option>
                               <option>Chinoise</option>
@@ -49,7 +96,7 @@ class Home extends Component {
                           </select>
                         </div>
                         <div className="input-search-bar-home">
-                            <button type="button" className="btn btn-danger wrn-btn ">Rechercher</button>
+                            <button type="button" className="btn btn-danger wrn-btn " onClick={this.sendSearch}>Rechercher</button>
                         </div>
                     </div>
                 </div>
