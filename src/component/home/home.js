@@ -45,9 +45,12 @@ class Home extends Component {
       typeOfMeal: this.state.typeOfMeal,
       typeOfCuisine: this.state.typeOfCuisine
     }).then( res => {
-    console.log(res.data);
+        console.log(res.data);
+        const url = '/event/search/:' + this.state._id.toString() ;
+        console.log(url);
+        this.props.history.push(url)
   }).catch( err => {
-    console.log(err.response);
+      console.log(err.response);
   })
   }
 
