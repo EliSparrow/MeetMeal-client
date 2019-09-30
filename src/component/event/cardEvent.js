@@ -2,6 +2,8 @@ import React, { Component } from "react";
 
 import '../../stylesheets/cardEvent.css';
 
+import Axios from 'axios';
+
 class CardEvent extends Component {
   constructor(props){
     super(props);
@@ -14,7 +16,8 @@ class CardEvent extends Component {
       descritpion: "",
       city: "",
       cost: "",
-      numberMaxOfGuests: ""
+      numberMaxOfGuests: "",
+      user: null
     }
   }
 
@@ -30,6 +33,7 @@ class CardEvent extends Component {
       cost: this.props.cost,
       numberMaxOfGuests: this.props.numberMaxOfGuests
     })
+    this.getUser();
   }
 
   handleSubmit = async (event) => {
@@ -38,6 +42,33 @@ class CardEvent extends Component {
     const url = '/event/:' + this.state._id.toString() ;
     console.log(url);
     this.props.history.push(url)
+  }
+
+  getUser = async () => {
+    const header = {
+      'x-auth-token': localStorage.getItem('token')
+    }
+    console.log(this.props.user._id);
+    Axios.get('http://localhost:1509/users/my-profile', { headers: header })
+      .then((res) => {
+        this.setState({ user: res.data })
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+  }
+
+  checkEdit = () => {
+    const { user, _id } = this.state;
+    if ( user && (user._id == this.props.user._id)){
+      return(
+        <div className='edit-button'>
+          <a href={"/editevent/" + _id}><button className="btn btn-warning">Modifiez votre évènement!</button></a>
+        </div>
+      )
+    }
+    console.log(this.props.user._id)
   }
 
   render(){
@@ -79,7 +110,7 @@ class CardEvent extends Component {
               <p>{city} {cost}</p>
             </div>
           </div>
-
+            { this.checkEdit() }
           <div class="col-md-2">
             <button type='submit'></button>
           </div>
