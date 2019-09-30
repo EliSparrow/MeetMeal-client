@@ -61,7 +61,7 @@ class CardEvent extends Component {
 
   checkEdit = () => {
     const { user, _id } = this.state;
-    if ( user && (user._id == this.props.user._id)){
+    if ( user && (user._id === this.props.user._id)){
       return(
         <div className='edit-button'>
           <a href={"/editevent/" + _id}><button className="btn btn-warning">Modifiez votre évènement!</button></a>
