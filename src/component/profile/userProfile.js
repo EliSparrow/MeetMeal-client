@@ -10,7 +10,7 @@ const getUserProfile = (( setProfiles, props) => {
     'x-auth-token': localStorage.getItem('token')
   }
   console.log(header);
-  axios.get('http://localhost:1509/users/my-profile',
+  axios.get(process.env.REACT_APP_API + '/users/my-profile',
     { headers: header},
     console.log('je commence axios')
   ).then(res => {
