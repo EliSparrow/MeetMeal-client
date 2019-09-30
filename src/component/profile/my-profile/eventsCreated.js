@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import '../../../../src/stylesheets/profile/my-profile/eventsCreated.css'
 
 class EventsCreated extends Component {
+    
     render () {
         return (
         <div className="group">
