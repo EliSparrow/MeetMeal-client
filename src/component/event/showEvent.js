@@ -33,9 +33,9 @@ class ShowEvent extends Component {
   componentDidMount(){
 //    const eventId = this.props.match.params
     const header = {
-      'x-auth-token': sessionStorage.getItem('token')
+      'x-auth-token': localStorage.getItem('token')
     }
-    const url = 'http://localhost:1509/events/' + this.props.match.params.eventId;
+    const url = 'http://localhost:1509/events/' + eventId;
     console.log(url);
 
     axios.get(url, {
