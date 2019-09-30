@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Row } from "react-bootstrap";
 import { CardUser } from "./CardUser";
 import axios from 'axios';
 
@@ -40,7 +39,7 @@ export class ListUsers extends Component {
 
     handleChange = (event) => {
         this.setState({
-          [event.target.id]: event.target.value
+          [event.target.name]: event.target.value
         });
       }
 
@@ -85,13 +84,15 @@ export class ListUsers extends Component {
             <div className="container">
                 <form className="form-search" onSubmit={this.handleSubmit}>
                     <div className="searchInput">
-                        <input type="text" placeholder="Entrez un utilisateur" className="input-search" id="search" onChange={this.handleChange} />
+                        <input type="text" placeholder="Entrez un utilisateur" className="input-search" name="search" onChange={this.handleChange} />
                         <button className="submit">Search</button><br/><br/>
                     </div>
                 </form>
-                <Row>
+                <div className='row'>
+                    <div className="card-deck">
                     {renderUsers()}
-                </Row>
+                    </div>
+                </div>
             </div>
         )
     }
