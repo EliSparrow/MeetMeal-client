@@ -44,6 +44,8 @@ class Navbar extends Component {
               </a>
               <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a className="dropdown-item" href="/edituser">Editer son profile</a>
+                <a className="dropdown-item" href="/listusers">Voir les profiles</a>
+                <a className="dropdown-item" href="/profile">voir mon profil</a>
                 <a className="dropdown-item" href="/">Mon historique</a>
                 <a className="dropdown-item" href="/login" onClick={this.logout}>Se déconnecter</a>
               </div>
