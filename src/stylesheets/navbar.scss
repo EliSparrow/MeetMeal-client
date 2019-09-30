@@ -1,0 +1,23 @@
+@import 'variables';
+
+nav{
+    background-color: $persian-green !important;
+}
+
+.navLogo {
+    height: 70px
+    // border-radius: 30%;
+}
+
+.nav-link:hover {
+    color: $persian-green !important;
+}
+
+.dropdown-menu {
+    background-color: $wild-sand;
+}
+
+.dropdown-item:hover {
+    color: $persian-green !important;
+}
+
