@@ -40,7 +40,7 @@ function App() {
         <PrivateRoute exact path='/create-event' component={CreateEvent}></PrivateRoute>
         <PrivateRoute exact path='/list-events' component={ListEvents}></PrivateRoute>
         <PrivateRoute exact path='/event/:eventId' component={ShowEvent}></PrivateRoute>
-        <PublicRoute restricted={false} component={SearchedEvents} path="/event/search/:city-:zipCode-:date-:typeOfMeal-:typeOfCuisine" exact />
+        <PublicRoute restricted={false} component={SearchedEvents} path="/event/search/:city/:zipCode/:date/:typeOfMeal/:typeOfCuisine" exact />
       </div>
       <Route component={Footer}></Route>
     </Router>
