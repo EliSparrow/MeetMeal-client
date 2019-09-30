@@ -1,0 +1,24 @@
+.info_event {
+    float: left;
+    width: 300px;
+    padding: 10px;
+    background-color: #E9EDEE;
+    border: 4px solid white;
+    height: 400px;
+}
+.info_guest {
+    float: left;
+    width: 300px;
+    padding: 10px;
+    background-color: #E9EDEE;
+    border: 4px solid white;
+    height: 400px;
+}
+.register {
+    float: left;
+    width: 300px;
+    padding: 10px;
+    background-color: #E9EDEE;
+    border: 4px solid white;
+    height: 400px;
+}
