@@ -19,6 +19,7 @@ import ListEvents from './component/event/listEvent.js';
 import ShowEvent from './component/event/showEvent.js';
 import { EditProfile } from './component/profile/EditProfile.js';
 import { DeleteUser } from './component/profile/DeleteUser.js';
+import SearchedEvents from './component/event/searchedEvents.js';
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
         <PrivateRoute exact path='/create-event' component={CreateEvent}></PrivateRoute>
         <PrivateRoute exact path='/list-events' component={ListEvents}></PrivateRoute>
         <PrivateRoute exact path='/event/:eventId' component={ShowEvent}></PrivateRoute>
+        <PublicRoute restricted={false} component={SearchedEvents} path="/event/search/:city-:zipCode-:date-:typeOfMeal-:typeOfCuisine" exact />
       </div>
       <Route component={Footer}></Route>
     </Router>
