@@ -17,6 +17,7 @@ import Login from './component/login/loginForm.js';
 import CreateEvent from './component/event/createEvent.js';
 import ListEvents from './component/event/listEvent.js';
 import ShowEvent from './component/event/showEvent.js';
+import { EditEvent } from './component/event/EditEvent.js';
 import { EditProfile } from './component/profile/EditProfile.js';
 import { DeleteUser } from './component/profile/DeleteUser.js';
 
@@ -39,6 +40,8 @@ function App() {
         <PrivateRoute exact path='/create-event' component={CreateEvent}></PrivateRoute>
         <PrivateRoute exact path='/list-events' component={ListEvents}></PrivateRoute>
         <PrivateRoute exact path='/event/:eventId' component={ShowEvent}></PrivateRoute>
+        <PrivateRoute exact path='/editevent/:eventId/' component={EditEvent}></PrivateRoute>
+
       </div>
       <Route component={Footer}></Route>
     </Router>
