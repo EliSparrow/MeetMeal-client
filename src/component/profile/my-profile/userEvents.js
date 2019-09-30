@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from 'axios';
 
 import EventsCreated from './eventsCreated';
 import EventsJoined from './eventsJoined';
@@ -7,9 +8,54 @@ class UserEvents extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          status: true
+          status: true,
+          meals: [],
+          title: "",
+          date: "",
+          time: "",
+          typeOfMeal: "",
+          typeOfCuisine: "",
+          description: "",
+          zipCode: "",
+          city: "",
+          numberMaxOfGuests: "",
+          guests: "",
+          comment: "",
+          cost: "",
+          idUser: "",
         };
     }
+
+    async componentDidMount(){
+      const header = {
+        'x-auth-token': localStorage.getItem('token')
+      }
+
+      const userId = await axios.get(process.env.REACT_APP_API + '/users/my-profile',
+        { headers: header})
+      console.log('userId : ', userId);
+
+      var userEventsCreated = await axios.get(process.env.REACT_APP_API + '/' + userId.data._id + '/showEvents')
+      .then( res => {
+        console.log(res.data);
+      }).catch( err => {
+        console.log(err.response);
+      })
+      console.log('userEventsCreated : ', userEventsCreated);
+
+      var userEventsJoined = await axios.get(process.env.REACT_APP_API + '/' + userId.data._id + '/guestsEvents')
+      .then( res => {
+        console.log(res.data);
+      }).catch( err => {
+        console.log(err.response);
+      })
+      console.log('userEventsCreated : ', userEventsJoined);
+    }
+
+
+
+
+
 
     showJoinedEvents = (event) => {
         event.preventDefault();
