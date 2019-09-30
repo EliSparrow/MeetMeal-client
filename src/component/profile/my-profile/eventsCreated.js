@@ -2,12 +2,13 @@ import React, { Component } from "react";
 import '../../../../src/stylesheets/profile/my-profile/eventsCreated.css'
 
 class EventsCreated extends Component {
+
     render () {
         return (
         <div className="group">
             <div className="info_event">
                 <div className="title">
-                    <p>title here</p>
+                    <p>title here : Evenement Créé</p>
                 </div>
                 <div className="descrption">
                     <p>lorem ipsum</p>

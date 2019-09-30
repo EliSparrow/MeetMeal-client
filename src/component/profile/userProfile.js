@@ -12,11 +12,8 @@ const getUserProfile = (( setProfiles, props) => {
   console.log(header);
   axios.get(process.env.REACT_APP_API + '/users/my-profile',
     { headers: header},
-    console.log('je commence axios')
   ).then(res => {
-    console.log('je suis dans le then');
     setProfiles(res.data)
-    console.log(res.data);
   }).catch(err => {
     console.error(err);
     //alert('Nous sommes désolés, nous faisons face à un problème de serveur')
@@ -26,12 +23,8 @@ const getUserProfile = (( setProfiles, props) => {
 
 const UserProfile = (props, history) => {
   let [profiles, setProfiles] = useState([])
-  console.log('let profile : ');
-  console.log(profiles);
     if (profiles.length === 0){
       getUserProfile(setProfiles, history, props)
-      console.log('let profile après if : ');
-      console.log(profiles.avatar);
     }
 
   return (

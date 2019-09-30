@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import '../../../../src/stylesheets/profile/my-profile/eventsJoined.css'
 
-class EventsJoined extends Component { 
+class EventsJoined extends Component {
 
 render() {
     return(
@@ -20,7 +20,7 @@ render() {
 
             <div className="info_event">
                 <div className="title">
-                    <p>title here</p>
+                    <p>title here : Evenement rejoint</p>
                 </div>
                 <div className="descrption">
                     <p>lorem ipsum</p>
