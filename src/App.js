@@ -11,7 +11,7 @@ import Navbar from './component/layout/navbar.js';
 import Footer from './component/layout/footer.js';
 import Home from './component/home/home.js';
 import Toggle from './component/toggleLogReg/toggle.js';
-import UserProfile from './component/profile/userProfile.js';
+import UserProfile from './component/profile/my-profile/userProfile.js';
 import Register from './component/register/registerForm';
 import Login from './component/login/loginForm.js';
 import CreateEvent from './component/event/createEvent.js';
@@ -19,7 +19,6 @@ import ListEvents from './component/event/listEvent.js';
 import ShowEvent from './component/event/showEvent.js';
 import { EditProfile } from './component/profile/EditProfile.js';
 import { DeleteUser } from './component/profile/DeleteUser.js';
-import UserEvents from './component/profile/my-profile/userEvents.js'
 
 
 function App() {
@@ -40,7 +39,6 @@ function App() {
         <PrivateRoute exact path='/create-event' component={CreateEvent}></PrivateRoute>
         <PrivateRoute exact path='/list-events' component={ListEvents}></PrivateRoute>
         <PrivateRoute exact path='/event/:eventId' component={ShowEvent}></PrivateRoute>
-        <PrivateRoute exact path='/profile' component={UserEvents}></PrivateRoute>
       </div>
       <Route component={Footer}></Route>
     </Router>

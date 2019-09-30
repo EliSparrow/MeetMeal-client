@@ -3,7 +3,8 @@ import {useState} from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-import '../../stylesheets/userProfile.css';
+import UserEvents from './userEvents.js';
+import '../../../stylesheets/userProfile.css';
 
 const getUserProfile = (( setProfiles, props) => {
   const header = {
@@ -30,6 +31,7 @@ const UserProfile = (props, history) => {
   return (
     <div className='container user-profile'>
       {profiles ? (
+        <div>
         <div className='row'>
           <div className='col-lg-3 user-info-intro'>
             <img className='img-fluid' src={profiles.avatar} alt='user profile avatar'></img>
@@ -60,7 +62,13 @@ const UserProfile = (props, history) => {
             Bloquez votre compte
           </Link>
           </div>
+
+          <div>
+            <UserEvents />
+          </div>
+          </div>
           ) : null }
+
     </div>
   );
 }

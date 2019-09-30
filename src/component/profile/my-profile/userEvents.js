@@ -14,13 +14,11 @@ class UserEvents extends Component {
     showJoinedEvents = (event) => {
         event.preventDefault();
         this.setState({status: false})
-        console.log('SHOW JOINED EVENTS SO MUST BE FALSE : ', this.state.status)
     }
 
     showCreatedEvents = (event, status) => {
       event.preventDefault();
       this.setState({status: true})
-      console.log('SHOW JOINED EVENTS SO MUST BE TRUE : ', this.state.status)
     }
 
     render() {
