@@ -68,7 +68,7 @@ class Login extends Component {
 
   render(){
     return (
-      <div className="container" >
+      <div className="container-login container" >
       
       <div className="form-container sign-in-container login-form">
         <form onSubmit={this.handleSubmit}>

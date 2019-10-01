@@ -7,6 +7,10 @@ $muted-color: mix(white, $bg-color, 70%);
 $trans-time: 300ms;
 $width: 320px;
 
+.container-login {
+	min-height: 900px;
+}
+
 .overlay {
 	background: #eb4750;
 	background: linear-gradient(to right, #00BFB2, rgb(1, 167, 131));
@@ -29,10 +33,11 @@ button {
 	color: #f7f7f7;
 	font-size: 12px;
 	font-weight: bold;
-	padding: 12px 45px;
 	letter-spacing: 1px;
 	text-transform: uppercase;
-	transition: transform 80ms ease-in;
+  transition: transform 80ms ease-in;
+  height: 50px;
+  width: 200px;
 }
 
 button.ghost {

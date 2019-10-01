@@ -1,0 +1,52 @@
+@import '../variables.scss';
+
+.user-info-bio{
+    border-color: black;
+  }
+
+.user-info-intro {
+    h2 {
+        margin-block-end: 1px;
+    }
+}
+  
+.user-age {
+    font-size: small;
+    text-align: center;
+    margin-block-end: 1px;
+}
+
+.user-btn {
+    margin-bottom: 10px;
+    
+}
+
+.btn-warn {
+    background-color: orange; 
+    border-color:  orange;
+}
+
+.user-cards {
+    border-top: 1px solid !important;
+    border-bottom: 1px solid;
+    border-left: 1px solid;
+    border-right: 1px solid;
+    border-radius: 0px 0px 5px 5px;
+    margin-bottom: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.nav-user-profile {
+    background-color: $alizarin-crimson!important;
+    div {
+        text-align: center;
+        a {
+            color: $persian-green;
+        }
+    }
+}
+
+.list-events {
+    border-top: none!important;
+}
