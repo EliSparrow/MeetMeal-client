@@ -30,7 +30,7 @@ const UserProfile = (props, history) => {
   console.log(profiles);
     if (profiles.length === 0){
       getUserProfile(setProfiles, history, props)
-      console.log('let profile après if : ');
+      console.log('let profile apres if : ');
       console.log(profiles.avatar);
     }
 
