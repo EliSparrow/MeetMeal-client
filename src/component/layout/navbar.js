@@ -36,20 +36,6 @@ class Navbar extends Component {
   }
 
   render(){
-    // const userLinks = (
-    //   <div>
-    //           <a className="nav-link dropdown-toggle" href="/profile" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    //             {/* {this.state.name} */}
-    //             <i className="fa fa-user fa-fw"></i>
-    //           </a>
-    //           <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-    //             <a className="dropdown-item" href="/edituser">Editer son profile</a>
-    //             <a className="dropdown-item" href="/profile">voir mon profil</a>
-    //             <a className="dropdown-item" href="/">Mon historique</a>
-    //             <a className="dropdown-item" href="/login" onClick={this.logout}>Se déconnecter</a>
-    //           </div>
-    //   </div>
-    // )
 
     const userDropdown = (
       <div className='my-2 my-lg-0'>
@@ -58,7 +44,7 @@ class Navbar extends Component {
             <a className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i className="fa fa-user fa-lg"></i></a>
             <div className="dropdown-menu dropdown-menu-right">
               <a className="dropdown-item" href="/profile">Voir mon profil</a>
-              <a className="dropdown-item" href="/edituser">Editer son profile</a>
+              <a className="dropdown-item" href="/edituser">Editer mon profil</a>
               <div className="dropdown-divider"></div>
               <a className="dropdown-item" href="/login" onClick={this.logout}>Se déconnecter</a>
             </div>
@@ -73,10 +59,10 @@ class Navbar extends Component {
     const userLinks = (
       <>
         <li className="nav-item">
-          <a className="nav-link" href="/">Rechercher un repas</a>
+          <a className="nav-link nav-link-left" href="/">Rechercher un repas</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="/listusers">Voir les profiles</a>
+          <a className="nav-link nav-link-left" href="/listusers">Rechercher un membre</a>
         </li>
       </>
     )
@@ -84,10 +70,10 @@ class Navbar extends Component {
     const offlineLinks = (
         <>
           <li className="nav-item">
-            <a className="nav-link" href="/login">Connexion</a>
+            <a className="nav-link nav-link-left" href="/login">Connexion</a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/register">Inscritpion</a>
+            <a className="nav-link nav-link-left" href="/register">Inscritpion</a>
           </li>
         </>
     )
@@ -108,10 +94,10 @@ class Navbar extends Component {
                 <a className="nav-link" href="/">Acceuil <span className="sr-only">(current)</span></a>
               </li>
 
-              { localStorage ? userLinks : offlineLinks }
+              { localStorage.token ? userLinks : offlineLinks }
             </ul>
             
-              { localStorage ? userDropdown : null }
+              { localStorage.token ? userDropdown : null }
             
             </div>
         </nav>
