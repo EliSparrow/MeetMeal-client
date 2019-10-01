@@ -66,10 +66,8 @@ export class ListUsers extends Component {
             if(users.length === 0) {
                 return <div>{ users }</div>
             } else {
-                console.log("users: ", users);
                 return users.map((user, index) => (
                     <div>
-                        {console.log(user)}
                     <CardUser
                         {...user}
                         key={user._id}

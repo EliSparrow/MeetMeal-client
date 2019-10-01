@@ -23,6 +23,8 @@ import { EditEvent } from './component/event/EditEvent.js';
 import { EditProfile } from './component/profile/EditProfile.js';
 import { DeleteUser } from './component/profile/DeleteUser.js';
 import SearchedEvents from './component/event/searchedEvents.js';
+import ShowProfile from './component/profile/ShowProfile';
+
 
 
 function App() {
@@ -41,6 +43,7 @@ function App() {
         <PublicRoute restricted={true} component={Login} path="/login" exact />
         <PublicRoute restricted={true} exact path="/register" component={Register}/>
         <PrivateRoute exact path="/profile" component={UserProfile}></PrivateRoute>
+        <PrivateRoute exact path="/users/:profileId" component={ShowProfile}></PrivateRoute>
         <PrivateRoute exact path="/ListUsers" component={ListUsers}></PrivateRoute>
         <PrivateRoute exact path='/create-event' component={CreateEvent}></PrivateRoute>
         <PrivateRoute exact path='/list-events' component={ListEvents}></PrivateRoute>
@@ -55,3 +58,4 @@ function App() {
 }
 
 export default App;
+  

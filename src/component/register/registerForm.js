@@ -1,11 +1,10 @@
-import React, { useState, setState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 
 import useForm from './useForm.js';
-import toggle from '../toggleLogReg/toggle.js';
 
 
 const Register = props => {

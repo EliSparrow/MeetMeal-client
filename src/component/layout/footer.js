@@ -13,13 +13,13 @@ const Footer = () => {
             <h5 className="text-uppercase">Nos réseaux sociaux</h5>
             <ul className="list-unstyled row">
               <li>
-                <Link className='fa fa-facebook col-4' style={{fontSize: 40 + 'px'}} ></Link>
+                <Link to="!#" className='fa fa-facebook col-4' style={{fontSize: 40 + 'px'}} ></Link>
               </li>
               <li>
-                <Link className='fa fa-twitter col-4' style={{fontSize: 40 + 'px'}} ></Link>
+                <Link to="!#" className='fa fa-twitter col-4' style={{fontSize: 40 + 'px'}} ></Link>
               </li>
               <li>
-                <Link className='fa fa-linkedin col-4' style={{fontSize: 40 + 'px'}} ></Link>
+                <Link to="!#" className='fa fa-linkedin col-4' style={{fontSize: 40 + 'px'}} ></Link>
               </li>
             </ul>
           </div>
@@ -45,7 +45,7 @@ const Footer = () => {
                 <Link to="/list-events" className='nav-link'>Trouver un repas</Link>
               </li>
               <li>
-                <a className='nav-link' target="_blank" href="https://www.google.fr/maps/place/Epitech+Paris/@48.815664,2.3606193,17z/data=!3m1!4b1!4m5!3m4!1s0x47e6717ff972ae09:0x692326b123aa4d9b!8m2!3d48.815664!4d2.362808">
+                <a className='nav-link' target="_blank" rel="noopener noreferrer" href="https://www.google.fr/maps/place/Epitech+Paris/@48.815664,2.3606193,17z/data=!3m1!4b1!4m5!3m4!1s0x47e6717ff972ae09:0x692326b123aa4d9b!8m2!3d48.815664!4d2.362808">
                   Nous trouver ! </a>
               </li>
             </ul>
