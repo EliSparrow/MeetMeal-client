@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from 'axios';
 
 import '../../stylesheets/cardEvent.css';
 
@@ -19,6 +20,8 @@ class CardEvent extends Component {
       numberMaxOfGuests: "",
       typeOfMeal: "",
       typeOfCuisine: "",
+      guests: "",
+      comments: "",
       user: null
     }
   }
@@ -35,7 +38,9 @@ class CardEvent extends Component {
       cost: this.props.cost,
       numberMaxOfGuests: this.props.numberMaxOfGuests,
       typeOfMeal: this.props.typeOfMeal,
-      typeOfCuisine: this.props.typeOfCuisine
+      typeOfCuisine: this.props.typeOfCuisine,
+      guests: this.props.guests,
+      comments: this.props.comments
     })
     this.getUser();
   }
@@ -75,6 +80,40 @@ class CardEvent extends Component {
     console.log(this.props.user._id)
   }
 
+
+// Function to subscribe to an event :
+
+  subscribeToAnEvent = async (event) => {
+    event.preventDefault();
+    const header = {
+      'x-auth-token': localStorage.getItem('token')
+    }
+
+    const userInfo = await axios.get(process.env.REACT_APP_API + '/users/my-profile',
+          { headers: header})
+
+    const userId = userInfo.data._id;
+    const userToquesAvailable = userInfo.data.toquesAvailable
+          console.log('id + toques : ', userId, userToquesAvailable);
+
+    console.log('prix : ', this.state.cost);
+
+    // if (userToquesAvailable < this.state.cost)
+    //   alert("Vous n'avez pas assez de toques disponibles pour vous inscire à cet évenement.")
+    // else{
+    const url = process.env.REACT_APP_API + '/events/' + this.state._id + '/addGuest';
+      await axios.put(url, null,
+                  { headers: header }
+                  ).then( res => {
+                    console.log(res.data);
+                  }).catch( err => {
+                    console.log(err.response);
+                  })
+    //}
+  }
+
+
+
   render(){
     const {
       _id,
@@ -91,57 +130,25 @@ class CardEvent extends Component {
     } = this.state;
 
     return (
-      // <div className="card mb-3" >
-      //   <div className="row no-gutters">
-
-      //     <div class="col-md-4">
-      //       <div class='image'>
-      //         <img src={avatar} alt='user profile avatar'></img>
-      //       </div>
-      //       <div class='info'>
-      //         <h1>{firstname} {lastname}</h1>
-      //         <h2>{numberMaxOfGuests}</h2>
-      //       </div>
-      //     </div>
-
-      //     <div class="col-md-6">
-      //       <div class='info'>
-
-      //         <a href={"/event/"+_id}><h3>{title}</h3></a>
-      //       </div>
-      //       <div class='info'>
-      //         <p>{description}</p>
-      //       </div>
-      //       <div class='info'>
-      //         <p>{city} {cost}</p>
-      //       </div>
-      //     </div>
-      //       { this.checkEdit() }
-      //     <div class="col-md-2">
-      //       <button type='submit'></button>
-      //     </div>
-
-      //   </div>
-      // </div>
-      <div className="card row" style={{width: 70 + 'em', marginTop: 2 + 'em'}}>
-      <div className="card-body row">
-      <div className='image col-3'>
-        <img src={avatar} alt='user profile avatar'></img>
-        <h6 className="card-subtitle text-muted">{firstname} {lastname}</h6>
-      </div>
-      <div className="col-5">
-        <h5 className="card-title">{title}</h5>
-        <p className="card-text">Type de repas : {typeOfMeal}</p>
-        <p className="card-text">Type de cuisine : {typeOfCuisine}</p>
-        <p className="card-text">{description}</p>
-        <p className="card-text"><i className="fa fa-map-marker"/> {city}</p>
+      <div className="card row" style={{width: 30 + 'em', marginTop: 2 + 'em'}}>
+        <div className="card-body row">
+          <div className='image col-3'>
+            <img src={avatar} alt='user profile avatar'></img>
+            <h6 className="card-subtitle text-muted">{firstname} {lastname}</h6>
+          </div>
+          <div className="col-5">
+            <h5 className="card-title">{title}</h5>
+            <p className="card-text">Type de repas : {typeOfMeal}</p>
+            <p className="card-text">Type de cuisine : {typeOfCuisine}</p>
+            <p className="card-text">{description}</p>
+            <p className="card-text"><i className="fa fa-map-marker"/> {city}</p>
+          </div>
+          <div className="col-4">
+            <p className="card-text">Pour {numberMaxOfGuests} personnes</p>
+            <p className="card-text">Coût : {cost} Toques</p>
+            <button type="submit" onClick={this.subscribeToAnEvent}>Je rejoins l'évenement !</button>
+          </div>
         </div>
-        <div className="col-4">
-        <p className="card-text">Pour {numberMaxOfGuests} personnes</p>
-        <p className="card-text">Coût : {cost} Toques</p>
-        <button type="submit">Je rejoins l'évenement !</button>
-        </div>
-      </div>
     </div>
     )
   }
