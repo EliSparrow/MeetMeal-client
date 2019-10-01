@@ -17,6 +17,8 @@ class CardEvent extends Component {
       city: "",
       cost: "",
       numberMaxOfGuests: "",
+      typeOfMeal: "",
+      typeOfCuisine: "",
       user: null
     }
   }
@@ -31,7 +33,9 @@ class CardEvent extends Component {
       description: this.props.description,
       city: this.props.city,
       cost: this.props.cost,
-      numberMaxOfGuests: this.props.numberMaxOfGuests
+      numberMaxOfGuests: this.props.numberMaxOfGuests,
+      typeOfMeal: this.props.typeOfMeal,
+      typeOfCuisine: this.props.typeOfCuisine
     })
     this.getUser();
   }
@@ -81,7 +85,9 @@ class CardEvent extends Component {
       description,
       city,
       cost,
-      numberMaxOfGuests
+      numberMaxOfGuests,
+      typeOfMeal,
+      typeOfCuisine
     } = this.state;
 
     return (
@@ -125,6 +131,8 @@ class CardEvent extends Component {
       </div>
       <div className="col-5">
         <h5 className="card-title">{title}</h5>
+        <p className="card-text">Type de repas : {typeOfMeal}</p>
+        <p className="card-text">Type de cuisine : {typeOfCuisine}</p>
         <p className="card-text">{description}</p>
         <p className="card-text"><i className="fa fa-map-marker"/> {city}</p>
         </div>
