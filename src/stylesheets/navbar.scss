@@ -8,10 +8,12 @@ nav{
     padding-top: 0px !important;
     padding-bottom: 0px !important;
 }
+
 .nav-avatar {
     width: 40px;
     border-radius: 50%;
 }
+
 .navbar-brand {
     padding-top: 0px !important;
 }
@@ -23,6 +25,11 @@ nav{
 
 .nav-link-left {
     margin-left: 40px;
+    font-size: 14px;
+}
+
+.nav-link {
+    color: $alizarin-crimson !important;
 }
 
 .nav-link:hover {
