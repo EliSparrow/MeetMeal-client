@@ -11,7 +11,7 @@ const Footer = () => {
         <div className="row">
           <div className="col-md-4 mt-md-0 mt-4">
             <h5 className="text-uppercase">Nos réseaux sociaux</h5>
-            <ul className="list-unstyled row">
+            <ul className="list-unstyled">
               <li>
                 <Link to="!#" className='fa fa-facebook col-4' style={{fontSize: 40 + 'px'}} ></Link>
               </li>
