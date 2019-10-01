@@ -67,7 +67,7 @@ class CreateEvent extends Component {
     }
   //  console.log(body);
 
-    axios.post('http://localhost:1509/events/create',
+    axios.post(process.env.REACT_APP_API + '/events/create',
       body,
       {headers: headers}
     ).then( res => {

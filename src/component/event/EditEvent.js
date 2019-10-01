@@ -68,7 +68,7 @@ export class EditEvent extends Component {
             'x-auth-token': localStorage.getItem('token')
         }
         const eventId = this.props.match.params.eventId;
-        axios.get('http://localhost:1509/events/' + eventId,
+        axios.get(process.env.REACT_APP_API + '/events/' + eventId,
             { headers: header},
         ).then(res => {
               this.setState({ meal: res.data });
@@ -120,15 +120,12 @@ export class EditEvent extends Component {
             cost: parseInt(this.state.newCost),
             id : eventId
         };
-        console.log(typeof(editMeal.hour));
-        console.log(typeof(editMeal.minutes));
-        // console.log(editmeal.id);
 
-        axios.put(`http://localhost:1509/events/`+ editMeal.id, editMeal, { headers: header })
+        axios.put(process.env.REACT_APP_API + `/events/`+ editMeal.id, editMeal, { headers: header })
             .then(res => {
-                // alert('Votre évènement a été modifié');
+                alert('Votre évènement a été modifié');
                 this.setState({ meal: res.data });
-                // this.props.history.push('/list-events');
+                this.props.history.push('/list-events');
             })
             .catch(err => {
                 console.error(err.response);

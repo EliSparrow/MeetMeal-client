@@ -18,7 +18,7 @@ export class DeleteUser extends Component {
         const header = {
             'x-auth-token': localStorage.getItem('token')
         }
-        axios.get('http://localhost:1509/users/my-profile',{ headers: header})
+        axios.get(process.env.REACT_APP_API + '/users/my-profile',{ headers: header})
             .then(res => {
                 this.setState({ user: res.data });
             })
@@ -36,7 +36,7 @@ export class DeleteUser extends Component {
             var deleteUser = {
                 isDesactivated: this.state.isDesactivated
             }
-            axios.put(`http://localhost:1509/users/`+ this.state.user._id, deleteUser, { headers: header })
+            axios.put(process.env.REACT_APP_API + `/users/`+ this.state.user._id, deleteUser, { headers: header })
             .then(res => {
                 alert('Votre profil a été modifié');
                 this.setState({ user: res.data });

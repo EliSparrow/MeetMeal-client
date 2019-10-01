@@ -13,6 +13,7 @@ class Navbar extends Component {
       name: "",
       avatar: ""
     }
+    this.logout = this.logout.bind(this)
   }
 
   componentDidMount(){

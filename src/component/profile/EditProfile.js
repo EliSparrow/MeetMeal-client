@@ -54,7 +54,7 @@ export class EditProfile extends Component {
         const header = {
             'x-auth-token': localStorage.getItem('token')
         }
-        axios.get('http://localhost:1509/users/my-profile',
+        axios.get(process.env.REACT_APP_API + '/users/my-profile',
             { headers: header},
         ).then(res => {
               this.setState({ user: res.data });
@@ -97,7 +97,7 @@ export class EditProfile extends Component {
         console.log(editUser.address);
         console.log(editUser.id);
 
-        axios.put(`http://localhost:1509/users/`+ editUser.id, editUser, { headers: header })
+        axios.put(process.env.REACT_APP_API + `/users/`+ editUser.id, editUser, { headers: header })
             .then(res => {
                 alert('Votre profil a été modifié');
                 this.setState({ user: res.data });
