@@ -1,0 +1,17 @@
+@import 'variables';
+
+.page-footer{
+  background-color: $wild-sand;
+  margin-top: auto;
+  padding-top: 20px;
+  width: 100%;
+  li {
+    font-size: 12px;
+  }
+  h5 {
+    font-size: 14px;
+  }
+  a {
+    color: $alizarin-crimson
+  }
+}
