@@ -52,7 +52,7 @@ const Register = props => {
     const notifyFailure = (msg) => { toast.error(msg) }
 
     return (
-    <div className="container right-panel-active" id="container">
+    <div className="container-login container right-panel-active">
   
       <div className="form-container sign-up-container login-form">
         <form onSubmit={handleSubmit}>

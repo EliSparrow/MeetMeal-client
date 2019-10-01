@@ -3,6 +3,7 @@ html, body {
   padding: 0;
   margin: 0;
   
+  
 }
 
 body {
@@ -13,6 +14,8 @@ body {
   display: flex;
   flex-direction: column;
   background-color: #F7F7F7!important;
+  padding-right: 10%;
+  padding-left: 10%; 
 }
 
 code {
@@ -27,10 +30,15 @@ code {
   flex-direction: column;
 }
 
-
 .container {
-	position: relative;
-	overflow: hidden;
-	max-width: 100%;
-	min-height: 900px;
+  padding-top: 90px;
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.col-md-12, .col-md-6 {
+  button {
+    width: 100%!important;
+  }
 }
