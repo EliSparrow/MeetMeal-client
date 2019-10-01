@@ -10,10 +10,16 @@ const Footer = () => {
       <div className="container-fluid text-center text-md-left">
         <div className="row">
           <div className="col-md-4 mt-md-0 mt-4">
-            <h5 className="text-uppercase">Nos réseaux ociaux</h5>
-            <ul className="list-unstyled">
+            <h5 className="text-uppercase">Nos réseaux sociaux</h5>
+            <ul className="list-unstyled row">
               <li>
-                <a className='nav-link' href='!#'>Réseaux</a>
+                <Link className='fa fa-facebook col-4' style={{fontSize: 40 + 'px'}} ></Link>
+              </li>
+              <li>
+                <Link className='fa fa-twitter col-4' style={{fontSize: 40 + 'px'}} ></Link>
+              </li>
+              <li>
+                <Link className='fa fa-linkedin col-4' style={{fontSize: 40 + 'px'}} ></Link>
               </li>
             </ul>
           </div>
@@ -22,10 +28,10 @@ const Footer = () => {
 
             <ul className="list-unstyled">
               <li>
-              <a href="/team" className='nav-link'>L'équipe</a>
+              <Link to="/team" className='nav-link'>L'équipe </Link>
               </li>
               <li>
-                <a href="/contact" className='nav-link'>Nous contacter</a>
+              <Link to="/contact" className='nav-link'>Nous contacter</Link>
               </li>
             </ul>
           </div>
@@ -33,13 +39,13 @@ const Footer = () => {
             <h5 className="text-uppercase">F.A.Q</h5>
             <ul className="list-unstyled">
               <li>
-                <a href="#!" className='nav-link'>Proposer un repas</a>
+                <Link to="/create-event" className='nav-link'>Proposer un repas</Link>
               </li>
               <li>
-                <a href="#!" className='nav-link'>Trouver un repas</a>
+                <Link to="/list-events" className='nav-link'>Trouver un repas</Link>
               </li>
               <li>
-                <a className='nav-link' href="https://www.google.fr/maps/place/Epitech+Paris/@48.815664,2.3606193,17z/data=!3m1!4b1!4m5!3m4!1s0x47e6717ff972ae09:0x692326b123aa4d9b!8m2!3d48.815664!4d2.362808">
+                <a className='nav-link' target="_blank" href="https://www.google.fr/maps/place/Epitech+Paris/@48.815664,2.3606193,17z/data=!3m1!4b1!4m5!3m4!1s0x47e6717ff972ae09:0x692326b123aa4d9b!8m2!3d48.815664!4d2.362808">
                   Nous trouver ! </a>
               </li>
             </ul>
