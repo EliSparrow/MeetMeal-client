@@ -12,8 +12,7 @@ export class AdminLanding extends Component {
         this.state = {
             user: null,
             admin : false,
-            showListBool: true,
-            showUpdateBool: false
+            showListBool: true
         }
     }
 

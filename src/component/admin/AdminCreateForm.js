@@ -8,7 +8,7 @@ export class AdminCreateForm extends Component {
         super(props);
 
         this.state = {
-            user: null,
+            // user: null,
             firstname: "",
             lastname: "",
             age: 0,
@@ -51,18 +51,6 @@ export class AdminCreateForm extends Component {
             toquesAvailable: this.state.tocqueAvailable,
             newToquesAvailable: this.state.tocqueAvailable
         });
-
-        const header = {
-            'x-auth-token': localStorage.getItem('token')
-        }
-        axios.get(process.env.REACT_APP_API + '/users/my-profile',
-            { headers: header},
-        ).then(res => {
-              this.setState({ user: res.data });
-          })
-          .catch(err => {
-              console.error(err);
-          })
     }
 
     handleChange = (event) => {
@@ -73,14 +61,14 @@ export class AdminCreateForm extends Component {
 
 
 
-    handleEditUser = e => {
+    handleAddUser = e => {
         e.preventDefault();
 
         const header = {
             'x-auth-token': localStorage.getItem('token')
         }
 
-        var editUser = {
+        var addUser = {
             firstname: this.state.newFirstname,
             lastname: this.state.newLastname,
             age: parseInt(this.state.newAge),
@@ -95,14 +83,12 @@ export class AdminCreateForm extends Component {
             toquesAvailable: parseInt(this.state.newToquesAvailable),
             id : this.state.user._id
         };
-        console.log(editUser.address);
-        console.log(editUser.id);
 
-        axios.put(process.env.REACT_APP_API + `/users/`+ editUser.id, editUser, { headers: header })
+        axios.put(process.env.REACT_APP_API + `/users/register` , addUser)
             .then(res => {
                 alert('Votre profil a été modifié');
-                this.setState({ user: res.data });
-                this.props.history.push('/profile');
+                // this.setState({ user: res.data });
+                this.props.history.push('/admin');
             })
             .catch(err => {
                 console.error(err.response);
@@ -120,45 +106,45 @@ export class AdminCreateForm extends Component {
             <div className="container">
                  {user ? (
                 <div className= 'row'>
-                    <form onSubmit={ this.handleEditUser }>
+                    <form onSubmit={ this.handleAddUser }>
                         <div className='title'>
-                            <h1>Modifiez votre profile: </h1>
+                            <h1>Ajouter un profile: </h1>
                         </div>
                         <div className='col lg-4 user-inputs'>
-                            <input type='text' defaultValue={user.firstname} name='newFirstname' placeholder='firstname' className='input-firstname' onChange={ this.handleChange }></input>
+                            <input type='text'  name='newFirstname' placeholder='firstname' className='input-firstname' onChange={ this.handleChange }></input>
                         </div>
                         <div className='col lg-4 user-inputs'>
-                            <input type='text' defaultValue={user.lastname} name='newLastname' placeholder='lastname' className='input-lastname' onChange={ this.handleChange }></input>
+                            <input type='text'  name='newLastname' placeholder='lastname' className='input-lastname' onChange={ this.handleChange }></input>
                         </div>
                         <div className='col lg-4 user-inputs'>
-                            <input type='text' defaultValue={user.age} name='newAge' className='input-age' placeholder='age' onChange={ this.handleChange }></input>
+                            <input type='text'  name='newAge' className='input-age' placeholder='age' onChange={ this.handleChange }></input>
                         </div>
                         <div className='col lg-4 user-inputs'>
-                            <input type='email' defaultValue={user.email} name='newEmail' className='input-email' placeholder='email' onChange={ this.handleChange }></input>
+                            <input type='email'  name='newEmail' className='input-email' placeholder='email' onChange={ this.handleChange }></input>
                         </div>
                         <div className='col lg-4 user-inputs'>
-                            <input type='text' defaultValue={user.avatar} name='newAvatar' className='input-avatar' placeholder='avatar' onChange={ this.handleChange }></input>
+                            <input type='text'  name='newAvatar' className='input-avatar' placeholder='avatar' onChange={ this.handleChange }></input>
                         </div>
                         <div className='col lg-4 user-inputs'>
-                            <input type='textarea' defaultValue={user.bio} name='newBio' className='input-bio' placeholder='biographie' onChange={ this.handleChange }></input>
+                            <input type='textarea'  name='newBio' className='input-bio' placeholder='biographie' onChange={ this.handleChange }></input>
                         </div>
                         <div className='col lg-4 user-inputs'>
-                            <input type='text' defaultValue={user.loveStatus} name='newLoveStatus' className='input-loveStatus' placeholder='Situation Amoureuse' onChange={ this.handleChange }></input>
+                            <input type='text'  name='newLoveStatus' className='input-loveStatus' placeholder='Situation Amoureuse' onChange={ this.handleChange }></input>
                         </div>
                         <div className='col lg-4 user-inputs'>
-                            <input type='text' defaultValue={user.zipCode} name='newZipCode' className='input-zipCode' placeholder='Code Postal' onChange={ this.handleChange }></input>
+                            <input type='text'  name='newZipCode' className='input-zipCode' placeholder='Code Postal' onChange={ this.handleChange }></input>
                         </div>
                         <div className='col lg-4 user-inputs'>
-                            <input type='text' defaultValue={user.address} name='newAddress' className='input-address' placeholder='Adresse' onChange={ this.handleChange }></input>
+                            <input type='text'  name='newAddress' className='input-address' placeholder='Adresse' onChange={ this.handleChange }></input>
                         </div>
                         <div className='col lg-4 user-inputs'>
-                            <input type='text' defaultValue={user.city} name='newCity' className='input-city' placeholder='Ville' onChange={ this.handleChange }></input>
+                            <input type='text'  name='newCity' className='input-city' placeholder='Ville' onChange={ this.handleChange }></input>
                         </div>
                         <div className='col lg-4 user-inputs'>
                             <input type='password' name='newPassword' className='input-password' placeholder='Mot de Passe' onChange={ this.handleChange }></input>
                         </div>
                         <div className='col lg-4 user-inputs'>
-                            <input type='text' defaultValue={user.toquesAvailable} name='newToquesAvailable' className='input-toquesAvailable' placeholder='Monnaie Toque' onChange={ this.handleChange }></input>
+                            <input type='text'  name='newToquesAvailable' className='input-toquesAvailable' placeholder='Monnaie Toque' onChange={ this.handleChange }></input>
                         </div>
                         <button className="submit">Modifiez votre profile</button>
                         <button className="reset"><Link redirect to='/edituser'>Annuler</Link></button>
