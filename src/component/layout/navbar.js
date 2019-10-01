@@ -10,47 +10,49 @@ class Navbar extends Component {
     this.state = {
       logged: false,
       name: "",
+      avatar: ""
     }
   }
 
   componentDidMount(){
-    const header = localStorage.getItem('token');
-
-    if (header){
-      axios.get('http://localhost:1509/users/my-profile',
-      { headers: header}
-      ).then( res => {
-        console.log('je suis dans la res');
-        console.log(res.data);
-        this.state.name.setState(res.data.firstname);
-
-      }).catch( err => {
-        console.log(err.response);
+    const header = {
+      'x-auth-token': localStorage.getItem('token')
+    }
+    
+    
+    if(header["x-auth-token"]){
+      axios.get(process.env.REACT_APP_API + '/users/my-profile',
+      { headers: header})
+      .then(res => {
+        this.setState({
+          name: res.data.firstname,
+          avatar: res.data.avatar
+        });
       })
     }
   }
-
+  
   logout (){
     localStorage.removeItem('token')
     this.props.history.push("/login");
   }
 
   render(){
+    const { avatar } = this.state;
 
     const userDropdown = (
       <div className='my-2 my-lg-0'>
         <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
           <li className="nav-item dropdown">
-            <a className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"><i className="fa fa-user fa-lg"></i></a>
+            <a className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+              { avatar ? <img alt='avatar' src={ avatar } className='nav-avatar' ></img> : <i className="fa fa-user fa-fw"></i> }
+            </a>
             <div className="dropdown-menu dropdown-menu-right">
               <a className="dropdown-item" href="/profile">Voir mon profil</a>
               <a className="dropdown-item" href="/edituser">Editer mon profil</a>
               <div className="dropdown-divider"></div>
-              <a className="dropdown-item" href="/login" onClick={this.logout}>Se déconnecter</a>
+              <a className="dropdown-item" href="/login" onClick={this.logout}><i className="fa fa-sign-out fa-lg"></i> Se déconnecter</a>
             </div>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="/login" onClick={this.logout}><i className="fa fa-sign-out fa-lg"></i></a>
           </li>
         </ul>
       </div>
