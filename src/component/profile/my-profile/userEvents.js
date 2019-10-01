@@ -22,7 +22,7 @@ class UserEvents extends Component {
           guests: "",
           comment: "",
           cost: "",
-          idUser: "",
+          _id: "",
         };
     }
 
@@ -30,26 +30,34 @@ class UserEvents extends Component {
       const header = {
         'x-auth-token': localStorage.getItem('token')
       }
+      // console.log('env: ' + process.env.REACT_APP_API);
+      
+      // const userId = ""
+      await axios.get(process.env.REACT_APP_API + '/users/my-profile',
+      { headers: header})
+      .then(res => {
+        // console.log(res.data._id)
+        this.state._id = res.data._id.toString()
+        console.log(this.state._id)
+      })
+        
 
-      const userId = await axios.get(process.env.REACT_APP_API + '/users/my-profile',
-        { headers: header})
-      console.log('userId : ', userId);
-
-      var userEventsCreated = await axios.get(process.env.REACT_APP_API + '/' + userId.data._id + '/showEvents')
+      await axios.get(process.env.REACT_APP_API + '/events/' + this.state._id + '/showEvents',
+      { headers: header})
       .then( res => {
+        console.log('ici');
         console.log(res.data);
       }).catch( err => {
-        console.log(err.response);
+        console.log(err.response.status);
       })
-      console.log('userEventsCreated : ', userEventsCreated);
 
-      var userEventsJoined = await axios.get(process.env.REACT_APP_API + '/' + userId.data._id + '/guestsEvents')
-      .then( res => {
-        console.log(res.data);
-      }).catch( err => {
-        console.log(err.response);
-      })
-      console.log('userEventsCreated : ', userEventsJoined);
+      // await axios.get(process.env.REACT_APP_API + '/' + this.state._id + '/guestsEvents')
+      // .then( res => {
+      //   console.log(res.data);
+      // }).catch( err => {
+      //   console.log(err.response.data);
+      // })
+
     }
 
 

@@ -6,11 +6,13 @@ import { Link } from 'react-router-dom';
 import UserEvents from './userEvents.js';
 import '../../../stylesheets/userProfile.css';
 
+require('dotenv').config();
+
 const getUserProfile = (( setProfiles, props) => {
   const header = {
     'x-auth-token': localStorage.getItem('token')
   }
-  console.log(header);
+  // console.log(header);
   axios.get(process.env.REACT_APP_API + '/users/my-profile',
     { headers: header},
   ).then(res => {
