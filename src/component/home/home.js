@@ -38,7 +38,7 @@ class Home extends Component {
     if(this.state.typeOfCuisine === "Type de cuisine")
       this.setState({typeOfCuisine: ""})
 
-    axios.post('http://localhost:1509/search/event', {
+    axios.post(process.env.REACT_APP_API + '/search/event', {
       zipCode: this.state.zipCode,
       city: this.state.city,
       date: this.state.date,

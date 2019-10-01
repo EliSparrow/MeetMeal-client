@@ -4,6 +4,7 @@ export class CardUser extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            _id: "",
             lastname:"",
             firstname: "",
             age: 0,
@@ -19,6 +20,7 @@ export class CardUser extends Component {
 
     componentDidMount() {
         this.setState({
+            _id: this.props._id,
             lastname: this.props.lastname,
             firstname: this.props.firstname,
             age: this.props.age,

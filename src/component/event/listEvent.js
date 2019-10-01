@@ -16,7 +16,7 @@ class ListEvents extends Component {
         'x-auth-token': localStorage.getItem('token')
       }
 
-    axios.get('http://localhost:1509/events/', {
+    axios.get(process.env.REACT_APP_API + '/events/', {
       headers: header
     }).then( res => {
       this.setState({ meals: res.data});
