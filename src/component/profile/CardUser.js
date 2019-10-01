@@ -47,7 +47,7 @@ export class CardUser extends Component {
         } = this.state;
         return (
             <div class="card mb-4" style={{width: 18 + 'em'}}>
-                <img class="card-img img-fluid"  src= { avatar } alt="Card image cap" />
+                <img class="card-img img-fluid"  src= { avatar } alt="avatar" />
                 <div class="card-body">
                     <h5 class="card-title">{firstname} {lastname}</h5>
                     <p class="card-text">Age:  { age } , Description: { bio }, Situation Amoureuse: { lovestatus }, Adresse: { address } { zipcode } { city }</p>

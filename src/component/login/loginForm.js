@@ -3,6 +3,9 @@ import { withRouter, Link } from 'react-router-dom';
 
 import axios from 'axios';
 
+import '../../stylesheets/login.scss';
+import '../../stylesheets/login.css';
+
 class Login extends Component {
   constructor(props){
     super(props);
@@ -65,9 +68,9 @@ class Login extends Component {
 
   render(){
     return (
-      <div className="container" id="container">
+      <div className="container-login container" >
       
-      <div className="form-container sign-in-container">
+      <div className="form-container sign-in-container login-form">
         <form onSubmit={this.handleSubmit}>
           <h1>Votre compte</h1>
           <div className="social-container">
@@ -75,9 +78,19 @@ class Login extends Component {
             <Link to="#" className="fa fa-google"></Link>
           </div>
           <span>ou utilisez vos identifiants</span>
-          <input type="email" placeholder="Email" name="email" onChange={this.handleChange}/>
-          <input placeholder="Mot de passe" name="password" onChange={this.handleChange} type={this.state.hidden ? "password" : "text"} />
-          <a onClick={this.toggleShow}>Voir/Cacher mot de passe</a>
+          <div className="group">      
+          <input type="text" name="email" onChange={this.handleChange} required/>
+            <span className="highlight"></span>
+            <span className="bar"></span>
+            <label>Email</label>
+          </div>
+          <div className="group">      
+            <input name="password" onChange={this.handleChange} type={this.state.hidden ? "password" : "text"} required/>
+            <span className="highlight"></span>
+            <span className="bar"></span>
+            <label>Mot de passe</label>
+            <a onClick={this.toggleShow}>Voir/Cacher mot de passe</a>
+          </div>
           {/* <a href="#">Mot de passe oublié ?</a> A voir si service mail activé */}
           <button className="submit">Connexion</button>
         </form>

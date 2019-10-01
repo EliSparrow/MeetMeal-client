@@ -20,15 +20,15 @@ class SearchedEvents extends Component {
     const typeOfMeal = this.props.match.params.typeOfMeal.substr(1);
     const typeOfCuisine = this.props.match.params.typeOfCuisine.substr(1);
 
-    this.state.meals = await axios.post('http://localhost:1509/search/event', {
-                    zipCode: zipCode,
-                    city: city,
-                    date: date,
-                    typeOfMeal: typeOfMeal,
-                    typeOfCuisine: typeOfCuisine
-                  }).catch(err => {
-                    console.log(err.response);
-                  })
+    this.state.meals = axios.post('http://localhost:1509/search/event', {
+                      zipCode: zipCode,
+                      city: city,
+                      date: date,
+                      typeOfMeal: typeOfMeal,
+                      typeOfCuisine: typeOfCuisine
+                    }).catch(err => {
+                      console.log(err.response);
+                    })
   }
 
   render(){

@@ -47,7 +47,7 @@ class CreateEvent extends Component {
     this.state.menu.setState(this.state.starter + this.state.dish + this.state.dessert + this.state.drinks + this.state.other);
 
     const headers = {
-      'x-auth-token': sessionStorage.getItem('token')
+      'x-auth-token': localStorage.getItem('token')
     }
 
     const body = {title: this.state.title,
