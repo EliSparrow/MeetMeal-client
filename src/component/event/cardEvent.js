@@ -91,39 +91,8 @@ class CardEvent extends Component {
     } = this.state;
 
     return (
-      // <div className="card mb-3" >
-      //   <div className="row no-gutters">
 
-      //     <div class="col-md-4">
-      //       <div class='image'>
-      //         <img src={avatar} alt='user profile avatar'></img>
-      //       </div>
-      //       <div class='info'>
-      //         <h1>{firstname} {lastname}</h1>
-      //         <h2>{numberMaxOfGuests}</h2>
-      //       </div>
-      //     </div>
-
-      //     <div class="col-md-6">
-      //       <div class='info'>
-
-      //         <a href={"/event/"+_id}><h3>{title}</h3></a>
-      //       </div>
-      //       <div class='info'>
-      //         <p>{description}</p>
-      //       </div>
-      //       <div class='info'>
-      //         <p>{city} {cost}</p>
-      //       </div>
-      //     </div>
-      //       { this.checkEdit() }
-      //     <div class="col-md-2">
-      //       <button type='submit'></button>
-      //     </div>
-
-      //   </div>
-      // </div>
-      <div className="card row" style={{width: 70 + 'em', marginTop: 2 + 'em'}}>
+      <div className="card row col-lg-12">
       <div className="card-body row">
       <div className='image col-3'>
         <img src={avatar} alt='user profile avatar'></img>
