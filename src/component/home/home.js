@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import '../../stylesheets/home.css';
@@ -38,17 +37,10 @@ class Home extends Component {
     if(this.state.typeOfCuisine === "Type de cuisine")
       this.setState({typeOfCuisine: ""})
 
-    axios.post('http://localhost:1509/search/event', {
-      zipCode: this.state.zipCode,
-      city: this.state.city,
-      date: this.state.date,
-      typeOfMeal: this.state.typeOfMeal,
-      typeOfCuisine: this.state.typeOfCuisine
-    }).then( res => {
-    console.log(res.data);
-  }).catch( err => {
-    console.log(err.response);
-  })
+    const url = '/event/search/:' + this.state.city + '/:' + this.state.zipCode.toString() + '/:'
+                + this.state.date + '/:' + this.state.typeOfMeal + '/:' + this.state.typeOfCuisine;
+
+    this.props.history.push(url)
   }
 
   render(){
