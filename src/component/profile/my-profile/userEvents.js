@@ -1,27 +1,18 @@
 import axios from 'axios';
 import React, { Component, Fragment } from "react";
+import { Row } from "react-bootstrap";
 
 import EventsCreated from './eventsCreated';
 import EventsJoined from './eventsJoined';
+import CardEvent from '../../event/cardEvent.js';
 
 class UserEvents extends Component {
     constructor(props) {
         super(props);
         this.state = {
           status: true,
-          meals: [],
-          title: "",
-          date: "",
-          time: "",
-          typeOfMeal: "",
-          typeOfCuisine: "",
-          description: "",
-          zipCode: "",
-          city: "",
-          numberMaxOfGuests: "",
-          guests: "",
-          comment: "",
-          cost: "",
+          createdMeals: [],
+          joinedMeals: [],
           idUser: "",
         };
     }
@@ -32,29 +23,27 @@ class UserEvents extends Component {
       }
 
       const userId = await axios.get(process.env.REACT_APP_API + '/users/my-profile',
-        { headers: header})
-      console.log('userId : ', userId);
+            { headers: header})
+            console.log('userId : ', userId);
 
-      var userEventsCreated = await axios.get(process.env.REACT_APP_API + '/' + userId.data._id + '/showEvents')
-      .then( res => {
-        console.log(res.data);
-      }).catch( err => {
-        console.log(err.response);
-      })
-      console.log('userEventsCreated : ', userEventsCreated);
+      await axios.get(process.env.REACT_APP_API + '/events/' + userId.data._id + '/showEvents')
+            .then( res => {
+              console.log('reponse created meals : ', res.data);
+              this.setState({createdMeals: res.data})
+              console.log('this state meals created: ', this.state.createdMeals);
+            }).catch( err => {
+              console.log(err.response);
+            })
 
-      var userEventsJoined = await axios.get(process.env.REACT_APP_API + '/' + userId.data._id + '/guestsEvents')
-      .then( res => {
-        console.log(res.data);
-      }).catch( err => {
-        console.log(err.response);
-      })
-      console.log('userEventsCreated : ', userEventsJoined);
+      await axios.get(process.env.REACT_APP_API + '/events/' + userId.data._id + '/guestsEvents')
+            .then( res => {
+              console.log('reponse joined meals : ',res.data);
+              this.setState({joinedMeals: res.data})
+              console.log('this state meals joined : ', this.state.joinedMeals);
+            }).catch( err => {
+              console.log(err.response);
+            })
     }
-
-
-
-
 
 
     showJoinedEvents = (event) => {
@@ -69,6 +58,25 @@ class UserEvents extends Component {
 
     render() {
         console.log('status : ', this.state.status);
+
+        var { createdMeals } = this.state.createdMeals;
+        console.log('nouvelle var createMeals : ', createdMeals);
+
+        // var renderCreatedMeal = () => {
+        //   if( createdMeals === "")
+        //     return ( <div> <h1> Pas de repas créés pour l'instant </h1></div>)
+        //   else {
+        //     console.log('dans le render createdMeals : ', createdMeals);
+        //     return this.createdMeals.map((createdMeal, index) => (
+        //       <CardEvent
+        //         {...createdMeal}
+        //         key={index}
+        //       />
+        //     ));
+        //   }
+        // };
+
+
         return (
             <Fragment>
                 <nav className='nav-user-profile row'>
@@ -81,7 +89,7 @@ class UserEvents extends Component {
                     </div>
                 </nav>
                 <div className='row user-cards list-events'>
-                {this.state.status == true ? <EventsCreated/> : <EventsJoined/>}
+
                 </div>
             </Fragment>
         )
