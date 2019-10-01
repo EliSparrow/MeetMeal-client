@@ -31,6 +31,9 @@ class UserEvents extends Component {
               console.log('reponse created meals : ', res.data);
               this.setState({createdMeals: res.data})
               console.log('this state meals created: ', this.state.createdMeals);
+              var { createdMeals } = this.state.createdMeals;
+              console.log('nouvelle var createMeals : ', createdMeals);
+
             }).catch( err => {
               console.log(err.response);
             })
@@ -56,26 +59,40 @@ class UserEvents extends Component {
       this.setState({status: true})
     }
 
-    render() {
+     render() {
         console.log('status : ', this.state.status);
 
-        var { createdMeals } = this.state.createdMeals;
-        console.log('nouvelle var createMeals : ', createdMeals);
+        var {createdMeals} = this.state.createdMeals;
+        console.log('nouvelle var createdMeals : HELLO HELLO ' , createdMeals);
 
-        // var renderCreatedMeal = () => {
-        //   if( createdMeals === "")
-        //     return ( <div> <h1> Pas de repas créés pour l'instant </h1></div>)
-        //   else {
-        //     console.log('dans le render createdMeals : ', createdMeals);
-        //     return this.createdMeals.map((createdMeal, index) => (
-        //       <CardEvent
-        //         {...createdMeal}
-        //         key={index}
-        //       />
-        //     ));
-        //   }
-        // };
+        var {joinedMeals} = this.state.joinedMeals;
+        console.log('nouvelle var joinedMeals : HELLO HELLO ' , joinedMeals);
 
+        var renderCreatedMeals = () => {
+          if(this.state.createdMeals == "") return (<div><h1>Cet utilisateur n'a pas encore créé de repas pour le moment </h1></div>)
+          return this.state.createdMeals.map((createdMeal, index) => (
+            <div>
+            <CardEvent
+                {...createdMeal}
+                key={createdMeal._id}
+                index={index}
+                />
+            </div>
+          ));
+        };
+
+        var renderJoinedMeals = () => {
+          if(this.state.joinedMeals == "") return (<div><h1>Cet utilisateur n'a pas encore rejoint de repas pour le moment </h1></div>)
+          return this.state.joinedMeals.map((joinedMeal, index) => (
+            <div>
+            <CardEvent
+                {...joinedMeal}
+                key={joinedMeal._id}
+                index={index}
+                />
+            </div>
+          ));
+        };
 
         return (
             <Fragment>
@@ -89,7 +106,7 @@ class UserEvents extends Component {
                     </div>
                 </nav>
                 <div className='row user-cards list-events'>
-
+                  {this.state.status == true ? renderCreatedMeals() : renderJoinedMeals()}
                 </div>
             </Fragment>
         )
