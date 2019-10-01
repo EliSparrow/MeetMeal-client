@@ -20,6 +20,7 @@ import ShowEvent from './component/event/showEvent.js';
 import { EditEvent } from './component/event/EditEvent.js';
 import { EditProfile } from './component/profile/EditProfile.js';
 import { DeleteUser } from './component/profile/DeleteUser.js';
+import { AdminLanding } from './component/admin/AdminLanding';
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
     <Router>
       <Route component={Navbar}></Route>
       <div id="content">
+        <PrivateRoute exact path="/admin" component={AdminLanding}></PrivateRoute>
         <PrivateRoute restricted={false} component={EditProfile} exact path="/edituser"  ></PrivateRoute>
         <PrivateRoute restricted={false} component={DeleteUser} exact path="/deleteuser"  ></PrivateRoute>
 
