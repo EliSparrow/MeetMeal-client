@@ -13,13 +13,13 @@ const Footer = () => {
             <h5 className="text-uppercase">Nos réseaux sociaux</h5>
             <ul className="list-unstyled row">
               <li>
-                <Link className='fa fa-facebook col-4' style={{fontSize: 40 + 'px'}} ></Link>
+                <Link to="!#" className='fa fa-facebook col-4' style={{fontSize: 40 + 'px'}} ></Link>
               </li>
               <li>
-                <Link className='fa fa-twitter col-4' style={{fontSize: 40 + 'px'}} ></Link>
+                <Link to="!#" className='fa fa-twitter col-4' style={{fontSize: 40 + 'px'}} ></Link>
               </li>
               <li>
-                <Link className='fa fa-linkedin col-4' style={{fontSize: 40 + 'px'}} ></Link>
+                <Link to="!#" className='fa fa-linkedin col-4' style={{fontSize: 40 + 'px'}} ></Link>
               </li>
             </ul>
           </div>
