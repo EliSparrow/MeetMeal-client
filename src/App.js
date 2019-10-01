@@ -9,6 +9,8 @@ import PublicRoute from './component/rooter/publicRoute.js';
 import ListUsers from './component/profile/ListUsers.js'
 import Navbar from './component/layout/navbar.js';
 import Footer from './component/layout/footer.js';
+import Team from './component/layout/team.js';
+import Contact from './component/layout/contact.js';
 import Home from './component/home/home.js';
 import Toggle from './component/toggleLogReg/toggle.js';
 import UserProfile from './component/profile/my-profile/userProfile.js';
@@ -32,6 +34,8 @@ function App() {
 
         {/* <PublicRoute restricted={false} component={SearchBarHome} path="/" exact /> */}
         <PublicRoute exact path="/toggle" component={Toggle}/>
+        <PublicRoute exact path="/team" component={Team}/>
+        <PublicRoute exact path="/contact" component={Contact}/>
         <PublicRoute restricted={false} component={Home} path="/" exact />
         <PublicRoute restricted={true} component={Login} path="/login" exact />
         <PublicRoute restricted={true} exact path="/register" component={Register}/>
