@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter, Link } from 'react-router-dom';
 import axios from 'axios';
 import image from '../../images/MeatMeal.png'
 // import '../../stylesheets/navbar.css';
@@ -48,10 +49,10 @@ class Navbar extends Component {
               { avatar ? <img alt='avatar' src={ avatar } className='nav-avatar' ></img> : <i className="fa fa-user fa-fw"></i> }
             </a>
             <div className="dropdown-menu dropdown-menu-right">
-              <a className="dropdown-item" href="/profile">Voir mon profil</a>
-              <a className="dropdown-item" href="/edituser">Editer mon profil</a>
+              <Link className="dropdown-item" to="/profile">Voir mon profil</Link>
+              <Link className="dropdown-item" to="/edituser">Editer mon profil</Link>
               <div className="dropdown-divider"></div>
-              <a className="dropdown-item" href="/login" onClick={this.logout}><i className="fa fa-sign-out fa-lg"></i> Se déconnecter</a>
+              <Link className="dropdown-item" to="/login" onClick={this.logout}><i className="fa fa-sign-out fa-lg"></i> Se déconnecter</Link>
             </div>
           </li>
         </ul>
@@ -61,10 +62,10 @@ class Navbar extends Component {
     const userLinks = (
       <>
         <li className="nav-item">
-          <a className="nav-link nav-link-left" href="/">Rechercher un repas</a>
+          <Link className="nav-link nav-link-left" to="/">Rechercher un repas</Link>
         </li>
         <li className="nav-item">
-          <a className="nav-link nav-link-left" href="/listusers">Rechercher un membre</a>
+          <Link className="nav-link nav-link-left" to="/listusers">Rechercher un membre</Link>
         </li>
       </>
     )
@@ -72,28 +73,28 @@ class Navbar extends Component {
     const offlineLinks = (
         <>
           <li className="nav-item">
-            <a className="nav-link nav-link-left" href="/login">Connexion</a>
+            <Link className="nav-link nav-link-left" to="/login">Connexion</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link nav-link-left" href="/register">Inscritpion</a>
+            <Link className="nav-link nav-link-left" to="/register">Inscritpion</Link>
           </li>
         </>
     )
 
     return(
       <div>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <nav className="navbar fixed-top navbar-expand-lg navbar-light">
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
-          <a className='navbar-brand' href='/'>
-            <img className='navLogo' src={image} alt='logo' href='/'></img>
-          </a>
+          <Link className='navbar-brand' to='/'>
+            <img className='navLogo' src={image} alt='logo' to='/'></img>
+          </Link>
         
           <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
               <li className="nav-item">
-                <a className="nav-link nav-link-left" href="/">Acceuil <span className="sr-only">(current)</span></a>
+                <Link className="nav-link nav-link-left" to="/">Acceuil <span className="sr-only">(current)</span></Link>
               </li>
 
               { localStorage.token ? userLinks : offlineLinks }
