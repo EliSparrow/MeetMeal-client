@@ -57,15 +57,14 @@ class Home extends Component {
         <div className="container-search-bar-home">
           <form action="#" method="post" noValidate="noValidate" className='search-bar-home'>
               <div className="row row-search-bar-home">
-                  <div className="col-lg-12 search-bar-home">
-                      <div className="row">
+                  <div className="col-lg-12 search-bar-home" >
+                      <div className="row" style={{display: 'flex', width: 100 + '%', justifyContent: "center"}}>
                           <div className="input-search-bar-home">
                               <input type="text" className="form-control search-slt" placeholder="Adresse : " id='address' name='location' onChange={this.handleChange}></input>
                           </div>
                           <div className="input-search-bar-home">
-                          <input type="date" id="date" name="date"
-
-                                 min={today} max="2200-12-31" onChange={this.handleChange}></input>
+                          <input type="date" id="date" name="date" min={today} max="2200-12-31" onChange={this.handleChange}
+                          style={{width: 100 + '%', lineHeight: 44 + 'px'}}></input>
                           </div>
                           <div className="input-search-bar-home">
                             <select className="form-control search-slt" id="exampleFormControlSelect1" name='typeOfMeal' onChange={this.handleChange}>
@@ -87,7 +86,7 @@ class Home extends Component {
                               <option>Espagnole</option>
                           </select>
                         </div>
-                        <div className="input-search-bar-home">
+                        <div className="input-search-bar-home button">
                             <button type="button" className="btn btn-danger wrn-btn " onClick={this.sendSearch}>Rechercher</button>
                         </div>
                     </div>
@@ -96,8 +95,8 @@ class Home extends Component {
         </form>
       </div>
     </section>
-    <div className="col-lg-4 col-md-4 col-sm-12 p-0 button">
-      <button className="btn btn-primary btn-danger wrn-btn button-search-bar-home" >Organiser un repas</button>
+    <div className="button" style={{width: 300 + 'px'}}>
+      <button className="btn btn-primary btn-danger wrn-btn button-search-bar-home" ><a href="/create-event" style={{color: "white"}}>Organiser un repas</a></button>
     </div>
   </div>
   )
