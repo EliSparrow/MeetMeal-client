@@ -32,7 +32,6 @@ class ShowEvent extends Component {
 
   componentDidMount(){
 //    const eventId = this.props.match.params
-    console.log ("coucou");
     const eventId = this.props.match.params.eventId;
     console.log(eventId);
     const header = {

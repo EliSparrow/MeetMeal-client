@@ -96,8 +96,6 @@ export class EditProfile extends Component {
             toquesAvailable: parseInt(this.state.newToquesAvailable),
             id : this.state.user._id
         };
-        console.log(editUser.address);
-        console.log(editUser.id);
 
         axios.put(process.env.REACT_APP_API + `/users/`+ editUser.id, editUser, { headers: header })
             .then(res => {
