@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 export class CardUser extends Component {
     constructor(props) {
-        console.log('constructor'+props._id);
         super(props);
         this.state = {
             _id: this.props._id,
@@ -53,7 +52,6 @@ export class CardUser extends Component {
         return (
             <div className="card mb-4" style={{width: 18 + 'em'}}>
                 <Link to={"/users/"+this.state._id} >
-                {console.log(this.state._id)}
                 <img className="card-img img-fluid"  src= { avatar } alt="Card image cap" />
                 </Link>
                 <div className="card-body">

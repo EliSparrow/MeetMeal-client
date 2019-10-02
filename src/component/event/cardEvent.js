@@ -67,7 +67,7 @@ class CardEvent extends Component {
   }
 
   checkEdit = () => {
-    const { user, _id } = this.state;
+    const { user } = this.state;
     if (( user && (user._id === this.props.user._id)) || (user && (user.admin === true))){
       return(
         <div className='edit-button'>
