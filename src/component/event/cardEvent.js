@@ -53,7 +53,7 @@ class CardEvent extends Component {
       'x-auth-token': localStorage.getItem('token')
     }
     console.log(this.props.user._id);
-    Axios.get('http://localhost:1509/users/my-profile', { headers: header })
+    Axios.get(process.env.REACT_APP_API + '/users/my-profile', { headers: header })
       .then((res) => {
         this.setState({ user: res.data })
         console.log(res.data);

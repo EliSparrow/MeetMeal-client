@@ -11,7 +11,7 @@ const Register = props => {
     const submitRegister = (e) => {
 
         const { firstname, lastname, age, email, password } = values
-        axios.post('http://localhost:1509/users/register', {
+        axios.post(process.env.REACT_APP_API + '/users/register', {
              firstname,
              lastname,
              age,

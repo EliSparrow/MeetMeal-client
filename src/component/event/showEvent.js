@@ -38,7 +38,7 @@ class ShowEvent extends Component {
     const header = {
       'x-auth-token': localStorage.getItem('token')
     }
-    const url = 'http://localhost:1509/events/' + eventId;
+    const url = process.env.REACT_APP_API + '/events/' + eventId;
     console.log(url);
 
     axios.get(url, {

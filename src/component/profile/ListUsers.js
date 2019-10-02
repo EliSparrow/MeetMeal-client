@@ -27,7 +27,7 @@ export class ListUsers extends Component {
         const header = {
             'x-auth-token': localStorage.getItem('token')
           }
-        axios.get('http://localhost:1509/users', { headers: header })
+        axios.get(process.env.REACT_APP_API + '/users', { headers: header })
             .then(response => {
                 console.log(response.data);
                 this.setState({ users: response.data });
@@ -49,7 +49,7 @@ export class ListUsers extends Component {
           }
         event.preventDefault();
         console.log(this.state.search);
-        axios.post('http://localhost:1509/search/users',{ search: this.state.search },{ headers: header })
+        axios.post(process.env.REACT_APP_API + '/search/users',{ search: this.state.search },{ headers: header })
             .then(response => {
                 console.log(response.data.result);
                 this.setState({ users: response.data.result })
@@ -70,8 +70,7 @@ export class ListUsers extends Component {
                     <div>
                     <CardUser
                         {...user}
-                        key={user._id}
-                        index={index}
+                        key={users[index]._id}
                         />
                     </div>
                 ));
