@@ -49,6 +49,7 @@ export class ListUsers extends Component {
         event.preventDefault();
         axios.post(process.env.REACT_APP_API + '/search/users',{ search: this.state.search },{ headers: header })
             .then(response => {
+                console.log(response.data.result);
                 this.setState({ users: response.data.result })
             })
             .catch(err => {

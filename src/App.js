@@ -37,7 +37,7 @@ function App() {
         <PrivateRoute exact path="/edituser/:_id" component={AdminEditForm}></PrivateRoute>
         <PrivateRoute exact path="/admin" component={AdminLanding}></PrivateRoute>
         <PrivateRoute restricted={false} component={EditProfile} exact path="/edituser"  ></PrivateRoute>
-        <PrivateRoute restricted={false} component={DeleteUser} exact path="/deleteuser"  ></PrivateRoute>
+        <PrivateRoute restricted={false} component={DeleteUser} exact path="/deleteuser/:id"  ></PrivateRoute>
         <PublicRoute exact path="/toggle" component={Toggle}/>
         <PublicRoute exact path="/team" component={Team}/>
         <PublicRoute exact path="/contact" component={Contact}/>

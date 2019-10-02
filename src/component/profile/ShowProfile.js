@@ -61,7 +61,7 @@ class ShowProfile extends Component {
              <Link to ={"/edituser/" +  userShow._id} className='btn btn-warning btn-sm'>
                   Modifier Votre Profile
                </Link>
-               <Link to ='/deleteuser' className='btn btn-danger btn-sm'>
+               <Link to ={"/deleteuser/" + userShow._id} className='btn btn-danger btn-sm'>
                   Bloquez votre compte
                </Link>
           </div>

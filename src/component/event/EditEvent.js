@@ -230,7 +230,7 @@ export class EditEvent extends Component {
                         <hr style={{width: 100 + 'px'}}></hr>
                         <div className='row'>
                         <button className="submit col-md-auto" style={{marginRight: 10 + 'px'}}>Modifiez votre évènement</button>
-                        <button className="reset col-md-auto"><Link redirect to='/editmeal' style={{color: 'white'}}>Annuler</Link></button>
+                        <button className="reset col-md-auto"><Link to='/editmeal' style={{color: 'white'}}>Annuler</Link></button>
                         </div>
                     </form>
                 </div>
