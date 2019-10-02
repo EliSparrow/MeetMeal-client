@@ -140,19 +140,32 @@ export class EditEvent extends Component {
         } = this.state
 
         return(
-            <div className="container">
+            <div className="container" style={{textalign: "center"}}>
                  {meal ? (
-                <div className= 'row'>
-                    {meal.time.hour}:{meal.time.minutes}
+                <div className='row'>
+                    {/* {meal.time.hour}:{meal.time.minutes} */}
                     <form onSubmit={ this.handleEditMeal }>
-                        <div className='title'>
-                            <h1>Modifiez votre évènement: </h1>
-                        </div>
-                        <div className='col lg-4 meal-inputs'>
+                        <div className='title col-12'>
+                            <h1>Modifiez votre évènement</h1>
+                            <hr className="col-12" style={{width: 'auto'}}></hr>
+                            <div className='row'>
+                        <div className='col-3 meal-inputs'>
+                            <label>Titre de l'évenement</label>
                             <input type='text' defaultValue={meal.title} name='newTitle' placeholder='Titre' className='input-newTitle' onChange={ this.handleChange }></input>
                         </div>
-                        <div className='col-lg-4 event-inputs'>
+                        <div className='col-3 meal-inputs'>
+                            <label>Heure de l'évènement</label><br></br>
                             <input type="time" className="input-time" name="newTime" defaultValue={ timeOfMeal } onChange={this.handleChange}></input>
+                        </div>
+                        <div className='col-3 meal-inputs'>
+                            <label>Nombre d'invités </label><br></br>
+                            <input type='number' defaultValue={meal.numberMaxOfGuests} name='newNumberMaxOfGuests' className='input-numberMaxOfGuests' placeholder="Nombre D'invités" onChange={ this.handleChange } style={{width: 40 + 'px'}}></input>
+                        </div>
+                        <div className='col-3 meal-inputs'>
+                            <label>Coût du repas</label><br></br>
+                            <input type='text' defaultValue={meal.cost} name='newCost' className='input-cost' placeholder='Prix' onChange={ this.handleChange } style={{width: 40 + 'px'}}></input>
+                        </div>
+                        </div>
                         </div>
                         {/* <div className='col lg-4 meal-inputs'>
                             <input type='text' defaultValue={meal.typeOfCuisine} name='newTypeOfCuisine' placeholder='Choisisez...' className='input-newTypeOfcuisine' onChange={ this.handleChange }></input>
@@ -160,16 +173,20 @@ export class EditEvent extends Component {
                         {/* <div className='col lg-4 meal-inputs'>
                             <input type='text' defaultValue={meal.typeOfMeal} name='newTypeOfMeal' className='input-newTypeOfMeal' placeholder='Choisisez...' onChange={ this.handleChange }></input>
                         </div> */}
-                        <div className='col lg-4 meal-inputs'>
-                            <input type='text' defaultValue={meal.description} name='newDescription' className='input-description' placeholder='email' onChange={ this.handleChange }></input>
+                        <div className='col-12 meal-inputs'>
+                            <label>Description de l'évènement</label><br></br>
+                            <textarea type='textarea' defaultValue={meal.description} name='newDescription' className='input-description' placeholder='email' onChange={ this.handleChange } style={{width: 440 + 'px', height: 50 + 'px'}}></textarea>
                         </div>
-                        <div className='col lg-4 meal-inputs'>
-                            <input type='text' defaultValue={meal.menu} name='newMenu' className='input-menu' placeholder='Menu' onChange={ this.handleChange }></input>
+                        <div className='meal-inputs'>
+                            <label>Menu</label><br></br>
+                            <input type='text' defaultValue={meal.menu} name='newMenu' className='input-menu' placeholder='Menu' onChange={ this.handleChange }  style={{width: 400 + 'px'}}></input>
                         </div>
-                        <div className='col lg-4 meal-inputs'>
-                            <input type='text' defaultValue={meal.allergens} name='newAllergens' className='input-allergens' placeholder='Allergènes' onChange={ this.handleChange }></input>
+                        <div className='col meal-inputs'>
+                            <label>Allergènes</label><br></br>
+                            <input type='text' defaultValue={meal.allergens} name='newAllergens' className='input-allergens' placeholder='Allergènes' onChange={ this.handleChange } style={{width: 400 + 'px', textalign: "center"}}></input>
                         </div>
-                        <div className='col-lg-4'>
+                        <div className='row'>
+                            <label>Type de repas</label>
                             <select className="form-control search-slt" id="newTypeOfMeal" onChange={this.handleChangeSelect}>
                                 <option id='newTypeOfMeal'>{meal.typeOfMeal}</option>
                                 <option id='newTypeOfMeal'>Petit-Dejeuner</option>
@@ -179,7 +196,8 @@ export class EditEvent extends Component {
                                 <option id='newTypeOfMeal'>Diner</option>
                             </select>
                         </div>
-                        <div className='col-lg-4'>
+                        <div className='row'>
+                            <label>Type de cuisine</label>
                             <select className="form-control search-slt" id="newTypeOfCuisine" onChange={this.handleChangeSelect}>
                                 <option id='newTypeOfCuisine'>{meal.typeOfCuisine}</option>
                                 <option id='newTypeOfCuisine'>Americaine</option>
@@ -190,26 +208,30 @@ export class EditEvent extends Component {
                                 <option id='newTypeOfCuisine'>Espagnole</option>
                             </select>
                         </div>
-                        <div className='col lg-4 meal-inputs'>
-                            <input type='text' defaultValue={meal.numberMaxOfGuests} name='newNumberMaxOfGuests' className='input-numberMaxOfGuests' placeholder="Nombre D'invités" onChange={ this.handleChange }></input>
+                        <hr style={{width: 100 + 'px'}}></hr>
+                        <div className='meal-inputs'>
+                            <label>Adresse postale</label><br></br>
+                            <label style={{marginRight: 10 + 'px'}}>Numero , Rue  </label>
+                            <input className='col-4' type='text' defaultValue={meal.address} name='newAddress' className='input-address' placeholder='Adresse' onChange={ this.handleChange }></input><br></br>
+                            <label style={{marginRight: 10 + 'px'}}>Code postal  </label>
+                            <input className='col-4' type='text' defaultValue={meal.zipCode} name='newZipCode' className='input-zipCode' placeholder='Code Postal' onChange={ this.handleChange }></input><br></br>
+                            <label style={{marginRight: 10 + 'px'}}>Ville</label>
+                            <input className='col-4' type='text' defaultValue={meal.city} name='newCity' className='input-city' placeholder='Ville' onChange={ this.handleChange }></input>
                         </div>
-                        <div className='col lg-4 meal-inputs'>
-                            <input type='text' defaultValue={meal.zipCode} name='newZipCode' className='input-zipCode' placeholder='Code Postal' onChange={ this.handleChange }></input>
+                        <hr style={{width: 100 + 'px'}}></hr>
+                        <div className='col meal-inputs' style={{width: 200 + 'px'}}>
+                            <label>En attente / Accepté</label><br></br>
+                            <select className="form-control search-slt" id="newStatus" onChange={this.handleChangeSelect}>
+                            <option id='newStatus' onChange={ this.handleChange }>{meal.status}</option>
+                            <option id='newStatus' onChange={ this.handleChange }>En attente</option>
+                            <option id='newStatus' onChange={ this.handleChange }>Accepté</option>
+                            </select>
                         </div>
-                        <div className='col lg-4 meal-inputs'>
-                            <input type='text' defaultValue={meal.address} name='newAddress' className='input-address' placeholder='Adresse' onChange={ this.handleChange }></input>
+                        <hr style={{width: 100 + 'px'}}></hr>
+                        <div className='row'>
+                        <button className="submit col-md-auto" style={{marginRight: 10 + 'px'}}>Modifiez votre évènement</button>
+                        <button className="reset col-md-auto"><Link redirect to='/editmeal' style={{color: 'white'}}>Annuler</Link></button>
                         </div>
-                        <div className='col lg-4 meal-inputs'>
-                            <input type='text' defaultValue={meal.city} name='newCity' className='input-city' placeholder='Ville' onChange={ this.handleChange }></input>
-                        </div>
-                        <div className='col lg-4 meal-inputs'>
-                            <input type='text' defaultValue={meal.status} name='newstatus' className='input-status' placeholder='Statut' onChange={ this.handleChange }></input>
-                        </div>
-                        <div className='col lg-4 meal-inputs'>
-                            <input type='text' defaultValue={meal.cost} name='newCost' className='input-cost' placeholder='Prix' onChange={ this.handleChange }></input>
-                        </div>
-                        <button className="submit">Modifiez votre Evènement</button>
-                        <button className="reset"><Link redirect to='/editmeal'>Annuler</Link></button>
                     </form>
                 </div>
                  ) : null }
