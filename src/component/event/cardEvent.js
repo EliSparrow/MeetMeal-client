@@ -59,6 +59,7 @@ class CardEvent extends Component {
       .then((res) => {
         this.setState({ user: res.data })
         console.log(res.data);
+        console.log(this.props.user._id)
       })
       .catch((err) => {
         console.error(err);
@@ -67,14 +68,15 @@ class CardEvent extends Component {
 
   checkEdit = () => {
     const { user, _id } = this.state;
-    if ( user && (user._id === this.props.user._id)){
+    if (( user && (user._id === this.props.user._id)) || (user && (user.admin === true))){
       return(
         <div className='edit-button'>
-          <a href={"/editevent/" + _id}><button className="btn btn-warning">Modifiez votre évènement!</button></a>
+          <Link to ={"/editevent/" + this.props._id }>
+            <button type="submit">Je modifie mon évènement !</button>
+          </Link>
         </div>
       )
     }
-    console.log(this.props.user._id)
   }
 
   render(){
@@ -111,9 +113,9 @@ class CardEvent extends Component {
         <p className="card-text">Pour {numberMaxOfGuests} personnes</p>
         <p className="card-text">Coût : {cost} Toques</p>
         <button type="submit">Je rejoins l'évenement !</button>
-        <Link to ={"/editevent/" + this.props._id }>
-        <button type="submit">Je modifie mon évènement !</button>
-        </Link>
+        <div className="checkedit">
+          {this.checkEdit()}
+        </div>
         </div>
       </div>
     </div>
