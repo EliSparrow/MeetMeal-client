@@ -1,13 +1,13 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
 // import {useState} from 'react';
 import axios from 'axios';
 
 class ShowProfile extends Component {
    constructor(props) {
-      console.log('ShowProfile constructor '+props.profileId)
       super(props);
       this.state = {
-         user: "",
+         user: null,
          profileId: this.props._profileId,
          lastname:"",
          firstname: "",
@@ -21,24 +21,17 @@ class ShowProfile extends Component {
    }
 
    componentDidMount() {
-      console.log('element url : ', this.props.match.params);
-      console.log('element url : ', this.props.match.params.profileId);
 
       //const userId = this.props.profileId;
-      console.log("Props = "+JSON.stringify(this.props));
-
       const header = {
          'x-auth-token': localStorage.getItem('token')
       }
       const url = 'http://localhost:1509/users/' +this.props.match.params.profileId;
-      console.log(url);
 
       axios.get(url, {
          headers: header
       }).then( res => {
-         console.log('Voici la reponse du then : ',res.data);
          this.setState({ user : res.data });
-         console.log(this.state.user);
       }).catch(err => {
          console.log(err.response);
       })
@@ -46,11 +39,10 @@ class ShowProfile extends Component {
    }
 
    render() {   
-      // console.log('User render '+this.state.user.profileId);
-
+      var { user } = this.state
       return(
          <div className='container user-profile'>
-            {/* {user ? ( */}this.state.user.
+            {user ? (
             <div className='row'>
                <div className='col-lg-3 user-info-intro'>
                   <img className='img-fluid' src={ this.state.user.avatar } alt='user profile avatar'></img>
@@ -63,23 +55,25 @@ class ShowProfile extends Component {
                <div className='col-lg-4 info-profile' id='info-profile'>
                   <div className='user-name'>
                      <p>Age : { this.state.user.age }</p>
-                     { console.log(this.state.user.age) }
                      <p>Situation amoureuse :  { this.state.user.loveStatus }</p>
                   </div>
                </div>
-               {/* </div> */}
-               {/* <div className='row'> */}
                <div className='col-lg-4 user-info-intro'>
                   <p className='user-info'>Localisation: { this.state.user.zipCode } { this.state.user.city }</p>
                </div>
-               {/* </div> */}
-               {/* <div className='row'> */}
                <div className='col-lg-4 user-info-bio'>
                   <p className='user-bio'>Description: { this.state.user.bio }</p>
                </div>
-               {/* </div> */}
+               <div className='col-lg-4 user-button-delete-edit'>
+                  <Link to ={"/edituser/" +  user._id} className='btn btn-warning btn-sm'>
+                     Modifier Votre Profile
+                  </Link>
+                  <Link to ='/deleteuser' className='btn btn-danger btn-sm'>
+                     Bloquez votre compte
+                  </Link>
+               </div>
             </div>
-            {/* ) : null } */}
+            ) : null }
          </div>
       );
    }
