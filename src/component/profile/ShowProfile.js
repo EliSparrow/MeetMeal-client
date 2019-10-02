@@ -21,12 +21,12 @@ class ShowProfile extends Component {
    }
 
    componentDidMount() {
-
+      
       //const userId = this.props.profileId;
       const header = {
          'x-auth-token': localStorage.getItem('token')
       }
-      const url = 'http://localhost:1509/users/' +this.props.match.params.profileId;
+      const url = process.env.REACT_APP_API + '/users/' + this.props.match.params.profileId;
 
       axios.get(url, {
          headers: header
