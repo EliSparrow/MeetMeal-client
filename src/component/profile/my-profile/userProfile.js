@@ -11,7 +11,6 @@ const getUserProfile = (( setProfiles, props) => {
   const header = {
     'x-auth-token': localStorage.getItem('token')
   }
-  console.log(header);
   axios.get(process.env.REACT_APP_API + '/users/my-profile',
     { headers: header},
   ).then(res => {

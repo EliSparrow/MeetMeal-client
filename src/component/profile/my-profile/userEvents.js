@@ -24,15 +24,11 @@ class UserEvents extends Component {
 
       const userId = await axios.get(process.env.REACT_APP_API + '/users/my-profile',
             { headers: header})
-            console.log('userId : ', userId);
 
       await axios.get(process.env.REACT_APP_API + '/events/' + userId.data._id + '/showEvents')
             .then( res => {
-              console.log('reponse created meals : ', res.data);
               this.setState({createdMeals: res.data})
-              console.log('this state meals created: ', this.state.createdMeals);
               var { createdMeals } = this.state.createdMeals;
-              console.log('nouvelle var createMeals : ', createdMeals);
 
             }).catch( err => {
               console.log(err.response);
@@ -40,9 +36,7 @@ class UserEvents extends Component {
 
       await axios.get(process.env.REACT_APP_API + '/events/' + userId.data._id + '/guestsEvents')
             .then( res => {
-              console.log('reponse joined meals : ',res.data);
               this.setState({joinedMeals: res.data})
-              console.log('this state meals joined : ', this.state.joinedMeals);
             }).catch( err => {
               console.log(err.response);
             })
@@ -60,7 +54,6 @@ class UserEvents extends Component {
     }
 
      render() {
-        console.log('status : ', this.state.status);
 
         var {createdMeals} = this.state.createdMeals;
         console.log('nouvelle var createdMeals : HELLO HELLO ' , createdMeals);

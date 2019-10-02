@@ -97,7 +97,6 @@ export class EditEvent extends Component {
 
     handleEditMeal = e => {
         e.preventDefault();
-        console.log(this.state.newTime);
         const header = {
             'x-auth-token': localStorage.getItem('token')
         }
