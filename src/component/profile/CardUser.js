@@ -21,7 +21,6 @@ export class CardUser extends Component {
     }
 
     componentDidMount() {
-        console.log("ComponentDidMount"+this.props._id);
         this.setState({
             _id: this.props._id,
             lastname: this.props.lastname,
@@ -51,7 +50,6 @@ export class CardUser extends Component {
             city,
             toquesAvailable
         } = this.state;
-        console.log(_id);
         return (
             <div className="card mb-4" style={{width: 18 + 'em'}}>
                 <Link to={"/users/"+this.state._id} >

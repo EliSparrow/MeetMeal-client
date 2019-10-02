@@ -45,9 +45,12 @@ class Login extends Component {
       })
     .then(res => {
       if (res.status === 200) {
-        console.log(res.data.token)
         localStorage.setItem("token", res.data.token);
-        this.props.history.push('/');
+        if(res.data.user.admin === false)
+          this.props.history.push('/');
+          else{
+            this.props.history.push('/admin');
+          }
       }
     }).catch(err => {
       console.log(err);

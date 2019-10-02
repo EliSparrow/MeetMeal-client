@@ -66,7 +66,7 @@ class CreateEvent extends Component {
       numberMaxOfGuests: parseInt(this.state.numberMaxOfGuests),
       cost: parseInt(this.state.cost)
     }
-  //  console.log(body);
+   console.log(body);
 
     axios.post(process.env.REACT_APP_API + '/events/create',
       body,

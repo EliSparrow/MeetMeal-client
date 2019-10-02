@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
 
 import '../../stylesheets/cardEvent.css';
 
@@ -37,6 +38,7 @@ class CardEvent extends Component {
       typeOfMeal: this.props.typeOfMeal,
       typeOfCuisine: this.props.typeOfCuisine
     })
+    console.log(this.props._id);
     this.getUser();
   }
 
@@ -109,6 +111,9 @@ class CardEvent extends Component {
         <p className="card-text">Pour {numberMaxOfGuests} personnes</p>
         <p className="card-text">Coût : {cost} Toques</p>
         <button type="submit">Je rejoins l'évenement !</button>
+        <Link to ={"/editevent/" + this.props._id }>
+        <button type="submit">Je modifie mon évènement !</button>
+        </Link>
         </div>
       </div>
     </div>
