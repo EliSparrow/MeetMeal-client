@@ -135,10 +135,10 @@ class CreateEvent extends Component {
         {headers: headers}
       ).then( res => {
         alert('Félicitiations : vous avez créé un repas !')
-        // this.props.history.push('/');
+        this.props.history.push('/list-events');
       }).catch( err => {
         console.log(err.response);
-        // this.props.history.push('/');
+        this.props.history.push('/list-events');
       })
     })
   };
