@@ -29,7 +29,6 @@ export class ListUsers extends Component {
           }
         axios.get(process.env.REACT_APP_API + '/users', { headers: header })
             .then(response => {
-                console.log(response.data);
                 this.setState({ users: response.data });
             })
             .catch(err => {
@@ -48,10 +47,8 @@ export class ListUsers extends Component {
             'x-auth-token': localStorage.getItem('token')
           }
         event.preventDefault();
-        console.log(this.state.search);
         axios.post(process.env.REACT_APP_API + '/search/users',{ search: this.state.search },{ headers: header })
             .then(response => {
-                console.log(response.data.result);
                 this.setState({ users: response.data.result })
             })
             .catch(err => {
