@@ -209,7 +209,7 @@ export class EditEvent extends Component {
                             <input type='text' defaultValue={meal.cost} name='newCost' className='input-cost' placeholder='Prix' onChange={ this.handleChange }></input>
                         </div>
                         <button className="submit">Modifiez votre Evènement</button>
-                        <button className="reset"><Link redirect to='/editmeal'>Annuler</Link></button>
+                        <button className="reset"><Link to='/editmeal'>Annuler</Link></button>
                     </form>
                 </div>
                  ) : null }

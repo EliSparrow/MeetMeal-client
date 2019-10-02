@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import Axios from 'axios';
 import { Link } from 'react-router-dom';
 
 export class DeleteUser extends Component {
@@ -7,27 +7,42 @@ export class DeleteUser extends Component {
         super(props);
 
         this.state = {
-            user: null,
+            userShow: null,
+            userConnected: null,
             isDesactivated: false
         };
-
-
     }
-
+    
     componentDidMount() {
         const header = {
             'x-auth-token': localStorage.getItem('token')
         }
-        axios.get(process.env.REACT_APP_API + '/users/my-profile',{ headers: header})
+        Axios.get(process.env.REACT_APP_API + '/users/' + this.props.match.params.id,{ headers: header})
             .then(res => {
-                this.setState({ user: res.data });
+                this.setState({ userShow: res.data });
             })
             .catch(err => {
                 console.error(err)
             })
-    }
+            this.getUser()
+        }
+        
+        getUser = async () => {
+            const header = {
+              'x-auth-token': localStorage.getItem('token')
+            }
+            Axios.get(process.env.REACT_APP_API + '/users/my-profile', { headers: header })
+              .then((res) => {
+                this.setState({ userConnected: res.data })
+                console.log(res.data);
+            })
+              .catch((err) => {
+                console.error(err);
+            })
+        }
 
-    handleDeleteUser = () => {
+        handleDeleteUser = () => {
+            console.log(this.state.userShow._id);
         const header = {
             'x-auth-token': localStorage.getItem('token')
         }
@@ -36,12 +51,17 @@ export class DeleteUser extends Component {
             var deleteUser = {
                 isDesactivated: this.state.isDesactivated
             }
-            axios.put(process.env.REACT_APP_API + `/users/`+ this.state.user._id, deleteUser, { headers: header })
+            Axios.put(process.env.REACT_APP_API + `/users/`+ this.state.userShow._id, deleteUser, { headers: header })
             .then(res => {
-                alert('Votre profil a été modifié');
-                this.setState({ user: res.data });
-                localStorage.clear();
-                this.props.history.push('/');
+                alert('Le profil est désormais bloqué');
+                this.setState({ userShow: res.data });
+                if (this.state.userShow._id == this.state.userConnected._id){
+                    localStorage.removeItem('token');
+                    this.props.history.push('/');
+                }
+                else{
+                    this.props.history.push('/admin');
+                }
             })
             .catch(err => {
                 console.error(err.response);
@@ -50,14 +70,14 @@ export class DeleteUser extends Component {
     }
 
     render() {
-        var { user } = this.state
+        var { userShow } = this.state
         return(
             <div className="container-fluid">
-                { user ? (
+                { userShow ? (
                     <div className='deleteUser'>
                         <h2>Vous êtes sur le point de bloquer votre compte</h2>
                         <button className="delete" onClick={this.handleDeleteUser}>Bloquez votre compte</button>
-                        <button className="reset"><Link redirect to='/profile'>Annuler</Link></button>
+                        <button className="reset"><Link to='/profile'>Annuler</Link></button>
                     </div>
                 ) : null }
             </div>
