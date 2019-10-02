@@ -143,7 +143,7 @@ export class AdminCreateForm extends Component {
                             <input type="checkbox" name="newAdmin" className='input-Admin' value="true"  onChange={this.handleChange}/>Admin
                         </div>
                         <button className="submit">Ajoutez un profile</button>
-                        <button className="reset"><Link redirect to='/edituser'>Annuler</Link></button>
+                        <button className="reset"><Link to='/edituser'>Annuler</Link></button>
                     </form>
                 </div>
             </div>

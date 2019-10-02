@@ -72,10 +72,10 @@ export class EditEvent extends Component {
             { headers: header},
         ).then(res => {
               this.setState({ meal: res.data });
-              console.log(res.data);
               if (res.data.time.hour >= 0 && res.data.time.hour < 10 ) res.data.time.hour = "0" + res.data.time.hour;
               if (res.data.time.minutes >= 0 && res.data.time.minutes < 10 ) res.data.time.minutes = "0" + res.data.time.minutes;
-              this.setState({ timeOfMeal : res.data.time.hour + ":" + res.data.time.minutes});
+              this.setState({ timeOfMeal : res.data.time.hour + ":" + res.data.time.minutes ,
+                              newTime: this.state.timeOfMeal });
           })
           .catch(err => {
               console.error(err);
@@ -95,14 +95,14 @@ export class EditEvent extends Component {
     }
 
 
-
     handleEditMeal = e => {
         e.preventDefault();
-
+        console.log(this.state.newTime);
         const header = {
             'x-auth-token': localStorage.getItem('token')
         }
         const eventId = this.props.match.params.eventId;
+        
         var editMeal = {
             title: this.state.newTitle,
             hour: this.state.newTime.substr(0,2),
@@ -119,7 +119,7 @@ export class EditEvent extends Component {
             status: this.state.newStatus,
             cost: parseInt(this.state.newCost),
             id : eventId
-        };
+        }
 
         axios.put(process.env.REACT_APP_API + `/events/`+ editMeal.id, editMeal, { headers: header })
             .then(res => {
@@ -146,7 +146,7 @@ export class EditEvent extends Component {
                     {meal.time.hour}:{meal.time.minutes}
                     <form onSubmit={ this.handleEditMeal }>
                         <div className='title'>
-                            <h1>Modifiez votre profile: </h1>
+                            <h1>Modifiez votre évènement: </h1>
                         </div>
                         <div className='col lg-4 meal-inputs'>
                             <input type='text' defaultValue={meal.title} name='newTitle' placeholder='Titre' className='input-newTitle' onChange={ this.handleChange }></input>
