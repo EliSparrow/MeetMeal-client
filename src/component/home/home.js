@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../../stylesheets/home.css';
 
@@ -96,8 +96,9 @@ class Home extends Component {
       </div>
     </section>
     <div className="button" style={{width: 300 + 'px'}}>
-      <button className="btn btn-primary btn-danger wrn-btn button-search-bar-home" 
-      onclick="window.location.href = 'http://localhost:3000/create-event';" >Organiser un repas</button>
+      <Link to="/create-event">
+        <button className="btn btn-primary btn-danger wrn-btn button-search-bar-home">Organiser un repas</button>
+      </Link>
     </div>
   </div>
   )
