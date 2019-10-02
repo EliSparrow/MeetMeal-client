@@ -26,6 +26,7 @@ import SearchedEvents from './component/event/searchedEvents.js';
 import ShowProfile from './component/profile/ShowProfile';
 
 import { AdminLanding } from './component/admin/AdminLanding';
+import { AdminEditForm } from './component/admin/AdminEditForm';
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
     <Router>
       <Route component={Navbar}></Route>
       <div id="content">
+        <PrivateRoute exact path="/edituser/:_id" component={AdminEditForm}></PrivateRoute>
         <PrivateRoute exact path="/admin" component={AdminLanding}></PrivateRoute>
         <PrivateRoute restricted={false} component={EditProfile} exact path="/edituser"  ></PrivateRoute>
         <PrivateRoute restricted={false} component={DeleteUser} exact path="/deleteuser"  ></PrivateRoute>
