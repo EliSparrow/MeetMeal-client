@@ -96,7 +96,8 @@ class Home extends Component {
       </div>
     </section>
     <div className="button" style={{width: 300 + 'px'}}>
-      <button className="btn btn-primary btn-danger wrn-btn button-search-bar-home" ><a href="/create-event" style={{color: "white"}}>Organiser un repas</a></button>
+      <button className="btn btn-primary btn-danger wrn-btn button-search-bar-home" 
+      onclick="window.location.href = 'http://localhost:3000/create-event';" >Organiser un repas</button>
     </div>
   </div>
   )
