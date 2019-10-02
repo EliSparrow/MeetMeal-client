@@ -36,8 +36,6 @@ function App() {
         <PrivateRoute exact path="/admin" component={AdminLanding}></PrivateRoute>
         <PrivateRoute restricted={false} component={EditProfile} exact path="/edituser"  ></PrivateRoute>
         <PrivateRoute restricted={false} component={DeleteUser} exact path="/deleteuser"  ></PrivateRoute>
-
-        {/* <PublicRoute restricted={false} component={SearchBarHome} path="/" exact /> */}
         <PublicRoute exact path="/toggle" component={Toggle}/>
         <PublicRoute exact path="/team" component={Team}/>
         <PublicRoute exact path="/contact" component={Contact}/>

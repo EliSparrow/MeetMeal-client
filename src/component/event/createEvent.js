@@ -44,6 +44,7 @@ class CreateEvent extends Component {
     if(this.state.other) this.setState({other: ' autres : ' + this.state.other});
     if(this.state.drinks) this.setState({drinks:' boissons : ' + this.state.drinks});
 
+
     this.setState({ menu: this.state.starter + this.state.dish + this.state.dessert + this.state.drinks + this.state.other});
 
     const headers = {

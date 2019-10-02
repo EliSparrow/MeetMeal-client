@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import { Link } from 'react-router-dom';
 
+import '../../stylesheets/editProfile.scss';
+
 export class EditProfile extends Component {
     constructor(props) {
         super(props);
@@ -119,48 +121,90 @@ export class EditProfile extends Component {
             <div className="container">
                  {user ? (
                 <div className= 'row'>
-                    <form onSubmit={ this.handleEditUser }>
+                    <form className='col-12 user-form login-form' onSubmit={ this.handleEditUser }>
                         <div className='title'>
-                            <h1>Modifiez votre profile: </h1>
+                            <h1>Modifiez votre profil: </h1>
                         </div>
-                        <div className='col lg-4 user-inputs'>
+                        <div className='group user-inputs'>
                             <input type='text' defaultValue={user.firstname} name='newFirstname' placeholder='firstname' className='input-firstname' onChange={ this.handleChange }></input>
+                            <span className="highlight"></span>
+                            <span className="bar"></span>
+                            <label>Email</label>
                         </div>
-                        <div className='col lg-4 user-inputs'>
+                        <div className='group user-inputs'>
                             <input type='text' defaultValue={user.lastname} name='newLastname' placeholder='lastname' className='input-lastname' onChange={ this.handleChange }></input>
+                            <span className="highlight"></span>
+                            <span className="bar"></span>
+                            <label>Email</label>
                         </div>
-                        <div className='col lg-4 user-inputs'>
+                        <div className='group user-inputs'>
                             <input type='text' defaultValue={user.age} name='newAge' className='input-age' placeholder='age' onChange={ this.handleChange }></input>
+                            <span className="highlight"></span>
+                            <span className="bar"></span>
+                            <label>Email</label>
                         </div>
-                        <div className='col lg-4 user-inputs'>
+                        <div className='group user-inputs'>
                             <input type='email' defaultValue={user.email} name='newEmail' className='input-email' placeholder='email' onChange={ this.handleChange }></input>
+                            <span className="highlight"></span>
+                            <span className="bar"></span>
+                            <label>Email</label>
                         </div>
-                        <div className='col lg-4 user-inputs'>
+                        <div className='group user-inputs'>
                             <input type='text' defaultValue={user.avatar} name='newAvatar' className='input-avatar' placeholder='avatar' onChange={ this.handleChange }></input>
+                            <span className="highlight"></span>
+                            <span className="bar"></span>
+                            <label>Email</label>
                         </div>
-                        <div className='col lg-4 user-inputs'>
+                        <div className='group user-inputs'>
                             <input type='textarea' defaultValue={user.bio} name='newBio' className='input-bio' placeholder='biographie' onChange={ this.handleChange }></input>
+                            <span className="highlight"></span>
+                            <span className="bar"></span>
+                            <label>Email</label>
                         </div>
-                        <div className='col lg-4 user-inputs'>
+                        <div className='group user-inputs'>
                             <input type='text' defaultValue={user.loveStatus} name='newLoveStatus' className='input-loveStatus' placeholder='Situation Amoureuse' onChange={ this.handleChange }></input>
+                            <span className="highlight"></span>
+                            <span className="bar"></span>
+                            <label>Email</label>
                         </div>
-                        <div className='col lg-4 user-inputs'>
+                        <div className='group user-inputs'>
                             <input type='text' defaultValue={user.zipCode} name='newZipCode' className='input-zipCode' placeholder='Code Postal' onChange={ this.handleChange }></input>
+                            <span className="highlight"></span>
+                            <span className="bar"></span>
+                            <label>Email</label>
                         </div>
-                        <div className='col lg-4 user-inputs'>
+                        <div className='group user-inputs'>
                             <input type='text' defaultValue={user.address} name='newAddress' className='input-address' placeholder='Adresse' onChange={ this.handleChange }></input>
+                            <span className="highlight"></span>
+                            <span className="bar"></span>
+                            <label>Email</label>
                         </div>
-                        <div className='col lg-4 user-inputs'>
+                        <div className='group user-inputs'>
                             <input type='text' defaultValue={user.city} name='newCity' className='input-city' placeholder='Ville' onChange={ this.handleChange }></input>
+                            <span className="highlight"></span>
+                            <span className="bar"></span>
+                            <label>Email</label>
                         </div>
-                        <div className='col lg-4 user-inputs'>
+                        <div className='group user-inputs'>
                             <input type='password' name='newPassword' className='input-password' placeholder='Mot de Passe' onChange={ this.handleChange }></input>
+                            <span className="highlight"></span>
+                            <span className="bar"></span>
+                            <label>Email</label>
                         </div>
-                        <div className='col lg-4 user-inputs'>
+                        <div className='group user-inputs'>
                             <input type='text' defaultValue={user.toquesAvailable} name='newToquesAvailable' className='input-toquesAvailable' placeholder='Monnaie Toque' onChange={ this.handleChange }></input>
+                            <span className="highlight"></span>
+                            <span className="bar"></span>
+                            <label>Email</label>
                         </div>
-                        <button className="submit">Modifiez votre profile</button>
-                        <button className="reset"><Link redirect to='/edituser'>Annuler</Link></button>
+                        <div className='group user-buttons'>
+                            <Link redirect to='/profile' >
+                                <button className="btn-warn">
+                                    Annuler
+                                </button>
+                            </Link>
+                            <button className="submit">Modifiez votre profile</button>
+                        </div>
                     </form>
                 </div>
                  ) : null }

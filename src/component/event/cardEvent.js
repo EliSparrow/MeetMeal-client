@@ -17,6 +17,8 @@ class CardEvent extends Component {
       city: "",
       cost: "",
       numberMaxOfGuests: "",
+      typeOfMeal: "",
+      typeOfCuisine: "",
       user: null
     }
   }
@@ -31,7 +33,9 @@ class CardEvent extends Component {
       description: this.props.description,
       city: this.props.city,
       cost: this.props.cost,
-      numberMaxOfGuests: this.props.numberMaxOfGuests
+      numberMaxOfGuests: this.props.numberMaxOfGuests,
+      typeOfMeal: this.props.typeOfMeal,
+      typeOfCuisine: this.props.typeOfCuisine
     })
     this.getUser();
   }
@@ -81,42 +85,33 @@ class CardEvent extends Component {
       description,
       city,
       cost,
-      numberMaxOfGuests
+      numberMaxOfGuests,
+      typeOfMeal,
+      typeOfCuisine
     } = this.state;
 
     return (
-      <div class="card mb-3" >
-        <div class="row no-gutters">
 
-          <div class="col-md-4">
-            <div class='image'>
-              <img src={avatar} alt='user profile avatar'></img>
-            </div>
-            <div class='info'>
-              <h1>{firstname} {lastname}</h1>
-              <h2>{numberMaxOfGuests}</h2>
-            </div>
-          </div>
-
-          <div class="col-md-6">
-            <div class='info'>
-
-              <a href={"/event/"+_id}><h3>{title}</h3></a>
-            </div>
-            <div class='info'>
-              <p>{description}</p>
-            </div>
-            <div class='info'>
-              <p>{city} {cost}</p>
-            </div>
-          </div>
-            { this.checkEdit() }
-          <div class="col-md-2">
-            <button type='submit'></button>
-          </div>
-
+      <div className="card row col-lg-12">
+      <div className="card-body row">
+      <div className='image col-3'>
+        <img src={avatar} alt='user profile avatar'></img>
+        <h6 className="card-subtitle text-muted">{firstname} {lastname}</h6>
+      </div>
+      <div className="col-5">
+        <h5 className="card-title">{title}</h5>
+        <p className="card-text">Type de repas : {typeOfMeal}</p>
+        <p className="card-text">Type de cuisine : {typeOfCuisine}</p>
+        <p className="card-text">{description}</p>
+        <p className="card-text"><i className="fa fa-map-marker"/> {city}</p>
+        </div>
+        <div className="col-4">
+        <p className="card-text">Pour {numberMaxOfGuests} personnes</p>
+        <p className="card-text">Coût : {cost} Toques</p>
+        <button type="submit">Je rejoins l'évenement !</button>
         </div>
       </div>
+    </div>
     )
   }
 }
