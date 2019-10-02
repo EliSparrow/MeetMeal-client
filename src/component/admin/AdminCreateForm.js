@@ -20,7 +20,8 @@ export class AdminCreateForm extends Component {
             address: "",
             city: "",
             password: "",
-            toquesAvailable: 0
+            toquesAvailable: 0,
+            admin: false
         };
     }
 
@@ -49,7 +50,9 @@ export class AdminCreateForm extends Component {
             password: this.state.password,
             newPassword: this.state.password,
             toquesAvailable: this.state.tocqueAvailable,
-            newToquesAvailable: this.state.tocqueAvailable
+            newToquesAvailable: this.state.tocqueAvailable,
+            admin: this.state.admin,
+            newAdmin: this.state.admin
         });
     }
 
@@ -64,10 +67,6 @@ export class AdminCreateForm extends Component {
     handleAddUser = e => {
         e.preventDefault();
 
-        const header = {
-            'x-auth-token': localStorage.getItem('token')
-        }
-
         var addUser = {
             firstname: this.state.newFirstname,
             lastname: this.state.newLastname,
@@ -81,10 +80,10 @@ export class AdminCreateForm extends Component {
             city: this.state.newCity,
             password: this.state.newPassword,
             toquesAvailable: parseInt(this.state.newToquesAvailable),
-            id : this.state.user._id
+            admin:this.state.newAdmin
         };
 
-        axios.put(process.env.REACT_APP_API + `/users/register` , addUser)
+        axios.post(process.env.REACT_APP_API + `/users/register` , addUser)
             .then(res => {
                 alert('Votre profil a été modifié');
                 // this.setState({ user: res.data });
@@ -97,14 +96,8 @@ export class AdminCreateForm extends Component {
     }
 
     render() {
-        var {
-            user
-        } = this.state
-
-        
         return(
             <div className="container">
-                 {user ? (
                 <div className= 'row'>
                     <form onSubmit={ this.handleAddUser }>
                         <div className='title'>
@@ -146,11 +139,13 @@ export class AdminCreateForm extends Component {
                         <div className='col lg-4 user-inputs'>
                             <input type='text'  name='newToquesAvailable' className='input-toquesAvailable' placeholder='Monnaie Toque' onChange={ this.handleChange }></input>
                         </div>
-                        <button className="submit">Modifiez votre profile</button>
+                        <div className='col lg-4 user-inputs'>
+                            <input type="checkbox" name="newAdmin" className='input-Admin' value="true"  onChange={this.handleChange}/>Admin
+                        </div>
+                        <button className="submit">Ajoutez un profile</button>
                         <button className="reset"><Link redirect to='/edituser'>Annuler</Link></button>
                     </form>
                 </div>
-                 ) : null }
             </div>
         )
     }

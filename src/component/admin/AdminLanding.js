@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { ListUsers } from '../profile/ListUsers';
 import { EditProfile } from '../profile/EditProfile';
 import { Link } from 'react-router-dom';
@@ -12,7 +12,7 @@ export class AdminLanding extends Component {
         this.state = {
             user: null,
             admin : false,
-            showListBool: true
+            switch: "listusers"
         }
     }
 
@@ -33,50 +33,58 @@ export class AdminLanding extends Component {
               console.error(err);
           })
     }
-    delUserList = () => {
-        this.setState({
-            showListBool : false})
+    
+    switchFormCreate = () => {
+        this.setState({ switch : "FormCreate" })
+    }
+    
+    switchUserList = () => {
+        this.setState({ switch: "listusers" })
     }
     
     render() {
-        let UsersList;
-        if (this.state.showListBool){
-            UsersList = <ListUsers/>
+        var UsersCompo;
+        if (this.state.switch == "listusers"){
+            UsersCompo = <ListUsers/>
         }
-        else {
-            UsersList = <AdminCreateForm/>
+        if(this.state.switch == "FormCreate") {
+            UsersCompo = <AdminCreateForm/>
         }
         const { user, admin } = this.state
 
         return(
-            <div>
-                { admin ? (
-                    <div className='test'>
-                        <h1 className='admintitle'>Salut Admin</h1>
-                        <p>Salut Admin</p>
-                        <div className="Listusers">
-                            { UsersList }
-                        </div>
-                        <div className='testButton'>
-                            <button className='button' onClick={this.delUserList}>Test</button>
-                        </div>
+            <Fragment>
+                <div>
+                    { admin ? (
+                        <div className='test'>
+                            <h1 className='admintitle'>Salut Admin</h1>
+                            <p>Salut Admin</p>
+                            <div className='testButton'>
+                                <button className='button' onClick={this.switchUserList}>Liste des Utilisateurs</button>
 
-                    </div>
-                ) : (
-                    <div className='testadminFalse'>
-                        <h1>t'as pas le droit</h1>
-                        <h1>t'as pas le droit</h1>
-                        <h1>t'as pas le droit</h1>
-                        <h1>t'as pas le droit</h1>
-                        <h1>t'as pas le droit</h1>
-                        <h1>t'as pas le droit</h1>
-                        <h1>t'as pas le droit</h1>
-                        <h1>t'as pas le droit</h1>
-                        <h1>t'as pas le droit</h1>
-                        <h1>t'as pas le droit</h1>
-                    </div>
-                ) }
-            </div>
+                                <button className='button' onClick={this.switchFormCreate}>Formulaire d'inscription</button>
+                            </div>
+                            <div className="Listusers">
+                                { UsersCompo }
+                            </div>
+
+                        </div>
+                    ) : (
+                        <div className='testadminFalse'>
+                            <h1>t'as pas le droit</h1>
+                            <h1>t'as pas le droit</h1>
+                            <h1>t'as pas le droit</h1>
+                            <h1>t'as pas le droit</h1>
+                            <h1>t'as pas le droit</h1>
+                            <h1>t'as pas le droit</h1>
+                            <h1>t'as pas le droit</h1>
+                            <h1>t'as pas le droit</h1>
+                            <h1>t'as pas le droit</h1>
+                            <h1>t'as pas le droit</h1>
+                        </div>
+                    ) }
+                </div>
+            </Fragment>
         )
     }
 }
