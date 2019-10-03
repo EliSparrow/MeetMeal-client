@@ -36,8 +36,10 @@ class UserEvents extends Component {
 
       await axios.get(process.env.REACT_APP_API + '/events/' + userId.data._id + '/guestsEvents')
             .then( res => {
+              console.log("ca marche");
               this.setState({joinedMeals: res.data})
             }).catch( err => {
+              console.log("ca crash");
               console.log(err.response);
             })
     }

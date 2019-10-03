@@ -3,7 +3,6 @@ import axios from 'axios';
 
 import '../../stylesheets/cardEvent.css';
 
-import Axios from 'axios';
 
 class CardEvent extends Component {
   constructor(props){
@@ -16,7 +15,7 @@ class CardEvent extends Component {
       title: "",
       descritpion: "",
       city: "",
-      cost: "",
+      cost: 0,
       numberMaxOfGuests: "",
       typeOfMeal: "",
       typeOfCuisine: "",
@@ -26,14 +25,15 @@ class CardEvent extends Component {
       joinedMeals: false,
       createdMeals: false
     }
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  async componentDidMount() {
+  componentDidMount() {
     const header = {
       'x-auth-token': localStorage.getItem('token')
     }
 
-    await axios.get('http://localhost:1509/users/my-profile', { headers: header })
+    axios.get('http://localhost:1509/users/my-profile', { headers: header })
           .then((res) => {
             this.setState({ user: res.data })
             // console.log('response du get user : ', res.data);
@@ -77,28 +77,28 @@ class CardEvent extends Component {
   //       }).catch( err => {
   //         console.log(err.response);
   //       })
-    const url = process.env.REACT_APP_API + '/events/' + this.state._id + '/addGuest';
-     axios.put(url, null,
-                { headers: header }
-                ).then( res => {
-                  console.log(res.data);
-                }).catch( err => {
-                  if (err.response.data.msg === 'Vous ne pouvez pas rejoindre votre propre evenement')
-                    this.setState({createdMeals: true})
-                  else if (err.response.data.msg === 'Vous etes deja inscrit a cet evenement')
-                    this.setState({joinedMeals: true})
-                  else
-                    console.log(err.response);
-                })
+    // const url = process.env.REACT_APP_API + '/events/' + this.state._id + '/addGuest';
+    //  axios.put(url, null,
+    //             { headers: header }
+    //             ).then( res => {
+    //               console.log(res.data);
+    //             }).catch( err => {
+    //               if (err.response.data.msg === 'Vous ne pouvez pas rejoindre votre propre evenement')
+    //                 this.setState({createdMeals: true})
+    //               else if (err.response.data.msg === 'Vous etes deja inscrit a cet evenement')
+    //                 this.setState({joinedMeals: true})
+    //               else
+    //                 console.log(err.response);
+    //             })
 
 }
 
   // Go on the presentation page of an event
-  handleSubmit = async (event) => {
+  handleSubmit = (event) => {
    event.preventDefault();
     // console.log(this.state._id);
-    const url = '/event/:' + this.state._id.toString() ;
-    console.log(url);
+    const url = '/event/' + this.state._id ;
+    console.log(this.props.history);
     this.props.history.push(url)
   }
 
