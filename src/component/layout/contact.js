@@ -10,28 +10,38 @@ const Contact = () => {
       <div className="form-contact">
         <form>
           <h1>Besoin de nous contacter ?</h1>
-        <span>N'hésitez pas ici !</span>
-        <div className="group">      
+        <h4>N'hésitez pas ici !</h4>
+        <hr className="col-12" style={{width: 30 +'px', color: 'black'}}></hr>
+        <div className="row">
+          <div className="col-6">  
+          <label>Prénom</label><br></br> 
           <input type="text" name="firstname" placeholder="Prénom" required/>
           <span className="highlight"></span>
           <span className="bar"></span>
         </div>
-        <div className="group">      
+        <div className="col-6">  
+        <label>Nom</label><br></br>    
           <input type="text" name="lastname" placeholder="Nom" required/>
           <span className="highlight"></span>
           <span className="bar"></span>
         </div>
-        <div className="group">      
-          <input type="email" name="email" placeholder="Email" required/>
+        <div className="col-12">  
+        <label>Email</label><br></br>    
+          <input type="email" name="email" placeholder="bonjour@cava.fr" required/>
           <span className="highlight"></span>
           <span className="bar"></span>
         </div>
-        <div className="group">      
+        </div>
+        <div className="row" style={{marginTop: 10 + 'px'}}>
+        <div className="col-12">
+          <label>Sujet de votre demande</label>  <br></br> 
           <input type="text" name="subjet" placeholder="Sujet" required/>
           <span className="highlight"></span>
           <span className="bar"></span>
         </div>
-        <div className="group">      
+        </div>
+        <div className="col-12">   
+        <label>Votre demande</label><br></br>   
           <textarea type="textarea" name="freefield" placeholder="Commentaires" required/>
           <span className="highlight"></span>
           <span className="bar"></span>
