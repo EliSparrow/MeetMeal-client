@@ -5,47 +5,60 @@ import { Row } from "react-bootstrap";
 import CardEvent from './cardEvent.js';
 
 class SearchedEvents extends Component {
-  constructor(props){
+   constructor(props){
     super(props);
     this.state = {
-      searchedMeals: []
+      searchedMeals: [],
+      zipCode: this.props.match.params.zipCode.substr(1),
+      city: this.props.match.params.city.substr(1),
+      date: this.props.match.params.date.substr(1),
+      typeOfMeal: this.props.match.params.typeOfMeal.substr(1),
+      typeOfCuisine: this.props.match.params.typeOfCuisine.substr(1)
     }
-  }
+ }
 
-  async componentDidMount(){
-    const zipCode = this.props.match.params.zipCode.substr(1);
-    const city = this.props.match.params.city.substr(1);
-    const date = this.props.match.params.date.substr(1);
-    const typeOfMeal = this.props.match.params.typeOfMeal.substr(1);
-    const typeOfCuisine = this.props.match.params.typeOfCuisine.substr(1);
+ executeSearch() {
+   axios.post('http://localhost:1509' + '/search/event', {
+        zipCode: this.state.zipCode,
+        city: this.state.city,
+        date: this.state.date,
+        typeOfMeal: this.state.typeOfMeal,
+        typeOfCuisine: this.state.typeOfCuisine
+      }).then( res => {
+        console.log("Data = ", res.data)
+        this.setState({searchedMeals: res.data});
+        console.log('EST CE QUE C TOI QUI EST UNDEFINED ? ', this.state.searchedMeals);
+      }).catch(err => {
+        console.log(err);
+      })
+ }
 
-    axios.post('https://meetmeal.netlify.com' + '/search/event', {
-      zipCode: zipCode,
-      city: city,
-      date: date,
-      typeOfMeal: typeOfMeal,
-      typeOfCuisine: typeOfCuisine
-    }).then( res => {
-      this.setState({searchedMeals: res.data});
-    }).catch(err => {
-      console.log(err.response);
-    })
-  }
+ componentDidMount() {
+   console.log(this.state)
+    this.executeSearch()
+ }
 
-  render(){
-    var renderSearchedEvents = () => {
-      var tabSearchedMeals = this.state.searchedMeals.result;
-      if(this.state.searchedMeals === "") return (<div><h1> Aucun repas ne correspond à votre recherche pour le moment </h1></div>)
-      return tabSearchedMeals.map((searchedMeal, index) => (
-        <div>
-        <CardEvent
-            {...searchedMeal}
-            key={searchedMeal._id}
-            index={index}
-            />
-        </div>
-      ));
-    };
+    render () {
+      var renderSearchedEvents = () => {
+
+        var tabSearchedMeals = this.state.searchedMeals
+        console.log("tabSearchedMeals = ", tabSearchedMeals)
+        console.log("this state searched meals : ", this.state.searchedMeals);
+
+        if(this.state.searchedMeals == "" || this.state.searchedMeals == []) {
+          return (<div><h1> Aucun repas ne correspond à votre recherche pour le moment </h1></div>)
+        } else {
+          return tabSearchedMeals.result.map((searchedMeal, index) => (
+            <div>
+            <CardEvent
+                {...searchedMeal}
+                key={searchedMeal._id}
+                index={index}
+                />
+            </div>
+          ));
+        }
+      };
 
     return(
       <div className='container'>
