@@ -4,6 +4,7 @@ import { EditProfile } from '../profile/EditProfile';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { AdminCreateForm } from './AdminCreateForm';
+import Spinner from '../layout/Spinner';
 
 export class AdminLanding extends Component {
     constructor(props){
@@ -71,16 +72,7 @@ export class AdminLanding extends Component {
                         </div>
                     ) : (
                         <div className='testadminFalse'>
-                            <h1>t'as pas le droit</h1>
-                            <h1>t'as pas le droit</h1>
-                            <h1>t'as pas le droit</h1>
-                            <h1>t'as pas le droit</h1>
-                            <h1>t'as pas le droit</h1>
-                            <h1>t'as pas le droit</h1>
-                            <h1>t'as pas le droit</h1>
-                            <h1>t'as pas le droit</h1>
-                            <h1>t'as pas le droit</h1>
-                            <h1>t'as pas le droit</h1>
+                            <Spinner/>
                         </div>
                     ) }
                 </div>
