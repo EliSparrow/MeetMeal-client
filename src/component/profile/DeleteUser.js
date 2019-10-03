@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 import { Link } from 'react-router-dom';
-import Spinner from '../layout/Spinner'
 
 export class DeleteUser extends Component {
     constructor(props){
@@ -18,7 +17,7 @@ export class DeleteUser extends Component {
         const header = {
             'x-auth-token': localStorage.getItem('token')
         }
-        Axios.get(process.env.REACT_APP_API + '/users/' + this.props.match.params.id,{ headers: header})
+        Axios.get("https://meetmeal-dev.herokuapp.com" + '/users/' + this.props.match.params.id,{ headers: header})
             .then(res => {
                 this.setState({ userShow: res.data });
             })
@@ -32,10 +31,9 @@ export class DeleteUser extends Component {
             const header = {
               'x-auth-token': localStorage.getItem('token')
             }
-            Axios.get(process.env.REACT_APP_API + '/users/my-profile', { headers: header })
+            Axios.get("https://meetmeal-dev.herokuapp.com" + '/users/my-profile', { headers: header })
               .then((res) => {
                 this.setState({ userConnected: res.data })
-                console.log(res.data);
             })
               .catch((err) => {
                 console.error(err);
@@ -43,20 +41,18 @@ export class DeleteUser extends Component {
         }
 
         handleDeleteUser = () => {
-            console.log(this.state.userShow._id);
         const header = {
             'x-auth-token': localStorage.getItem('token')
         }
         this.setState({ isDesactivated : true }, function () {
-            console.log(this.state.isDesactivated);
             var deleteUser = {
                 isDesactivated: this.state.isDesactivated
             }
-            Axios.put(process.env.REACT_APP_API + `/users/`+ this.state.userShow._id, deleteUser, { headers: header })
+            Axios.put("https://meetmeal-dev.herokuapp.com" + `/users/`+ this.state.userShow._id, deleteUser, { headers: header })
             .then(res => {
                 alert('Le profil est désormais bloqué');
                 this.setState({ userShow: res.data });
-                if (this.state.userShow._id == this.state.userConnected._id){
+                if (this.state.userShow._id === this.state.userConnected._id){
                     localStorage.removeItem('token');
                     this.props.history.push('/');
                 }

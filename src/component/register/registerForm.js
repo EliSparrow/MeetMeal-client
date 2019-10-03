@@ -6,12 +6,11 @@ import 'react-toastify/dist/ReactToastify.css'
 
 import useForm from './useForm.js';
 
-
 const Register = props => {
     const submitRegister = (e) => {
 
         const { firstname, lastname, age, email, password } = values
-        axios.post(process.env.REACT_APP_API + '/users/register', {
+        axios.post("https://meetmeal-dev.herokuapp.com" + '/users/register', {
              firstname,
              lastname,
              age,
@@ -19,7 +18,6 @@ const Register = props => {
              password  
             })
             .then(res => {
-                console.log(res)
                 notifySuccess(res.data.msg)
                 props.history.push('/login')
             })
@@ -28,13 +26,6 @@ const Register = props => {
                 notifyFailure()
             })
     }
-
-    // const HideShow = props => {
-    //   const [isPassword, setPassword] = useState(true);
-    //   if (isPassword) {
-    //     return isPassword ? 'password' : 'text';
-    // }
-
 
     const [ passwordVisibility, setPasswordVisibility ] = useState(false)
 
@@ -56,11 +47,6 @@ const Register = props => {
       <div className="form-container sign-up-container login-form">
         <form onSubmit={handleSubmit}>
           <h1>Créer un compte</h1>
-        <div className="social-container">            
-        <Link to="#" className="fa fa-facebook"></Link>
-        <Link to="#" className="fa fa-google"></Link>
-        </div>
-        <span>ou utiliser vos informations</span>
         <div className="group">      
           <input type="text" name="firstname" value={values.firstname} onChange={handleChange} required/>
           <span className="highlight"></span>
@@ -110,8 +96,6 @@ const Register = props => {
       
     </div>
     );
-
 }
-
 
 export default Register

@@ -1,9 +1,5 @@
 import axios from 'axios';
 import React, { Component, Fragment } from "react";
-import { Row } from "react-bootstrap";
-
-import EventsCreated from './eventsCreated';
-import EventsJoined from './eventsJoined';
 import CardEvent from '../../event/cardEvent.js';
 
 class UserEvents extends Component {
@@ -22,26 +18,23 @@ class UserEvents extends Component {
         'x-auth-token': localStorage.getItem('token')
       }
 
-      const userId = await axios.get(process.env.REACT_APP_API + '/users/my-profile',
+      const userId = await axios.get("https://meetmeal-dev.herokuapp.com" + '/users/my-profile',
             { headers: header})
 
-      await axios.get(process.env.REACT_APP_API + '/events/' + userId.data._id + '/showEvents')
+      await axios.get("https://meetmeal-dev.herokuapp.com" + '/events/' + userId.data._id + '/showEvents')
             .then( res => {
               this.setState({createdMeals: res.data})
-              var { createdMeals } = this.state.createdMeals;
-
             }).catch( err => {
               console.log(err.response);
             })
 
-      await axios.get(process.env.REACT_APP_API + '/events/' + userId.data._id + '/guestsEvents')
+      await axios.get("https://meetmeal-dev.herokuapp.com" + '/events/' + userId.data._id + '/guestsEvents')
             .then( res => {
               this.setState({joinedMeals: res.data})
             }).catch( err => {
               console.log(err.response);
             })
     }
-
 
     showJoinedEvents = (event) => {
         event.preventDefault();
@@ -54,15 +47,8 @@ class UserEvents extends Component {
     }
 
      render() {
-
-        var {createdMeals} = this.state.createdMeals;
-        console.log('nouvelle var createdMeals : HELLO HELLO ' , createdMeals);
-
-        var {joinedMeals} = this.state.joinedMeals;
-        console.log('nouvelle var joinedMeals : HELLO HELLO ' , joinedMeals);
-
         var renderCreatedMeals = () => {
-          if(this.state.createdMeals == "") return (<div><h1>Cet utilisateur n'a pas encore créé de repas pour le moment </h1></div>)
+          if(this.state.createdMeals === "") return (<div><h1>Cet utilisateur n'a pas encore créé de repas pour le moment </h1></div>)
           return this.state.createdMeals.map((createdMeal, index) => (
             <div>
             <CardEvent
@@ -75,7 +61,7 @@ class UserEvents extends Component {
         };
 
         var renderJoinedMeals = () => {
-          if(this.state.joinedMeals == "") return (<div><h1>Cet utilisateur n'a pas encore rejoint de repas pour le moment </h1></div>)
+          if(this.state.joinedMeals === "") return (<div><h1>Cet utilisateur n'a pas encore rejoint de repas pour le moment </h1></div>)
           return this.state.joinedMeals.map((joinedMeal, index) => (
             <div>
             <CardEvent
@@ -99,7 +85,7 @@ class UserEvents extends Component {
                     </div>
                 </nav>
                 <div className='row user-cards list-events'>
-                  {this.state.status == true ? renderCreatedMeals() : renderJoinedMeals()}
+                  {this.state.status === true ? renderCreatedMeals() : renderJoinedMeals()}
                 </div>
             </Fragment>
         )

@@ -20,8 +20,6 @@ export class EditEvent extends Component {
             address: "",
             city: "",
             numberMaxOfGuests: 0,
-            // guests: [],
-            // comments: [],
             status: "",
             cost: 0,
             timeOfMeal: ""
@@ -53,10 +51,6 @@ export class EditEvent extends Component {
             newCity: this.state.city,
             numberMaxOfGuests: this.state.numberMaxOfGuests,
             newNumberMaxOfGuests: this.state.numberMaxOfGuests,
-            // guests: this.state.guests,
-            // newGuests: this.state.guests,
-            // comments: this.state.comments,
-            // newComments: this.state.comments,
             status: this.state.status,
             newStatus: this.state.status,
             cost: this.state.cost,
@@ -68,7 +62,7 @@ export class EditEvent extends Component {
             'x-auth-token': localStorage.getItem('token')
         }
         const eventId = this.props.match.params.eventId;
-        axios.get(process.env.REACT_APP_API + '/events/' + eventId,
+        axios.get("https://meetmeal-dev.herokuapp.com" + '/events/' + eventId,
             { headers: header},
         ).then(res => {
               this.setState({ meal: res.data });
@@ -93,7 +87,6 @@ export class EditEvent extends Component {
           [event.target.id]: event.target.value
         });
     }
-
 
     handleEditMeal = e => {
         e.preventDefault();
@@ -120,7 +113,7 @@ export class EditEvent extends Component {
             id : eventId
         }
 
-        axios.put(process.env.REACT_APP_API + `/events/`+ editMeal.id, editMeal, { headers: header })
+        axios.put("https://meetmeal-dev.herokuapp.com" + `/events/`+ editMeal.id, editMeal, { headers: header })
             .then(res => {
                 alert('Votre évènement a été modifié');
                 this.setState({ meal: res.data });
@@ -129,7 +122,6 @@ export class EditEvent extends Component {
             .catch(err => {
                 console.error(err.response);
             })
-
     }
 
     render() {
@@ -142,7 +134,6 @@ export class EditEvent extends Component {
             <div className="container" style={{textalign: "center"}}>
                  {meal ? (
                 <div className='row'>
-                    {/* {meal.time.hour}:{meal.time.minutes} */}
                     <form onSubmit={ this.handleEditMeal }>
                         <div className='title col-12'>
                             <h1>Modifiez votre évènement</h1>
@@ -166,12 +157,6 @@ export class EditEvent extends Component {
                         </div>
                         </div>
                         </div>
-                        {/* <div className='col lg-4 meal-inputs'>
-                            <input type='text' defaultValue={meal.typeOfCuisine} name='newTypeOfCuisine' placeholder='Choisisez...' className='input-newTypeOfcuisine' onChange={ this.handleChange }></input>
-                        </div> */}
-                        {/* <div className='col lg-4 meal-inputs'>
-                            <input type='text' defaultValue={meal.typeOfMeal} name='newTypeOfMeal' className='input-newTypeOfMeal' placeholder='Choisisez...' onChange={ this.handleChange }></input>
-                        </div> */}
                         <div className='col-12 meal-inputs'>
                             <label>Description de l'évènement</label><br></br>
                             <textarea type='textarea' defaultValue={meal.description} name='newDescription' className='input-description' placeholder='email' onChange={ this.handleChange } style={{width: 440 + 'px', height: 50 + 'px'}}></textarea>
@@ -211,11 +196,11 @@ export class EditEvent extends Component {
                         <div className='meal-inputs'>
                             <label>Adresse postale</label><br></br>
                             <label style={{marginRight: 10 + 'px'}}>Numero , Rue  </label>
-                            <input className='col-4' type='text' defaultValue={meal.address} name='newAddress' className='input-address' placeholder='Adresse' onChange={ this.handleChange }></input><br></br>
+                            <input className='col-4 input-address' type='text' defaultValue={meal.address} name='newAddress' placeholder='Adresse' onChange={ this.handleChange }></input><br></br>
                             <label style={{marginRight: 10 + 'px'}}>Code postal  </label>
-                            <input className='col-4' type='text' defaultValue={meal.zipCode} name='newZipCode' className='input-zipCode' placeholder='Code Postal' onChange={ this.handleChange }></input><br></br>
+                            <input className='col-4 input-zipCode' type='text' defaultValue={meal.zipCode} name='newZipCode' placeholder='Code Postal' onChange={ this.handleChange }></input><br></br>
                             <label style={{marginRight: 10 + 'px'}}>Ville</label>
-                            <input className='col-4' type='text' defaultValue={meal.city} name='newCity' className='input-city' placeholder='Ville' onChange={ this.handleChange }></input>
+                            <input className='col-4 input-city' type='text' defaultValue={meal.city} name='newCity' placeholder='Ville' onChange={ this.handleChange }></input>
                         </div>
                         <hr style={{width: 100 + 'px'}}></hr>
                         <div className='col meal-inputs' style={{width: 200 + 'px'}}>

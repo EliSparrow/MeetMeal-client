@@ -26,7 +26,6 @@ export class AdminEditForm extends Component {
         };
     }
     componentDidMount() {
-        console.log(this.state._id);
         this.setState({
             firstname: this.state.firstname,
             newFirstname: this.state.firstname,
@@ -57,7 +56,7 @@ export class AdminEditForm extends Component {
         const header = {
             'x-auth-token': localStorage.getItem('token')
         }
-        axios.get(process.env.REACT_APP_API + '/users/' + this.props.match.params._id,
+        axios.get("https://meetmeal-dev.herokuapp.com" + '/users/' + this.props.match.params._id,
             { headers: header},
         ).then(res => {
               this.setState({ user: res.data });
@@ -72,8 +71,6 @@ export class AdminEditForm extends Component {
           [event.target.name]: event.target.value
         });
     }
-
-
 
     handleEditUser = e => {
         e.preventDefault();
@@ -97,10 +94,8 @@ export class AdminEditForm extends Component {
             toquesAvailable: parseInt(this.state.newToquesAvailable),
             id : this.state.user._id
         };
-        console.log(editUser.id);
-        console.log(editUser.id);
 
-        axios.put(process.env.REACT_APP_API + `/users/`+ editUser.id, editUser, { headers: header })
+        axios.put("https://meetmeal-dev.herokuapp.com" + `/users/`+ editUser.id, editUser, { headers: header })
             .then(res => {
                 alert('Votre profil a été modifié');
                 this.setState({ user: res.data });
@@ -109,15 +104,13 @@ export class AdminEditForm extends Component {
             .catch(err => {
                 console.error(err.response);
             })
-
     }
 
     render() {
         var {
             user
         } = this.state
-
-        
+ 
         return(
             <div className="container">
                  {user ? (

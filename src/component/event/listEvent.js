@@ -16,11 +16,10 @@ class ListEvents extends Component {
         'x-auth-token': localStorage.getItem('token')
       }
 
-    axios.get(process.env.REACT_APP_API + '/events/', {
+    axios.get("https://meetmeal-dev.herokuapp.com" + '/events/', {
       headers: header
     }).then( res => {
       this.setState({ meals: res.data});
-      console.log(res.data);
     }).catch( err => {
       console.log(err.response);
     })
@@ -33,7 +32,6 @@ class ListEvents extends Component {
       if( meals.length === 0)
         return ( <div> <h1> Pas de repas créés pour l'instant </h1></div>)
       else {
-        console.log(meals);
         return meals.map((meal, index) => (
           <CardEvent
             {...meal}

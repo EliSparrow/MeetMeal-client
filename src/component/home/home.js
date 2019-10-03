@@ -20,12 +20,10 @@ class Home extends Component {
     this.setState({
       [event.target.name]: event.target.value
     });
-    console.log('handleChange : ', this.state);
   }
 
   sendSearch = async (event) => {
     event.preventDefault();
-    console.log('sendSearch : ', this.state);
 
     if(Number.isInteger(this.state.location))
       this.setState({zipCode: this.state.location});
@@ -103,7 +101,6 @@ class Home extends Component {
   </div>
   )
 }
-
 }
 
 export default Home;

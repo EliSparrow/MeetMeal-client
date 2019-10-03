@@ -12,13 +12,12 @@ const getUserProfile = (( setProfiles, props) => {
   const header = {
     'x-auth-token': localStorage.getItem('token')
   }
-  axios.get(process.env.REACT_APP_API + '/users/my-profile',
+  axios.get("https://meetmeal-dev.herokuapp.com" + '/users/my-profile',
     { headers: header},
   ).then(res => {
     setProfiles(res.data)
   }).catch(err => {
     console.error(err);
-    //alert('Nous sommes désolés, nous faisons face à un problème de serveur')
     props.history.push('/')
   })
 });
@@ -66,9 +65,7 @@ const UserProfile = (props, history) => {
                 </div>
               </div>
             </div>
-          
           </div>
-
           <div>
             <UserEvents />
           </div>

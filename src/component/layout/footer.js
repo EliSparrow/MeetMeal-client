@@ -39,7 +39,6 @@ const Footer = () => {
           </div>
           <div className="col-md-4 mb-md-0 mb-4">
             <h5 className="text-uppercase">A propos de nous</h5>
-
             <ul className="list-unstyled">
               <li>
               <Link to="/team" className='nav-link'>L'équipe </Link>
