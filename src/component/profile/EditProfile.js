@@ -157,7 +157,7 @@ export class EditProfile extends Component {
                             <input type='textarea' defaultValue={user.bio} name='newBio' className='input-bio' placeholder='biographie' onChange={ this.handleChange }></input>
                             <span className="highlight"></span>
                             <span className="bar"></span>
-                            <label>Bio</label>
+                            <label>Biographie</label>
                         </div>
                         <div className='group user-inputs'>
                             <input type='text' defaultValue={user.loveStatus} name='newLoveStatus' className='input-loveStatus' placeholder='Situation Amoureuse' onChange={ this.handleChange }></input>
