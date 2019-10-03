@@ -55,19 +55,38 @@ class CardEvent extends Component {
       comments: this.props.comments
     })
 
-    const url = "https://meetmeal-dev.herokuapp.com" + '/events/' + this.state._id + '/addGuest';
-     axios.put(url, null,
-                { headers: header }
-                ).then( res => {
-                  console.log(res.data);
-                }).catch( err => {
-                  if (err.response.data.msg === 'Vous ne pouvez pas rejoindre votre propre evenement')
-                    this.setState({createdMeals: true})
-                  else if (err.response.data.msg === 'Vous etes deja inscrit a cet evenement')
-                    this.setState({joinedMeals: true})
-                  else
-                    console.log(err.response);
-                })
+
+  // get all events where the user already subscribed
+  // await axios.get(process.env.REACT_APP_API + '/events/' + this.state.user._id + '/guestsEvents')
+  //       .then( res => {
+  //         this.setState({joinedMeals: res.data})
+  //         console.log('les events que le user a deja rejoint : ', this.state.joinedMeals);
+  //       }).catch( err => {
+  //         console.log(err.response);
+  //       })
+  //
+  // get all events created by the user connected
+  // await axios.get(process.env.REACT_APP_API + '/events/' + this.state.user._id + '/showEvents')
+  //       .then( res => {
+  //         this.setState({createdMeals: res.data})
+  //         console.log('les events que le user a deja créé : ', this.state.createdMeals);
+  //       }).catch( err => {
+  //         console.log(err.response);
+  //       })
+    // const url = process.env.REACT_APP_API + '/events/' + this.state._id + '/addGuest';
+    //  axios.put(url, null,
+    //             { headers: header }
+    //             ).then( res => {
+    //               console.log(res.data);
+    //             }).catch( err => {
+    //               if (err.response.data.msg === 'Vous ne pouvez pas rejoindre votre propre evenement')
+    //                 this.setState({createdMeals: true})
+    //               else if (err.response.data.msg === 'Vous etes deja inscrit a cet evenement')
+    //                 this.setState({joinedMeals: true})
+    //               else
+    //                 console.log(err.response);
+    //             })
+
 }
 
   // Go on the presentation page of an event
