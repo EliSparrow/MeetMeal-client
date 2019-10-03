@@ -24,6 +24,7 @@ class ListEvents extends Component {
     }).catch( err => {
       console.log(err.response);
     })
+    console.log('this.props.history', this.props.history)
   }
 
   render(){
@@ -35,7 +36,7 @@ class ListEvents extends Component {
       else {
         console.log(meals);
         return meals.map((meal, index) => (
-          <CardEvent
+          <CardEvent history={this.props.history}
             {...meal}
             key={index}
           />

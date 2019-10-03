@@ -27,19 +27,18 @@ class UserEvents extends Component {
 
       await axios.get(process.env.REACT_APP_API + '/events/' + userId.data._id + '/showEvents')
             .then( res => {
+              console.log('createdMeals: ', res.data);
               this.setState({createdMeals: res.data})
               var { createdMeals } = this.state.createdMeals;
 
             }).catch( err => {
-              console.log(err.response);
+              console.error(err.response);
             })
 
       await axios.get(process.env.REACT_APP_API + '/events/' + userId.data._id + '/guestsEvents')
             .then( res => {
-              console.log("ca marche");
               this.setState({joinedMeals: res.data})
             }).catch( err => {
-              console.log("ca crash");
               console.log(err.response);
             })
     }
