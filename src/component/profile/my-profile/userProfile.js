@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import {useState} from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import Spinner from '../../layout/Spinner';
 
 import UserEvents from './userEvents.js';
 import '../../../stylesheets/profile/profil.scss';
@@ -72,8 +73,11 @@ const UserProfile = (props, history) => {
             <UserEvents />
           </div>
           </Fragment>
-          ) : null }
-
+          ) : (
+            <div className='spinner'>
+              <Spinner/>
+            </div>
+          ) }
     </div>
   );
 }
