@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import SelectEvent from './SelectEvent';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../../stylesheets/home.css';
 
