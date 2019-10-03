@@ -23,9 +23,10 @@ class UserEvents extends Component {
 
       await axios.get("https://meetmeal-dev.herokuapp.com" + '/events/' + userId.data._id + '/showEvents')
             .then( res => {
+              console.log('createdMeals: ', res.data);
               this.setState({createdMeals: res.data})
             }).catch( err => {
-              console.log(err.response);
+              console.error(err.response);
             })
 
       await axios.get("https://meetmeal-dev.herokuapp.com" + '/events/' + userId.data._id + '/guestsEvents')

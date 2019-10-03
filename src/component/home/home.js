@@ -71,7 +71,7 @@ class Home extends Component {
                                 <option id='brunch'>Brunch</option>
                                 <option id='lunch'>Déjeuner</option>
                                 <option id='apero'>Apéro</option>
-                                <option id='dinner'>Dîner</option>
+                                <option id='dinner'>Diner</option>
                             </select>
                         </div>
                         <div className="input-search-bar-home">
@@ -82,6 +82,7 @@ class Home extends Component {
                               <option>Chinoise</option>
                               <option>Coréenne</option>
                               <option>Espagnole</option>
+                              <option>Marocaine</option>
                           </select>
                         </div>
                         <div className="input-search-bar-home button">

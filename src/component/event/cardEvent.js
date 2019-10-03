@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from 'axios';
+import { withRouter } from "react-router-dom";
 
 import '../../stylesheets/cardEvent.css';
 
@@ -12,9 +13,9 @@ class CardEvent extends Component {
       lastname: "",
       avatar: "",
       title: "",
-      descritpion: "",
+      description: "",
       city: "",
-      cost: "",
+      cost: 0,
       numberMaxOfGuests: "",
       typeOfMeal: "",
       typeOfCuisine: "",
@@ -24,6 +25,8 @@ class CardEvent extends Component {
       joinedMeals: false,
       createdMeals: false
     }
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.pickButton = this.pickButton.bind(this);
   }
 
   async componentDidMount() {
@@ -55,6 +58,7 @@ class CardEvent extends Component {
       comments: this.props.comments
     })
 
+    console.log('firstname de l\'user', this.state.user);
 
   // get all events where the user already subscribed
   // await axios.get(process.env.REACT_APP_API + '/events/' + this.state.user._id + '/guestsEvents')
@@ -90,9 +94,10 @@ class CardEvent extends Component {
 }
 
   // Go on the presentation page of an event
-  handleSubmit = async (event) => {
+  handleSubmit = (event) => {
+    // const { history } = this.props;
    event.preventDefault();
-    const url = '/event/:' + this.state._id.toString() ;
+    const url = '/event/' + this.props._id ;
     this.props.history.push(url)
   }
 
@@ -106,6 +111,21 @@ class CardEvent extends Component {
         </div>
       )
     }
+  }
+
+  pickButton = () => {
+    const { user } = this.state
+    if ( user && (user._id === this.props.user._id)){
+      return ( <button type="submit" onClick={this.handleSubmit}>Voir votre évenement</button>)
+    }
+
+      // console.log('id de l\'user connecté', this.state.user._id);
+      // console.log('id de l\'user créateur', this.props.user._id);
+      // if( this.state.joinedMeals === true )
+      //     return ( <button type="submit" onClick={this.handleSubmit}>Déjà inscrit ! Voir l'évenement</button>)
+      // if ( this.props.user._id == this.state.user )
+    //   if ( this.state.joinedMeals === false && this.state.createdMeals === false )
+    //       return (<button type="submit" onClick={this.subscribeToAnEvent}>Je rejoins l'évenement !</button>)
   }
 
 
@@ -156,14 +176,17 @@ class CardEvent extends Component {
       typeOfCuisine
     } = this.state;
 
-    var pickButton = () => {
-      if( this.state.joinedMeals === true )
-          return ( <button type="submit" onClick={this.handleSubmit}>Déjà inscrit ! Voir l'évenement</button>)
-        else if ( this.state.createdMeals === true )
-          return ( <button type="submit" onClick={this.handleSubmit}>Voir votre évenement</button>)
-        else
-          return (<button type="submit" onClick={this.subscribeToAnEvent}>Je rejoins l'évenement !</button>)
-    }
+    // var pickButton = () => {
+    //   console.log('id de l\'user', this.state._id);
+    //   console.log('id de l\'user', this.props.user._id);
+    //   if( this.state.joinedMeals === true )
+    //       return ( <button type="submit" onClick={this.handleSubmit}>Déjà inscrit ! Voir l'évenement</button>)
+    //   if ( this.props.user._id === this.state.user )
+    //       return ( <button type="submit" onClick={this.handleSubmit}>Voir votre évenement</button>)
+    // //   if ( this.state.joinedMeals === false && this.state.createdMeals === false )
+    // //       return (<button type="submit" onClick={this.subscribeToAnEvent}>Je rejoins l'évenement !</button>)
+    // }
+
 
     return (
       <div className="card row" style={{width: 70 + 'em', marginTop: 2 + 'em'}}>
@@ -182,7 +205,11 @@ class CardEvent extends Component {
           <div className="col-4">
             <p className="card-text">Pour {numberMaxOfGuests} personnes</p>
             <p className="card-text">Coût : {cost} Toques</p>
-            {(this.state.createdMeals === true || this.state.joinedMeals === true) ? pickButton() : (<button type="submit" onClick={this.subscribeToAnEvent}>Je rejoins l'évenement !</button>)}
+            {/* {(this.state.createdMeals == true || this.state.joinedMeals == true)? pickButton() : (<button type="submit" onClick={this.subscribeToAnEvent}>Je rejoins l'évenement !</button>)} */}
+            <div>
+              { this.pickButton() }
+            </div>
+
           </div>
         </div>
     </div>
@@ -190,4 +217,4 @@ class CardEvent extends Component {
   }
 }
 
-export default CardEvent;
+export default withRouter(CardEvent);

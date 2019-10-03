@@ -23,6 +23,7 @@ class ListEvents extends Component {
     }).catch( err => {
       console.log(err.response);
     })
+    console.log('this.props.history', this.props.history)
   }
 
   render(){
@@ -33,7 +34,7 @@ class ListEvents extends Component {
         return ( <div> <h1> Pas de repas créés pour l'instant </h1></div>)
       else {
         return meals.map((meal, index) => (
-          <CardEvent
+          <CardEvent history={this.props.history}
             {...meal}
             key={index}
           />
