@@ -49,14 +49,13 @@ export class CardUser extends Component {
             toquesAvailable
         } = this.state;
         return (
-            <div className="card mb-4" style={{width: 18 + 'em'}}>
+            <div className="card mb-4 card-user-list">
                 <Link to={"/users/"+this.state._id} >
-                <img className="card-img img-fluid"  src= { avatar } alt="Card cap" />
+                <img className="card-img card-img-list"  src= { avatar } alt="Card image cap" />
                 </Link>
                 <div className="card-body">
                     <Link to={"/users/"+this.state._id}><h5 className="card-title">{ firstname } { lastname }</h5></Link>
-                    <p className="card-text">Age:  { age } , Description: { bio }, Situation Amoureuse: { lovestatus }, Adresse: { address } { zipcode } { city }</p>
-                    <p className="card-text"><small className="text-muted">Toques Disponible: { toquesAvailable }</small></p>
+                    <p className="card-text">Age:  { age }</p>
                 </div>
             </div>
         )

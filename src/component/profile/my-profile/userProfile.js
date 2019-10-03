@@ -6,7 +6,6 @@ import Spinner from '../../layout/Spinner';
 
 import UserEvents from './userEvents.js';
 import '../../../stylesheets/profile/profil.scss';
-import '../../../stylesheets/userProfile.css';
 
 const getUserProfile = (( setProfiles, props) => {
   const header = {
