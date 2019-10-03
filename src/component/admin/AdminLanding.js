@@ -23,7 +23,6 @@ export class AdminLanding extends Component {
 
         axios.get("https://meetmeal-dev.herokuapp.com" + '/users/my-profile', { headers: header })
           .then((res) => {
-              console.log(res.data.admin);
               this.setState({
                 user : res.data,
                 admin : res.data.admin })

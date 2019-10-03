@@ -58,7 +58,6 @@ class CardEvent extends Component {
       comments: this.props.comments
     })
 
-    console.log('firstname de l\'user', this.state.user);
 
   // get all events where the user already subscribed
   // await axios.get(process.env.REACT_APP_API + '/events/' + this.state.user._id + '/guestsEvents')
@@ -118,6 +117,10 @@ class CardEvent extends Component {
     if ( user && (user._id === this.props.user._id)){
       return ( <button type="submit" onClick={this.handleSubmit}>Voir votre évenement</button>)
     }
+    else{
+      return ( <button type='submit' onClick={this.handleSubmit}>Voir l'évènement</button>)
+    }
+    
 
       // console.log('id de l\'user connecté', this.state.user._id);
       // console.log('id de l\'user créateur', this.props.user._id);
