@@ -62,6 +62,9 @@ class Navbar extends Component {
     const userLinks = (
       <>
         <li className="nav-item">
+          <Link className="nav-link nav-link-left" to="/create-event">Organiser un repas</Link>
+        </li>
+        <li className="nav-item">
           <Link className="nav-link nav-link-left" to="/">Rechercher un repas</Link>
         </li>
         <li className="nav-item">
