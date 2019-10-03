@@ -77,19 +77,19 @@ class CardEvent extends Component {
   //       }).catch( err => {
   //         console.log(err.response);
   //       })
-    const url = process.env.REACT_APP_API + '/events/' + this.state._id + '/addGuest';
-     axios.put(url, null,
-                { headers: header }
-                ).then( res => {
-                  console.log(res.data);
-                }).catch( err => {
-                  if (err.response.data.msg === 'Vous ne pouvez pas rejoindre votre propre evenement')
-                    this.setState({createdMeals: true})
-                  else if (err.response.data.msg === 'Vous etes deja inscrit a cet evenement')
-                    this.setState({joinedMeals: true})
-                  else
-                    console.log(err.response);
-                })
+    // const url = process.env.REACT_APP_API + '/events/' + this.state._id + '/addGuest';
+    //  axios.put(url, null,
+    //             { headers: header }
+    //             ).then( res => {
+    //               console.log(res.data);
+    //             }).catch( err => {
+    //               if (err.response.data.msg === 'Vous ne pouvez pas rejoindre votre propre evenement')
+    //                 this.setState({createdMeals: true})
+    //               else if (err.response.data.msg === 'Vous etes deja inscrit a cet evenement')
+    //                 this.setState({joinedMeals: true})
+    //               else
+    //                 console.log(err.response);
+    //             })
 
 }
 

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { CardUser } from "./CardUser";
 import axios from 'axios';
 
+import '../../stylesheets/listUsers.scss';
 
 export class ListUsers extends Component {
     constructor(props){
@@ -65,12 +66,12 @@ export class ListUsers extends Component {
                 return <div>{ users }</div>
             } else {
                 return users.map((user, index) => (
-                    <div>
+                    <>
                     <CardUser
                         {...user}
                         key={users[index]._id}
                         />
-                    </div>
+                    </>
                 ));
             }
         };
@@ -83,10 +84,10 @@ export class ListUsers extends Component {
                         <button className="submit">Search</button><br/><br/>
                     </div>
                 </form>
-                <div className='row'>
-                    <div className="card-deck">
+                <div className='row row-list'>
+                    {/* <div className="col-12"> */}
                     {renderUsers()}
-                    </div>
+                    {/* </div> */}
                 </div>
             </div>
         )
