@@ -195,7 +195,7 @@ class CardEvent extends Component {
           <div className="col-4">
             <p className="card-text">Pour {numberMaxOfGuests} personnes</p>
             <p className="card-text">Coût : {cost} Toques</p>
-            {this.state.createdMeals == true ? pickButton() : (<button type="submit" onClick={this.subscribeToAnEvent}>Je rejoins l'évenement !</button>)}
+            {(this.state.createdMeals == true || this.state.joinedMeals == true)? pickButton() : (<button type="submit" onClick={this.subscribeToAnEvent}>Je rejoins l'évenement !</button>)}
           </div>
         </div>
     </div>
