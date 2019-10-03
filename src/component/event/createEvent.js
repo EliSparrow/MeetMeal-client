@@ -84,24 +84,7 @@ class CreateEvent extends Component {
     const headers = {
       'x-auth-token': localStorage.getItem('token')
     }
-    // console.log(this.state.hour);
     
-    // var body = {
-    //   title: this.state.title,
-    //   date: this.state.date,
-    //   hour: parseInt(this.state.hour),
-    //   minutes: parseInt(this.state.minutes),
-    //   typeOfMeal: this.state.typeOfMeal,
-    //   typeOfCuisine: this.state.typeOfCuisine,
-    //   description: this.state.description,
-    //   menu: this.state.menu,
-    //   allergens: this.state.allergens,
-    //   zipCode: parseInt(this.state.zipCode),
-    //   address: this.state.address,
-    //   city: this.state.city,
-    //   numberMaxOfGuests: parseInt(this.state.numberMaxOfGuests),
-    //   cost: parseInt(this.state.cost)
-    // }
     this.setState({ 
       hour: this.state.time.substr(0,2),
       minutes: this.state.time.substr(3,2),
@@ -130,7 +113,7 @@ class CreateEvent extends Component {
         cost: parseInt(this.state.cost)
       }
    
-      axios.post(process.env.REACT_APP_API + '/events/create',
+      axios.post("https://meetmeal-dev.herokuapp.com" + '/events/create',
         body,
         {headers: headers}
       ).then( res => {

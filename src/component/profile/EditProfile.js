@@ -56,7 +56,7 @@ export class EditProfile extends Component {
         const header = {
             'x-auth-token': localStorage.getItem('token')
         }
-        axios.get(process.env.REACT_APP_API + '/users/my-profile',
+        axios.get("https://meetmeal-dev.herokuapp.com" + '/users/my-profile',
             { headers: header},
         ).then(res => {
               this.setState({ user: res.data });
@@ -97,7 +97,7 @@ export class EditProfile extends Component {
             id : this.state.user._id
         };
 
-        axios.put(process.env.REACT_APP_API + `/users/`+ editUser.id, editUser, { headers: header })
+        axios.put("https://meetmeal-dev.herokuapp.com" + `/users/`+ editUser.id, editUser, { headers: header })
             .then(res => {
                 alert('Votre profil a été modifié');
                 this.setState({ user: res.data });
@@ -106,15 +106,13 @@ export class EditProfile extends Component {
             .catch(err => {
                 console.error(err.response);
             })
-
     }
 
     render() {
         var {
             user
         } = this.state
-
-        
+ 
         return(
             <div className="container">
                  {user ? (

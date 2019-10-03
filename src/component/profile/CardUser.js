@@ -37,7 +37,6 @@ export class CardUser extends Component {
 
     render() {
         const {
-            _id,
             lastname,
             firstname,
             age,
@@ -52,7 +51,7 @@ export class CardUser extends Component {
         return (
             <div className="card mb-4" style={{width: 18 + 'em'}}>
                 <Link to={"/users/"+this.state._id} >
-                <img className="card-img img-fluid"  src= { avatar } alt="Card image cap" />
+                <img className="card-img img-fluid"  src= { avatar } alt="Card cap" />
                 </Link>
                 <div className="card-body">
                     <Link to={"/users/"+this.state._id}><h5 className="card-title">{ firstname } { lastname }</h5></Link>

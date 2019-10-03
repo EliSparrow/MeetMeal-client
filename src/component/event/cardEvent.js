@@ -3,8 +3,6 @@ import axios from 'axios';
 
 import '../../stylesheets/cardEvent.css';
 
-import Axios from 'axios';
-
 class CardEvent extends Component {
   constructor(props){
     super(props);
@@ -33,11 +31,9 @@ class CardEvent extends Component {
       'x-auth-token': localStorage.getItem('token')
     }
 
-    await axios.get('http://localhost:1509/users/my-profile', { headers: header })
+    await axios.get("https://meetmeal-dev.herokuapp.com" + '/users/my-profile', { headers: header })
           .then((res) => {
             this.setState({ user: res.data })
-            // console.log('response du get user : ', res.data);
-            // console.log('user id : ', this.state.user._id);
           })
           .catch((err) => {
             console.error(err.response);
@@ -59,25 +55,7 @@ class CardEvent extends Component {
       comments: this.props.comments
     })
 
-
-  // get all events where the user already subscribed
-  // await axios.get(process.env.REACT_APP_API + '/events/' + this.state.user._id + '/guestsEvents')
-  //       .then( res => {
-  //         this.setState({joinedMeals: res.data})
-  //         console.log('les events que le user a deja rejoint : ', this.state.joinedMeals);
-  //       }).catch( err => {
-  //         console.log(err.response);
-  //       })
-  //
-  // get all events created by the user connected
-  // await axios.get(process.env.REACT_APP_API + '/events/' + this.state.user._id + '/showEvents')
-  //       .then( res => {
-  //         this.setState({createdMeals: res.data})
-  //         console.log('les events que le user a deja créé : ', this.state.createdMeals);
-  //       }).catch( err => {
-  //         console.log(err.response);
-  //       })
-    const url = process.env.REACT_APP_API + '/events/' + this.state._id + '/addGuest';
+    const url = "https://meetmeal-dev.herokuapp.com" + '/events/' + this.state._id + '/addGuest';
      axios.put(url, null,
                 { headers: header }
                 ).then( res => {
@@ -90,15 +68,12 @@ class CardEvent extends Component {
                   else
                     console.log(err.response);
                 })
-
 }
 
   // Go on the presentation page of an event
   handleSubmit = async (event) => {
    event.preventDefault();
-    // console.log(this.state._id);
     const url = '/event/:' + this.state._id.toString() ;
-    console.log(url);
     this.props.history.push(url)
   }
 
@@ -112,7 +87,6 @@ class CardEvent extends Component {
         </div>
       )
     }
-    console.log(this.props.user._id)
   }
 
 
@@ -123,19 +97,15 @@ class CardEvent extends Component {
       'x-auth-token': localStorage.getItem('token')
     }
 
-    const userInfo = await axios.get(process.env.REACT_APP_API + '/users/my-profile',
+    const userInfo = await axios.get("https://meetmeal-dev.herokuapp.com" + '/users/my-profile',
           { headers: header})
 
-    const userId = userInfo.data._id;
     const userToquesAvailable = userInfo.data.toquesAvailable
-          console.log('id + toques : ', userId, userToquesAvailable);
-
-    console.log('prix : ', this.state.cost);
 
     if (userToquesAvailable < this.state.cost)
       alert("Vous n'avez pas assez de toques disponibles pour vous inscire à cet évenement.")
-    else{
-    const url = process.env.REACT_APP_API + '/events/' + this.state._id + '/addGuest';
+    else {
+    const url = "https://meetmeal-dev.herokuapp.com" + '/events/' + this.state._id + '/addGuest';
       await axios.put(url, null,
                   { headers: header }
                   ).then( res => {
@@ -155,7 +125,6 @@ class CardEvent extends Component {
 
   render(){
     const {
-      _id,
       firstname,
       lastname,
       avatar,
@@ -169,7 +138,6 @@ class CardEvent extends Component {
     } = this.state;
 
     var pickButton = () => {
-      console.log('pick button worked');
       if( this.state.joinedMeals === true )
           return ( <button type="submit" onClick={this.handleSubmit}>Déjà inscrit ! Voir l'évenement</button>)
         else if ( this.state.createdMeals === true )
@@ -195,7 +163,7 @@ class CardEvent extends Component {
           <div className="col-4">
             <p className="card-text">Pour {numberMaxOfGuests} personnes</p>
             <p className="card-text">Coût : {cost} Toques</p>
-            {(this.state.createdMeals == true || this.state.joinedMeals == true)? pickButton() : (<button type="submit" onClick={this.subscribeToAnEvent}>Je rejoins l'évenement !</button>)}
+            {(this.state.createdMeals === true || this.state.joinedMeals === true) ? pickButton() : (<button type="submit" onClick={this.subscribeToAnEvent}>Je rejoins l'évenement !</button>)}
           </div>
         </div>
     </div>

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { CardUser } from "./CardUser";
 import axios from 'axios';
 
-
 export class ListUsers extends Component {
     constructor(props){
         super(props);
@@ -27,7 +26,7 @@ export class ListUsers extends Component {
         const header = {
             'x-auth-token': localStorage.getItem('token')
           }
-        axios.get(process.env.REACT_APP_API + '/users', { headers: header })
+        axios.get("https://meetmeal-dev.herokuapp.com" + '/users', { headers: header })
             .then(response => {
                 this.setState({ users: response.data });
             })
@@ -47,9 +46,8 @@ export class ListUsers extends Component {
             'x-auth-token': localStorage.getItem('token')
           }
         event.preventDefault();
-        axios.post(process.env.REACT_APP_API + '/search/users',{ search: this.state.search },{ headers: header })
+        axios.post("https://meetmeal-dev.herokuapp.com" + '/search/users',{ search: this.state.search },{ headers: header })
             .then(response => {
-                console.log(response.data.result);
                 this.setState({ users: response.data.result })
             })
             .catch(err => {

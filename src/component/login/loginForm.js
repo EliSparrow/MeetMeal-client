@@ -38,7 +38,7 @@ class Login extends Component {
       alert('Les champs "email" et "mot de passe" sont manquants')
       return
     }
-    axios.post(process.env.REACT_APP_API +'/users/login',
+    axios.post("https://meetmeal-dev.herokuapp.com" +'/users/login',
       {
         email: this.state.email,
         password: this.state.password
@@ -76,11 +76,6 @@ class Login extends Component {
       <div className="form-container sign-in-container login-form">
         <form onSubmit={this.handleSubmit}>
           <h1>Votre compte</h1>
-          <div className="social-container">
-            <Link to="#" className="fa fa-facebook"></Link>
-            <Link to="#" className="fa fa-google"></Link>
-          </div>
-          <span>ou utilisez vos identifiants</span>
           <div className="group">      
           <input type="text" name="email" onChange={this.handleChange} required/>
             <span className="highlight"></span>
@@ -94,7 +89,6 @@ class Login extends Component {
             <label>Mot de passe</label>
             <a onClick={this.toggleShow}>Voir/Cacher mot de passe</a>
           </div>
-          {/* <a href="#">Mot de passe oublié ?</a> A voir si service mail activé */}
           <button className="submit">Connexion</button>
         </form>
       </div>
