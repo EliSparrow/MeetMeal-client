@@ -130,19 +130,19 @@ export class AdminEditForm extends Component {
                             <input type='text' defaultValue={user.firstname} name='newFirstname' placeholder='firstname' className='input-firstname' onChange={ this.handleChange }></input>
                             <span className="highlight"></span>
                             <span className="bar"></span>
-                            <label>Email</label>
+                            <label>Prénom</label>
                         </div>
                         <div className='group user-inputs'>
                             <input type='text' defaultValue={user.lastname} name='newLastname' placeholder='lastname' className='input-lastname' onChange={ this.handleChange }></input>
                             <span className="highlight"></span>
                             <span className="bar"></span>
-                            <label>Email</label>
+                            <label>Nom</label>
                         </div>
                         <div className='group user-inputs'>
                             <input type='text' defaultValue={user.age} name='newAge' className='input-age' placeholder='age' onChange={ this.handleChange }></input>
                             <span className="highlight"></span>
                             <span className="bar"></span>
-                            <label>Email</label>
+                            <label>Âge</label>
                         </div>
                         <div className='group user-inputs'>
                             <input type='email' defaultValue={user.email} name='newEmail' className='input-email' placeholder='email' onChange={ this.handleChange }></input>
@@ -154,31 +154,31 @@ export class AdminEditForm extends Component {
                             <input type='text' defaultValue={user.avatar} name='newAvatar' className='input-avatar' placeholder='avatar' onChange={ this.handleChange }></input>
                             <span className="highlight"></span>
                             <span className="bar"></span>
-                            <label>Email</label>
+                            <label>Avatar</label>
                         </div>
                         <div className='group user-inputs'>
                             <input type='textarea' defaultValue={user.bio} name='newBio' className='input-bio' placeholder='biographie' onChange={ this.handleChange }></input>
                             <span className="highlight"></span>
                             <span className="bar"></span>
-                            <label>Email</label>
+                            <label>Biographie</label>
                         </div>
                         <div className='group user-inputs'>
                             <input type='text' defaultValue={user.loveStatus} name='newLoveStatus' className='input-loveStatus' placeholder='Situation Amoureuse' onChange={ this.handleChange }></input>
                             <span className="highlight"></span>
                             <span className="bar"></span>
-                            <label>Email</label>
+                            <label>Statut</label>
                         </div>
                         <div className='group user-inputs'>
                             <input type='text' defaultValue={user.zipCode} name='newZipCode' className='input-zipCode' placeholder='Code Postal' onChange={ this.handleChange }></input>
                             <span className="highlight"></span>
                             <span className="bar"></span>
-                            <label>Email</label>
+                            <label>Code Postal</label>
                         </div>
                         <div className='group user-inputs'>
                             <input type='text' defaultValue={user.address} name='newAddress' className='input-address' placeholder='Adresse' onChange={ this.handleChange }></input>
                             <span className="highlight"></span>
                             <span className="bar"></span>
-                            <label>Email</label>
+                            <label>Adresse</label>
                         </div>
                         <div className='group user-inputs'>
                             <input type='text' defaultValue={user.city} name='newCity' className='input-city' placeholder='Ville' onChange={ this.handleChange }></input>
@@ -190,13 +190,13 @@ export class AdminEditForm extends Component {
                             <input type='password' name='newPassword' className='input-password' placeholder='Mot de Passe' onChange={ this.handleChange }></input>
                             <span className="highlight"></span>
                             <span className="bar"></span>
-                            <label>Email</label>
+                            <label>Nouveau Mot de Passe</label>
                         </div>
                         <div className='group user-inputs'>
                             <input type='text' defaultValue={user.toquesAvailable} name='newToquesAvailable' className='input-toquesAvailable' placeholder='Monnaie Toque' onChange={ this.handleChange }></input>
                             <span className="highlight"></span>
                             <span className="bar"></span>
-                            <label>Email</label>
+                            <label>Toques</label>
                         </div>
                         <div className='group user-buttons'>
                             <Link to='/profile' >
