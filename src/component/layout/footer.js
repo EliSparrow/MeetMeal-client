@@ -24,6 +24,20 @@ const Footer = () => {
             </ul>
           </div>
           <div className="col-md-4 mb-md-0 mb-4">
+            <h5 className="text-uppercase">LES REPAS & LES MEMBRES</h5>
+            <ul className="list-unstyled">
+              <li>
+                <Link to="/create-event" className='nav-link'>Proposer un repas</Link>
+              </li>
+              <li>
+                <Link to="/list-events" className='nav-link'>Trouver un repas</Link>
+              </li>
+              <li>
+                <Link to="/listusers" className='nav-link'>Rechercher un membre</Link>
+              </li>
+            </ul>
+          </div>
+          <div className="col-md-4 mb-md-0 mb-4">
             <h5 className="text-uppercase">A propos de nous</h5>
 
             <ul className="list-unstyled">
@@ -32,17 +46,6 @@ const Footer = () => {
               </li>
               <li>
               <Link to="/contact" className='nav-link'>Nous contacter</Link>
-              </li>
-            </ul>
-          </div>
-          <div className="col-md-4 mb-md-0 mb-4">
-            <h5 className="text-uppercase">F.A.Q</h5>
-            <ul className="list-unstyled">
-              <li>
-                <Link to="/create-event" className='nav-link'>Proposer un repas</Link>
-              </li>
-              <li>
-                <Link to="/list-events" className='nav-link'>Trouver un repas</Link>
               </li>
               <li>
                 <a className='nav-link' target="_blank" rel="noopener noreferrer" href="https://www.google.fr/maps/place/Epitech+Paris/@48.815664,2.3606193,17z/data=!3m1!4b1!4m5!3m4!1s0x47e6717ff972ae09:0x692326b123aa4d9b!8m2!3d48.815664!4d2.362808">
