@@ -62,5 +62,3 @@ class SelectEvent extends Component {
 }
 
 export default SelectEvent;
-
-// import SelectEvent from './SelectEvent';
