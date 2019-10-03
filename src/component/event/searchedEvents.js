@@ -18,7 +18,7 @@ class SearchedEvents extends Component {
  }
 
  executeSearch() {
-   axios.post('http://localhost:1509' + '/search/event', {
+   axios.post("https://meetmeal-dev.herokuapp.com" + '/search/event', {
         zipCode: this.state.zipCode,
         city: this.state.city,
         date: this.state.date,
