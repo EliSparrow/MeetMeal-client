@@ -18,18 +18,15 @@ class SearchedEvents extends Component {
     const date = this.props.match.params.date.substr(1);
     const typeOfMeal = this.props.match.params.typeOfMeal.substr(1);
     const typeOfCuisine = this.props.match.params.typeOfCuisine.substr(1);
-    console.log(zipCode, city, date, typeOfMeal, typeOfCuisine);
 
-    axios.post('http://localhost:1509/search/event', {
+    axios.post('https://meetmeal.netlify.com' + '/search/event', {
       zipCode: zipCode,
       city: city,
       date: date,
       typeOfMeal: typeOfMeal,
       typeOfCuisine: typeOfCuisine
     }).then( res => {
-      console.log(res.data);
       this.setState({searchedMeals: res.data});
-      console.log('this state searchMeals : ', this.state.searchedMeals.result);
     }).catch(err => {
       console.log(err.response);
     })
@@ -38,8 +35,7 @@ class SearchedEvents extends Component {
   render(){
     var renderSearchedEvents = () => {
       var tabSearchedMeals = this.state.searchedMeals.result;
-      console.log('tableau search meal : ', tabSearchedMeals);
-      if(this.state.searchedMeals == "") return (<div><h1> Aucun repas ne correspond à votre recherche pour le moment </h1></div>)
+      if(this.state.searchedMeals === "") return (<div><h1> Aucun repas ne correspond à votre recherche pour le moment </h1></div>)
       return tabSearchedMeals.map((searchedMeal, index) => (
         <div>
         <CardEvent
@@ -59,6 +55,5 @@ class SearchedEvents extends Component {
       </div>
     )
   }
-
 }
 export default SearchedEvents;

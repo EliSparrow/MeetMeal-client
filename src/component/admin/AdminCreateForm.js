@@ -8,7 +8,6 @@ export class AdminCreateForm extends Component {
         super(props);
 
         this.state = {
-            // user: null,
             firstname: "",
             lastname: "",
             age: 0,
@@ -62,8 +61,6 @@ export class AdminCreateForm extends Component {
         });
     }
 
-
-
     handleAddUser = e => {
         e.preventDefault();
 
@@ -83,16 +80,14 @@ export class AdminCreateForm extends Component {
             admin:this.state.newAdmin
         };
 
-        axios.post(process.env.REACT_APP_API + `/users/register` , addUser)
+        axios.post("https://meetmeal-dev.herokuapp.com" + `/users/register` , addUser)
             .then(res => {
                 alert('Votre profil a été modifié');
-                // this.setState({ user: res.data });
                 this.props.history.push('/admin');
             })
             .catch(err => {
                 console.error(err.response);
             })
-
     }
 
     render() {

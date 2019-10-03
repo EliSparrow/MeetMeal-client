@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
-// import {useState} from 'react';
 import Axios from 'axios';
 
 class ShowProfile extends Component {
@@ -22,12 +21,10 @@ class ShowProfile extends Component {
    }
 
    componentDidMount() {
-      
-      //const userId = this.props.profileId;
       const header = {
          'x-auth-token': localStorage.getItem('token')
       }
-      const url = process.env.REACT_APP_API + '/users/' + this.props.match.params.profileId;
+      const url = "https://meetmeal-dev.herokuapp.com" + '/users/' + this.props.match.params.profileId;
 
       Axios.get(url, {
          headers: header
@@ -43,10 +40,9 @@ class ShowProfile extends Component {
       const header = {
         'x-auth-token': localStorage.getItem('token')
       }
-      Axios.get(process.env.REACT_APP_API + '/users/my-profile', { headers: header })
+      Axios.get("https://meetmeal-dev.herokuapp.com" + '/users/my-profile', { headers: header })
         .then((res) => {
           this.setState({ userConnected: res.data })
-          console.log(res.data);
       })
         .catch((err) => {
           console.error(err);
@@ -78,7 +74,6 @@ class ShowProfile extends Component {
                <div className='col-lg-3 user-info-intro'>
                   <img className='img-fluid' src={ this.state.userShow.avatar } alt='user profile avatar'></img>
                </div>
-               {/* <div className='row'> */}
                <div className='col-lg-9 user-info-intro'>
                   <h3 className='user-name'> { this.state.userShow.firstname } { this.state.userShow.lastname }</h3>
                </div>

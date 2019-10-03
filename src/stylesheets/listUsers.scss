@@ -1,0 +1,17 @@
+@import './variables.scss';
+
+
+.row-list {
+    justify-content: space-around;
+}
+.card-user-list {
+    width: 18em;
+    height: 388px;
+}
+
+.card-img-list {
+    display: block;
+    width: auto;
+    height: 286px;
+    // background-size: cover; 
+}

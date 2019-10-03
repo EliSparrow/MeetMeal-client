@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { CardUser } from "./CardUser";
 import axios from 'axios';
 
+import '../../stylesheets/listUsers.scss';
 
 export class ListUsers extends Component {
     constructor(props){
@@ -27,7 +28,7 @@ export class ListUsers extends Component {
         const header = {
             'x-auth-token': localStorage.getItem('token')
           }
-        axios.get(process.env.REACT_APP_API + '/users', { headers: header })
+        axios.get("https://meetmeal-dev.herokuapp.com" + '/users', { headers: header })
             .then(response => {
                 this.setState({ users: response.data });
             })
@@ -47,9 +48,8 @@ export class ListUsers extends Component {
             'x-auth-token': localStorage.getItem('token')
           }
         event.preventDefault();
-        axios.post(process.env.REACT_APP_API + '/search/users',{ search: this.state.search },{ headers: header })
+        axios.post("https://meetmeal-dev.herokuapp.com" + '/search/users',{ search: this.state.search },{ headers: header })
             .then(response => {
-                console.log(response.data.result);
                 this.setState({ users: response.data.result })
             })
             .catch(err => {
@@ -65,12 +65,12 @@ export class ListUsers extends Component {
                 return <div>{ users }</div>
             } else {
                 return users.map((user, index) => (
-                    <div>
+                    <>
                     <CardUser
                         {...user}
                         key={users[index]._id}
                         />
-                    </div>
+                    </>
                 ));
             }
         };
@@ -83,10 +83,10 @@ export class ListUsers extends Component {
                         <button className="submit">Search</button><br/><br/>
                     </div>
                 </form>
-                <div className='row'>
-                    <div className="card-deck">
+                <div className='row row-list'>
+                    {/* <div className="col-12"> */}
                     {renderUsers()}
-                    </div>
+                    {/* </div> */}
                 </div>
             </div>
         )

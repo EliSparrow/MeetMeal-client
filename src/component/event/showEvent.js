@@ -31,12 +31,11 @@ class ShowEvent extends Component {
   }
 
   componentDidMount(){
-//    const eventId = this.props.match.params
     const eventId = this.props.match.params.eventId;
     const header = {
       'x-auth-token': localStorage.getItem('token')
     }
-    const url = process.env.REACT_APP_API + '/events/' + eventId;
+    const url = "https://meetmeal-dev.herokuapp.com" + '/events/' + eventId;
 
     axios.get(url, {
       headers: header}
@@ -46,7 +45,6 @@ class ShowEvent extends Component {
       console.log(err.response);
     })
     }
-
 
  render() {
    return (

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { withRouter, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import image from '../../images/MeatMeal.png'
-// import '../../stylesheets/navbar.css';
+
 import '../../stylesheets/navbar.scss';
 
 class Navbar extends Component {
@@ -21,9 +21,8 @@ class Navbar extends Component {
       'x-auth-token': localStorage.getItem('token')
     }
     
-    
     if(header["x-auth-token"]){
-      axios.get(process.env.REACT_APP_API + '/users/my-profile',
+      axios.get("https://meetmeal-dev.herokuapp.com" + '/users/my-profile',
       { headers: header})
       .then(res => {
         this.setState({
@@ -77,7 +76,7 @@ class Navbar extends Component {
             <Link className="nav-link nav-link-left" to="/login">Connexion</Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link nav-link-left" to="/register">Inscritpion</Link>
+            <Link className="nav-link nav-link-left" to="/register">Inscription</Link>
           </li>
         </>
     )

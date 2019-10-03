@@ -1,7 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import { ListUsers } from '../profile/ListUsers';
-import { EditProfile } from '../profile/EditProfile';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { AdminCreateForm } from './AdminCreateForm';
 import Spinner from '../layout/Spinner';
@@ -23,11 +21,11 @@ export class AdminLanding extends Component {
             'x-auth-token': localStorage.getItem('token')
           }
 
-        axios.get(process.env.REACT_APP_API + '/users/my-profile', { headers: header })
+        axios.get("https://meetmeal-dev.herokuapp.com" + '/users/my-profile', { headers: header })
           .then((res) => {
               console.log(res.data.admin);
               this.setState({
-                  user : res.data,
+                user : res.data,
                 admin : res.data.admin })
           })
           .catch((err) => {
@@ -45,13 +43,13 @@ export class AdminLanding extends Component {
     
     render() {
         var UsersCompo;
-        if (this.state.switch == "listusers"){
+        if (this.state.switch === "listusers"){
             UsersCompo = <ListUsers/>
         }
-        if(this.state.switch == "FormCreate") {
+        if(this.state.switch === "FormCreate") {
             UsersCompo = <AdminCreateForm/>
         }
-        const { user, admin } = this.state
+        const { admin } = this.state
 
         return(
             <Fragment>
@@ -68,7 +66,6 @@ export class AdminLanding extends Component {
                             <div className="Listusers">
                                 { UsersCompo }
                             </div>
-
                         </div>
                     ) : (
                         <div className='testadminFalse'>
