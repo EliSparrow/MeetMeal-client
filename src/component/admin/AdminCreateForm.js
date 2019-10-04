@@ -99,16 +99,16 @@ export class AdminCreateForm extends Component {
                             <h1>Ajouter un profile: </h1>
                         </div>
                         <div className='col lg-4 user-inputs'>
-                            <input type='text'  name='newFirstname' placeholder='firstname' className='input-firstname' onChange={ this.handleChange }></input>
+                            <input type='text'  name='newFirstname' placeholder='firstname' className='input-firstname' onChange={ this.handleChange } required></input>
                         </div>
                         <div className='col lg-4 user-inputs'>
-                            <input type='text'  name='newLastname' placeholder='lastname' className='input-lastname' onChange={ this.handleChange }></input>
+                            <input type='text'  name='newLastname' placeholder='lastname' className='input-lastname' onChange={ this.handleChange } required></input>
                         </div>
                         <div className='col lg-4 user-inputs'>
-                            <input type='text'  name='newAge' className='input-age' placeholder='age' onChange={ this.handleChange }></input>
+                            <input type='text'  name='newAge' className='input-age' placeholder='age' onChange={ this.handleChange }required></input>
                         </div>
                         <div className='col lg-4 user-inputs'>
-                            <input type='email'  name='newEmail' className='input-email' placeholder='email' onChange={ this.handleChange }></input>
+                            <input type='email'  name='newEmail' className='input-email' placeholder='email' onChange={ this.handleChange } required></input>
                         </div>
                         <div className='col lg-4 user-inputs'>
                             <input type='text'  name='newAvatar' className='input-avatar' placeholder='avatar' onChange={ this.handleChange }></input>
@@ -129,7 +129,7 @@ export class AdminCreateForm extends Component {
                             <input type='text'  name='newCity' className='input-city' placeholder='Ville' onChange={ this.handleChange }></input>
                         </div>
                         <div className='col lg-4 user-inputs'>
-                            <input type='password' name='newPassword' className='input-password' placeholder='Mot de Passe' onChange={ this.handleChange }></input>
+                            <input type='password' name='newPassword' className='input-password' placeholder='Mot de Passe' required onChange={ this.handleChange } ></input>
                         </div>
                         <div className='col lg-4 user-inputs'>
                             <input type='text'  name='newToquesAvailable' className='input-toquesAvailable' placeholder='Monnaie Toque' onChange={ this.handleChange }></input>

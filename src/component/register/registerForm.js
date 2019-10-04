@@ -23,6 +23,7 @@ const Register = props => {
             })
             .catch(err => {
                 console.log(err)
+                alert('L\'utilisateur existe déjà')
                 notifyFailure()
             })
     }

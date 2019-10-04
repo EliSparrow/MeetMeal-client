@@ -67,22 +67,24 @@ class Home extends Component {
                           <div className="input-search-bar-home">
                             <select className="form-control search-slt" id="exampleFormControlSelect1" name='typeOfMeal' onChange={this.handleChange}>
                                 <option value=''>Type de repas</option>
-                                <option id='breakfast'>Petit déjeuner</option>
+                                <option id='breakfast'>Petit-Dejeuner</option>
                                 <option id='brunch'>Brunch</option>
-                                <option id='lunch'>Déjeuner</option>
-                                <option id='apero'>Apéro</option>
+                                <option id='lunch'>Dejeuner</option>
+                                <option id='apero'>Apero</option>
                                 <option id='dinner'>Diner</option>
                             </select>
                         </div>
                         <div className="input-search-bar-home">
                           <select className="form-control search-slt" id="exampleFormControlSelect1" name='typeOfCuisine' onChange={this.handleChange}>
                               <option value=''>Type de cuisine</option>
-                              <option>Américaine</option>
+                              <option>Americaine</option>
                               <option>Argentine</option>
                               <option>Chinoise</option>
-                              <option>Coréenne</option>
+                              <option>Bresilienne</option>
+                              <option>Française</option>
                               <option>Espagnole</option>
                               <option>Marocaine</option>
+                              <option>Autre</option>
                           </select>
                         </div>
                         <div className="input-search-bar-home button">
