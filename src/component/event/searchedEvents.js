@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import { Row } from "react-bootstrap";
 
 import CardEvent from './cardEvent.js';
@@ -46,7 +47,7 @@ class SearchedEvents extends Component {
         console.log("this state searched meals : ", this.state.searchedMeals);
 
         if(this.state.searchedMeals == "" || this.state.searchedMeals == []) {
-          return (<div><h1> Aucun repas ne correspond à votre recherche pour le moment </h1></div>)
+          return (<div><h1> Aucun repas ne correspond à votre recherche pour le moment </h1><Link to="/"><button>Revenir à l'accueil</button></Link></div>)
         } else {
           return tabSearchedMeals.result.map((searchedMeal, index) => (
             <div>

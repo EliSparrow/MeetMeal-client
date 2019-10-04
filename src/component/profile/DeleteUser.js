@@ -11,6 +11,7 @@ export class DeleteUser extends Component {
             userConnected: null,
             isDesactivated: false
         };
+        console.log('id',  this.props.match.params.id)
     }
     
     componentDidMount() {
@@ -69,7 +70,7 @@ export class DeleteUser extends Component {
     render() {
         var { userShow } = this.state
         return(
-            <div className="container-fluid">
+            <div className="container container-general">
                 { userShow ? (
                     <div className='deleteUser'>
                         <h2>Vous êtes sur le point de bloquer votre compte</h2>
