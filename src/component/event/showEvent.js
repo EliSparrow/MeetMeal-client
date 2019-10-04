@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import axios from 'axios';
 import { Guest } from './Guest';
+import Spinner from '../layout/Spinner';
 
 class ShowEvent extends Component {
   constructor (props){
@@ -31,8 +32,6 @@ class ShowEvent extends Component {
     axios.get(url, {
       headers: header}
     ).then( res => {
-      console.log('meal: ', res.data);
-      console.log('userIDConnected: ', this.state.user._id)
       this.setState({ meal: res.data });
     }).catch( err => {
       console.log(err.response);
@@ -83,7 +82,6 @@ class ShowEvent extends Component {
                 { headers: header }
                 ).then( res => {
                   this.setState({ meal: res.data })
-                  console.log(res.data);
                   alert('Vous avez quitté l\'évènement');
                 }).catch( err => {
                   console.error(err)
@@ -98,20 +96,16 @@ class ShowEvent extends Component {
 
     var renderGuests = () => {
       if (meal.guests && meal.guests.length === 0)
-        return (<div><h1>Pas d'invités</h1></div>)
+        return (<div><h1>Pas d'invités</h1><button className="btn btn-primary" onClick={this.subscribeToAnEvent}>S'inscrire</button></div>)
       else {
-        console.log('user', user)
         if(user && meal && user._id == meal.user._id){
-          {console.log('user', user)}
           return meal.guests.map((guest, index) =>(
-          <Guest meal={this.state.meal._id} className='Guest' {...guest} key={index} />
+          <Guest meal={this.state.meal._id} onRemovetoAnEvent={this.removeToAnEvent} className='Guest' {...guest} key={index} />
           ))
         }
         var userIdFilter = meal.guests.filter(guest => guest.userId._id == this.state.user._id);
-        console.log('userIdFilter', userIdFilter);
-        console.log('userConnected', user._id)
         if(user && userIdFilter.length !== 0){
-          return (<button className="btn btn-danger" onClick={this.removeToAnEvent}>Se désinscrire</button>)
+          return (<div className="inscrit"><h2>Vous êtes incrit à ce repas</h2><button className="btn btn-danger" onClick={this.removeToAnEvent}>Se désinscrire</button></div>)
         }
         else{
           return (<button className="btn btn-primary" onClick={this.subscribeToAnEvent}>S'inscrire</button>)
@@ -123,7 +117,6 @@ class ShowEvent extends Component {
         <div>
         { meal ? (
           <div className="container" style={{marginTop: 142 + 'px'}}>
-            {console.log(meal.guests)}
             <div className='title' style={{marginBottom: 42 + 'px'}}>
               <h1>L'évenement : {meal.title}</h1>
               </div>
@@ -149,7 +142,7 @@ class ShowEvent extends Component {
               <div className="table-responsive-sm" style={{textAlign: 'center', marginBottom: 10 + 'px'}}>{renderGuests()}</div>
             </div>
 
-          ) : null}
+          ) : <Spinner />}
         </div>
       </Fragment>
    )

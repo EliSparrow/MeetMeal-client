@@ -11,6 +11,7 @@ export class DeleteUser extends Component {
             userConnected: null,
             isDesactivated: false
         };
+        console.log('id',  this.props.match.params.id)
     }
     
     componentDidMount() {
