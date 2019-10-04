@@ -70,7 +70,7 @@ export class DeleteUser extends Component {
     render() {
         var { userShow } = this.state
         return(
-            <div className="container">
+            <div className="container container-general">
                 { userShow ? (
                     <div className='deleteUser'>
                         <h2>Vous êtes sur le point de bloquer votre compte</h2>

@@ -2,10 +2,9 @@ import React from 'react';
 
 const Team = () => {
 return (
+    <div className="container container-general">
+    <h1> Team Cocoding - Best promo ever ! </h1>
     <div className="row" style={{marginTop: 80 + 'px', textAlign: 'center'}} >
-        <div className="title">
-        <h1> Team Cocoding - Best promo ever ! </h1>
-    </div>
     <div className="card col-6" style={{width: 25 + 'em'}}>
     <img className="card-img img-fluid"  src="https://is4-ssl.mzstatic.com/image/thumb/Purple117/v4/ab/e3/ce/abe3ce22-4c5f-e2b6-1a0b-2b1feb95a87f/source/256x256bb.jpg" alt="avatar" />
     <div className="card-body">
@@ -55,7 +54,7 @@ return (
         <p className="card-text">Hello</p>
     </div>
 </div>
-
+</div>
 </div>
 )
 }
