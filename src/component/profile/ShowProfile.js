@@ -1,6 +1,10 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { Link } from 'react-router-dom';
 import Axios from 'axios';
+
+
+import { Spinner } from "react-bootstrap";
+import UserEvents from "./my-profile/userEvents";
 
 class ShowProfile extends Component {
    constructor(props) {
@@ -55,6 +59,7 @@ class ShowProfile extends Component {
         return(
           <div className='edit-delete-button'>
              <Link to ={"/edituser/" +  userShow._id} className='btn btn-warning btn-sm'>
+                {console.log('userShow._id', userShow._id)}
                   Modifier Votre Profile
                </Link>
                <Link to ={"/deleteuser/" + userShow._id} className='btn btn-danger btn-sm'>
@@ -96,6 +101,57 @@ class ShowProfile extends Component {
             </div>
             ) : null }
          </div>
+
+
+         // <div className='container-general container user-profile'>
+         //    { userShow ? (
+         //    <Fragment>
+         //    <div className='row user-cards'>
+         //       <div className='col-md-3 user-info-intro'>
+         //          <img className='img-fluid' src={this.state.userShow.avatar} alt='user profile avatar'></img>
+         //          <h2 className='user-name'> {this.state.userShow.firstname} {this.state.userShow.lastname}</h2>
+         //          <p className='user-age'> Age : {this.state.userShow.age} </p>
+                  
+         //       </div>
+         //       <div className='col-md-5 info-profile'>
+         //          <div className='user-name'>
+         //             <p> Situation amoureuse :  {this.state.userShow.loveStatus}</p>
+         //             <p className='user-info'>Localisation: {this.state.userShow.zipCode} {this.state.userShow.city}</p>
+         //             <p className='user-bio'>Description: {this.state.userShow.bio}</p>
+         //          </div>
+         //          </div>
+         //          <br/>
+         //          <div className='col-md-4'>
+         //             {this.checkEdit()}
+         //          {/* <div className='row'>
+         //             <div className='col-md-12'>
+         //             <Link to ='/edituser'>
+         //                <button className='user-btn btn-warn'>
+         //             Modifier Votre Profile
+         //             </button>
+         //             </Link>
+         //             </div>
+         //             <div className='col-md-12'>
+         //             <Link to ='/deleteuser/'>
+         //                <button className='user-btn '>
+         //                coucou
+         //                Bloquez votre compte
+         //                </button>
+         //             </Link>
+         //             </div>
+         //          </div> */}
+         //          </div>
+         //       </div>
+         //       <div>
+         //          <UserEvents/>
+         //       </div>
+         //       </Fragment>
+         //       ) : (
+         //          <div className='spinner'>
+         //          <Spinner/>
+         //          </div>
+         //       ) }
+         // </div>
       );
    }
 }
