@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { Component, Fragment } from "react";
 import CardEvent from '../../event/cardEvent.js';
+import Spinner from '../../layout/Spinner.js';
 
 class UserEvents extends Component {
     constructor(props) {
@@ -23,7 +24,6 @@ class UserEvents extends Component {
 
       await axios.get("https://meetmeal-dev.herokuapp.com" + '/events/' + userId.data._id + '/showEvents')
             .then( res => {
-              console.log('createdMeals: ', res.data);
               this.setState({createdMeals: res.data})
             }).catch( err => {
               console.error(err.response);
@@ -76,6 +76,8 @@ class UserEvents extends Component {
 
         return (
             <Fragment>
+              { this.showCreatedEvents || this.showJoinedEvents ? (
+              <div className="userEvents">
                 <nav className='nav-user-profile row'>
                     <div className="col-md-6">
 
@@ -88,6 +90,11 @@ class UserEvents extends Component {
                 <div className='row user-cards list-events'>
                   {this.state.status === true ? renderCreatedMeals() : renderJoinedMeals()}
                 </div>
+
+              </div>
+              ) : (
+                <Spinner/>
+              )}
             </Fragment>
         )
     }

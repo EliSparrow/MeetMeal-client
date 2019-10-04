@@ -55,13 +55,6 @@ const UserProfile = (props, history) => {
                 </button>
                 </Link>
                 </div>
-                <div className='col-md-12'>
-                <Link to ='/deleteuser'>
-                  <button className='user-btn '>
-                  Bloquez votre compte
-                  </button>
-                </Link>
-                </div>
               </div>
             </div>
           </div>

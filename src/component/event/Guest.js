@@ -12,7 +12,6 @@ export class Guest extends Component {
             toggleStatusButton: ""
         }
         this.acceptGuest = this.acceptGuest.bind(this);
-        console.log(this.props.userId);
     }
 
 
@@ -24,7 +23,6 @@ export class Guest extends Component {
           axios.put("https://meetmeal-dev.herokuapp.com" + "/events/" +  this.state.mealID + "/validateGuest/" + this.props.userId._id,{ toto: this.props._id }, { headers: header })
             .then((res) => {
                 this.setState({ status: "Accepte" })
-                console.log(res.data);
             })
             .catch((err) => {
                 console.error(err);
@@ -38,8 +36,8 @@ export class Guest extends Component {
 
         axios.put("https://meetmeal-dev.herokuapp.com" + "/events/" +  this.state.mealID + "/refuseGuest/" + this.props.userId._id,{ toto: this.props._id }, { headers: header })
             .then((res) => {
-            this.setState({ status: "refuse" })
-            console.log(res.data);
+            this.setState({ status: "refuse" });
+            this.props.meal.onRemoveToAnEvent();
         })
             .catch((err) => {
             console.error(err);
@@ -63,7 +61,6 @@ export class Guest extends Component {
     render() {
         return(
             <table className="table">
-                {console.log('mealId de Guest', this.props.meal)}
                 <thead>
                     <tr>
                         <th scope="col">Statut</th>

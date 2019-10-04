@@ -23,7 +23,6 @@ class ListEvents extends Component {
     }).catch( err => {
       console.log(err.response);
     })
-    console.log('this.props.history', this.props.history)
   }
 
   render(){
