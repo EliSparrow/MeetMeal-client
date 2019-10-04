@@ -120,6 +120,7 @@ class CreateEvent extends Component {
         alert('Félicitiations : vous avez créé un repas !')
         this.props.history.push('/list-events');
       }).catch( err => {
+        alert("Votre evenement n'a pas pu etre cree");
         console.log(err.response);
         this.props.history.push('/list-events');
       })
