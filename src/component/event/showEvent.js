@@ -122,33 +122,31 @@ class ShowEvent extends Component {
       <Fragment>
         <div>
         { meal ? (
-          <div className="container">
+          <div className="container" style={{marginTop: 142 + 'px'}}>
             {console.log(meal.guests)}
-              <h1>hello</h1>
-              <div className="infos">{meal.title}</div>
-              <div className="infos">{meal.date}</div>
+            <div className='title' style={{marginBottom: 42 + 'px'}}>
+              <h1>L'évenement : {meal.title}</h1>
+              </div>
+              <div className="infos">A lieu le : {meal.date} à {meal.hour}: {meal.minutes}</div><br></br>
               {/* <div className="infos">{meal.time}</div> */}
-              <div className="infos">{meal.hour}</div>
-              <div className="infos">{meal.minutes}</div>
-              <div className="infos">{meal.typeOfMeal}</div>
-              <div className="infos">{meal.description}</div>
-              <div className="infos">{meal.typeOfCuisine}</div>
-              <div className="infos">{meal.starter}</div>
-              <div className="infos">{meal.dish}</div>
-              <div className="infos">{meal.dessert}</div>
-              <div className="infos">{meal.drinks}</div>
-              <div className="infos">{meal.other}</div>
-              <div className="infos">{meal.menu}</div>
-              <div className="infos">{meal.allergens}</div>
-              <div className="infos">{meal.address}</div>
-              <div className="infos">{meal.zipCode}</div>
-              <div className="infos">{meal.city}</div>
-              <div className="infos">{meal.numberMaxOfGuests}</div>
-              <div className="infos">{meal.cost}</div>
+              <div className="infos">Nombre d'invités possible : {meal.numberMaxOfGuests} personnes</div><br></br>
+              <div className='row'>
+              <div className="infos col-6">Type de repas : {meal.typeOfMeal}</div>
+              <div className="infos col-6">Type de cuisine : {meal.typeOfCuisine}</div>
+              </div><br></br>
+              <div className="infos" style={{fontSize: 2 + 'em'}}>Description de l'évenement :<br></br> {meal.description}</div><br></br>
+              <div className="infos"style={{fontSize: 2 + 'em'}}>Au menu : {meal.menu}</div><br></br>
+              <div className="infos" style={{fontSize: 2 + 'em'}}>Allergènes : {meal.allergens}</div><br></br>
+              <div className='row'>
+              <div className="infos col">Adresse postal : {meal.address}</div>
+              <div className="infos col">Code postal : {meal.zipCode}</div>
+              <div className="infos col">Ville : {meal.city}</div>
+              </div><br></br>
+              <div className="infos" style={{fontSize: 2 + 'em'}}>Coût du repas : {meal.cost} Toques </div>
               <br/>
               <br/>
               <br/>
-              <div className="table-responsive-sm">{renderGuests()}</div>
+              <div className="table-responsive-sm" style={{textAlign: 'center', marginBottom: 10 + 'px'}}>{renderGuests()}</div>
             </div>
 
           ) : null}
