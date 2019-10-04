@@ -9,9 +9,6 @@ class CardEvent extends Component {
     super(props);
     this.state = {
       _id: "",
-      firstname: "",
-      lastname: "",
-      avatar: "",
       title: "",
       description: "",
       city: "",
@@ -44,9 +41,6 @@ class CardEvent extends Component {
 
     this.setState({
       _id: this.props._id,
-      firstname: this.props.firstname,
-      lastname: this.props.lastname,
-      avatar: this.props.avatar,
       title: this.props.title,
       description: this.props.description,
       city: this.props.city,
@@ -55,41 +49,9 @@ class CardEvent extends Component {
       typeOfMeal: this.props.typeOfMeal,
       typeOfCuisine: this.props.typeOfCuisine,
       guests: this.props.guests,
-      comments: this.props.comments
+      comments: this.props.comments,
+      user: this.props.user
     })
-
-
-  // get all events where the user already subscribed
-  // await axios.get(process.env.REACT_APP_API + '/events/' + this.state.user._id + '/guestsEvents')
-  //       .then( res => {
-  //         this.setState({joinedMeals: res.data})
-  //         console.log('les events que le user a deja rejoint : ', this.state.joinedMeals);
-  //       }).catch( err => {
-  //         console.log(err.response);
-  //       })
-  //
-  // get all events created by the user connected
-  // await axios.get(process.env.REACT_APP_API + '/events/' + this.state.user._id + '/showEvents')
-  //       .then( res => {
-  //         this.setState({createdMeals: res.data})
-  //         console.log('les events que le user a deja créé : ', this.state.createdMeals);
-  //       }).catch( err => {
-  //         console.log(err.response);
-  //       })
-    // const url = process.env.REACT_APP_API + '/events/' + this.state._id + '/addGuest';
-    //  axios.put(url, null,
-    //             { headers: header }
-    //             ).then( res => {
-    //               console.log(res.data);
-    //             }).catch( err => {
-    //               if (err.response.data.msg === 'Vous ne pouvez pas rejoindre votre propre evenement')
-    //                 this.setState({createdMeals: true})
-    //               else if (err.response.data.msg === 'Vous etes deja inscrit a cet evenement')
-    //                 this.setState({joinedMeals: true})
-    //               else
-    //                 console.log(err.response);
-    //             })
-
 }
 
   // Go on the presentation page of an event
@@ -120,17 +82,7 @@ class CardEvent extends Component {
     else{
       return ( <button type='submit' onClick={this.handleSubmit}>Voir l'évènement</button>)
     }
-    
-
-      // console.log('id de l\'user connecté', this.state.user._id);
-      // console.log('id de l\'user créateur', this.props.user._id);
-      // if( this.state.joinedMeals === true )
-      //     return ( <button type="submit" onClick={this.handleSubmit}>Déjà inscrit ! Voir l'évenement</button>)
-      // if ( this.props.user._id == this.state.user )
-    //   if ( this.state.joinedMeals === false && this.state.createdMeals === false )
-    //       return (<button type="submit" onClick={this.subscribeToAnEvent}>Je rejoins l'évenement !</button>)
   }
-
 
 // Function to subscribe to an event :
   subscribeToAnEvent = async (event) => {
@@ -167,36 +119,23 @@ class CardEvent extends Component {
 
   render(){
     const {
-      firstname,
-      lastname,
-      avatar,
       title,
       description,
       city,
       cost,
       numberMaxOfGuests,
       typeOfMeal,
-      typeOfCuisine
+      typeOfCuisine,
+      user
     } = this.state;
-
-    // var pickButton = () => {
-    //   console.log('id de l\'user', this.state._id);
-    //   console.log('id de l\'user', this.props.user._id);
-    //   if( this.state.joinedMeals === true )
-    //       return ( <button type="submit" onClick={this.handleSubmit}>Déjà inscrit ! Voir l'évenement</button>)
-    //   if ( this.props.user._id === this.state.user )
-    //       return ( <button type="submit" onClick={this.handleSubmit}>Voir votre évenement</button>)
-    // //   if ( this.state.joinedMeals === false && this.state.createdMeals === false )
-    // //       return (<button type="submit" onClick={this.subscribeToAnEvent}>Je rejoins l'évenement !</button>)
-    // }
-
 
     return (
       <div className="card row" style={{width: 70 + 'em', marginTop: 2 + 'em'}}>
+        {user ? (
         <div className="card-body row">
           <div className='image col-3'>
-            <img src={avatar} alt='user profile avatar'></img>
-            <h6 className="card-subtitle text-muted">{firstname} {lastname}</h6>
+            <img src={user.avatar} style={{width: 200 + 'px'}} alt='user profile avatar'></img>
+            <h6 className="card-subtitle text-muted">{user.firstname}</h6>
           </div>
           <div className="col-5">
             <h5 className="card-title">{title}</h5>
@@ -208,13 +147,12 @@ class CardEvent extends Component {
           <div className="col-4">
             <p className="card-text">Pour {numberMaxOfGuests} personnes</p>
             <p className="card-text">Coût : {cost} Toques</p>
-            {/* {(this.state.createdMeals == true || this.state.joinedMeals == true)? pickButton() : (<button type="submit" onClick={this.subscribeToAnEvent}>Je rejoins l'évenement !</button>)} */}
             <div>
               { this.pickButton() }
             </div>
-
           </div>
         </div>
+        ) : null}
     </div>
     )
   }
