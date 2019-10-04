@@ -68,7 +68,7 @@ class CardEvent extends Component {
     if ( user && (user._id === this.props.user._id)){
       return(
         <div className='edit-button'>
-          <a href={"/editevent/" + _id}><button className="btn btn-warning">Modifiez votre évènement!</button></a>
+          <a href={"/editevent/" + _id}><button className="btn btn-warning">Modifiez votre évènement !</button></a>
         </div>
       )
     }
@@ -77,7 +77,7 @@ class CardEvent extends Component {
   pickButton = () => {
     const { user } = this.state
     if ( user && (user._id === this.props.user._id)){
-      return ( <button type="submit" onClick={this.handleSubmit}>Voir votre évenement</button>)
+      return ( <button type="submit" onClick={this.handleSubmit}>Voir l'évènement</button>)
     }
     else{
       return ( <button type='submit' onClick={this.handleSubmit}>Voir l'évènement</button>)
@@ -135,7 +135,7 @@ class CardEvent extends Component {
         <div className="card-body row">
           <div className='image col-3'>
             <img src={user.avatar} style={{width: 200 + 'px'}} alt='user profile avatar'></img>
-            <h6 className="card-subtitle text-muted">{user.firstname}</h6>
+            <h6 className="card-subtitle text-muted" style={{marginTop: 30 + 'px', marginRight: 55 + 'px', textAlign: 'center'}}>{user.firstname}</h6>
           </div>
           <div className="col-5">
             <h5 className="card-title">{title}</h5>
