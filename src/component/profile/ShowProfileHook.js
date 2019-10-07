@@ -2,27 +2,51 @@ import React, { Fragment, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-import { Spinner } from '../layout/Spinner';
-import UserEvents from './my-profile/userEvents';
+import Spinner from '../layout/Spinner';
 
 const ShowProfileHook = (props) => {
-    const[userShow, setUserShow] = useState(null);
+    const [userShow, setUserShow] = useState(null);
+    const [userConnected, setUserConnected] = useState(null);
 
     useEffect(() => {
         const header = {
             'x-auth-token': localStorage.getItem('token')
         }
-
-        const url = "https://meetmeal-dev.herokuapp.com" + '/users/my-profile' ;
-
-        axios.get(url, {
+        const url1 = "https://meetmeal-dev.herokuapp.com" + '/users/' + props.match.params.profileId ;
+        const url2 = "https://meetmeal-dev.herokuapp.com" + '/users/my-profile'
+        axios.get(url1, {
             headers: header
-         }).then( res => {
+        }).then( res => {
              setUserShow(res.data)
-         }).catch(err => {
+        }).catch(err => {
             console.log(err.response);
-         })
-    })
+        });
+
+        axios.get(url2,{headers: header})
+            .then(res => {
+                setUserConnected(res.data)
+            })
+            .catch(err => {
+                console.log(err.response);
+            })
+
+        })
+        
+        // if (( userShow && userConnected && (userShow._id === userConnected._id)) || (userShow && userConnected && (userConnected.admin === true))){
+        //     console.log('userShow: ', userShow);
+        //     console.log('userConnected: ', userConnected);
+        //     return(
+        //     <div className='edit-delete-button'>
+        //         <Link to ={"/edituser/" +  userShow._id} className='btn btn-warning btn-sm'>
+        //             Modifier Votre Profile
+        //             </Link>
+        //             <Link to ={"/deleteuser/" + userShow._id} className='btn btn-danger btn-sm'>
+        //             Bloquez votre compte
+        //             </Link>
+        //     </div>
+        //     )
+        // }
+
 
     return(
         <Fragment>
@@ -52,9 +76,22 @@ const ShowProfileHook = (props) => {
                     <p className='user-toquesAvailable'>Toques Disponibles: { userShow.toquesAvailable }</p>
                 </div>
                 <div className='col-lg-4 user-button-delete-edit'>
+                    {userShow && userConnected && (userShow._id === userConnected._id) || (userShow && userConnected && (userConnected.admin === true)) && (
+                        <div className='edit-delete-button'>
+                        <Link to ={"/edituser/" +  userShow._id} className='btn btn-warning btn-sm'>
+                            Modifier Votre Profile
+                        </Link>
+                        <Link to ={"/deleteuser/" + userShow._id} className='btn btn-danger btn-sm'>
+                            Bloquez votre compte
+                        </Link>
+                    </div>
+                    ) }
+
                 </div>
             </div>
-            ) : null }
+            ) : (
+                <Spinner />
+            ) }
             </div>
         </Fragment>
     )

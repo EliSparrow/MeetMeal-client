@@ -44,9 +44,9 @@ function App() {
         <PublicRoute restricted={false} component={Home} path="/" exact />
         <PublicRoute restricted={true} component={Login} path="/login" exact />
         <PublicRoute restricted={true} exact path="/register" component={Register}/>
-        {/* <PrivateRoute exact path="/profile" component={userProfile}></PrivateRoute> */}
-        <PrivateRoute exact path="/profile" component={ShowProfileHook}></PrivateRoute>
-        <PrivateRoute exact path="/users/:profileId" component={ShowProfile}></PrivateRoute>
+        <PrivateRoute exact path="/profile" component={userProfile}></PrivateRoute>
+        <PrivateRoute exact path="/users/:profileId" component={ShowProfileHook}></PrivateRoute>
+        {/* <PrivateRoute exact path="/users/:profileId" component={ShowProfile}></PrivateRoute> */}
         <PrivateRoute exact path="/ListUsers" component={ListUsers}></PrivateRoute>
         <PrivateRoute exact path='/create-event' component={CreateEvent}></PrivateRoute>
         <PrivateRoute exact path='/list-events' component={ListEvents}></PrivateRoute>
